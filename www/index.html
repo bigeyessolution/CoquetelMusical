@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--
+ * This file is part of CoquetelMusical by Big Eyes Solution.
+ *
+ *  CoquetelMusical is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  CoquetelMusical is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+ *
+-->
+<html>
+    <head>
+        <title>Coquetel Musical</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="js/libs/jquery-mobile/jquery.mobile.css">
+        <link rel="stylesheet" href="js/libs/font-awesome/css/font-awesome.min.css">
+        <script src="js/libs/jquery/jquery.min.js"></script>
+        <script src="js/libs/jquery-mobile/jquery.mobile.js"></script>
+    </head>
+    <body>
+        <section data-role="page" id="location-page">
+            <footer data-role="footer" data-toggle="false" class="ui-footer-fixed ui-footer-fullscreen"><div data-role="navbar"><ul>
+                <li><a data-icon="navigation" class="ui-btn-active ui-state-persist">Localizar</a></li>
+                <li><a data-icon="bars" data-transition="slide" href="#tracks-page">Trilhas</a></li>
+                <li><a data-icon="star" data-transition="slide" href="#score-page">Cupons</a></li>
+            </ul></div></footer>
+                
+            <div data-role="content">
+            </div>
+        </section>
+        
+        <section data-role="page" id="tracks-page">
+            <footer data-role="footer" data-toggle="false" class="ui-footer-fixed ui-footer-fullscreen"><div data-role="navbar"><ul>
+                <li><a data-icon="navigation" data-transition="slide" data-direction="reverse" href="#location-page">Localizar</a></li>
+                <li><a data-icon="bars" class="ui-btn-active ui-state-persist">Trilhas</a></li>
+                <li><a data-icon="star" data-transition="slide" href="#score-page">Cupons</a></li>
+            </ul></div></footer>
+                
+            <div data-role="content">
+            </div>
+        </section>
+        
+        <section data-role="page" id="score-page">
+            <footer data-role="footer" data-toggle="false" class="ui-footer-fixed ui-footer-fullscreen"><div data-role="navbar"><ul>
+                <li><a data-icon="navigation" data-transition="slide" data-direction="reverse" href="#location-page">Localizar</a></li>
+                <li><a data-icon="bars" data-transition="slide" data-direction="reverse" href="#tracks-page">Trilhas</a></li>
+                <li><a data-icon="star" class="ui-btn-active ui-state-persist">Cupons</a></li>
+            </ul></div></footer>
+                
+            <div data-role="content">
+            </div>
+        </section>
+    </body>
+</html>
