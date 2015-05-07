@@ -1,0 +1,61 @@
+/*
+Copyright (C) 2015 laudivan
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+*/
+/* 
+    Created on : 07/05/2015, 14:58:16
+    Author     : laudivan
+*/
+
+section { height: 100%; }
+
+.be-ui-score {
+    width: 90%;
+    height: auto;
+}
+
+.be-ui-vertical-center {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.be-ui-horizontal-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.be-ui-icon-map:after {background-image: url("../images/btn-icon-map.svg");}
+.be-ui-icon-score:after {background-image: url("../images/btn-icon-score.svg");}
+.be-ui-icon-track:after {background-image: url("../images/btn-icon-track.svg");}
+/* Fallback */
+.ui-nosvg .ui-icon-map:after { 	background-image: url("../images/btn-icon-map.png"); }
+.ui-nosvg .be-ui-icon-score:after {background-image: url("../images/btn-icon-score.png");}
+.ui-nosvg .be-ui-icon-track:after {background-image: url("../images/btn-icon-track.png");}
+
+#btn-location {
+    position: static;
+    top: 1.2rem;
+    float: right;
+    right: 1.2rem;
+    width: 2rem;
+    height: 2rem;
+    background-image: url("../images/btn-my-location.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}

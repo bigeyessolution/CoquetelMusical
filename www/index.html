@@ -21,8 +21,12 @@
         <title>Coquetel Musical</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/xilosa-webfont.css">
         <link rel="stylesheet" href="js/libs/jquery-mobile/jquery.mobile.css">
+        <link rel="stylesheet" href="css/coquetelmusical.css">
+        <link rel="stylesheet" href="css/jquery.mobile.icons.min.css">
         <link rel="stylesheet" href="js/libs/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/index.css">
         <script src="js/libs/jquery/jquery.min.js"></script>
         <script src="js/libs/jquery-mobile/jquery.mobile.js"></script>
     </head>
@@ -34,7 +38,8 @@
                 <li><a data-icon="star" data-transition="slide" href="#score-page">Cupons</a></li>
             </ul></div></footer>
                 
-            <div data-role="content">
+            <div role="main" class="ui-content">
+                <div id="btn-location"></div>
             </div>
         </section>
         
@@ -45,7 +50,7 @@
                 <li><a data-icon="star" data-transition="slide" href="#score-page">Cupons</a></li>
             </ul></div></footer>
                 
-            <div data-role="content">
+            <div role="main" class="ui-content">
             </div>
         </section>
         
@@ -56,7 +61,13 @@
                 <li><a data-icon="star" class="ui-btn-active ui-state-persist">Cupons</a></li>
             </ul></div></footer>
                 
-            <div data-role="content">
+            <div role="main" class="ui-content">
+                <img id="img-score" class="be-ui-score be-ui-horizontal-center" src="images/score10.png" alt="">
+                <h1>Aêêê caba arretado da peste!</h1>
+                <div id="message-score">
+                    <p>Agora que tá com o quengo duro senta o dedo no butão ai 
+                        embaixo pra se amostrar no Facebook!</p>
+                </div>
             </div>
         </section>
     </body>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="11.817175mm"
+   height="11.751287mm"
+   viewBox="0 0 41.87188 41.63842"
+   id="svg4261"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="btn-icon-score.svg">
+  <defs
+     id="defs4263" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.35"
+     inkscape:cx="400.22165"
+     inkscape:cy="-124.89508"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1366"
+     inkscape:window-height="739"
+     inkscape:window-x="-4"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata4266">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Camada 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(75.22165,-365.82871)">
+    <g
+       transform="translate(-325.30564,-533.01382)"
+       id="g4175"
+       inkscape:export-filename="/home/laudivan/Projetos/CoquetelMusical/www/images/btn-icon-score.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <rect
+         style="opacity:1;fill:none;fill-opacity:1;stroke:none;stroke-width:0.36157838;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect4167"
+         width="41.63842"
+         height="41.63842"
+         x="250.19861"
+         y="898.84253"
+         rx="0.38839665"
+         ry="0.44807518" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path4147"
+         d="m 272.05764,903.6139 -12.60247,6.9287 -8.88283,12.23708 -0.48835,10.0102 13.0134,-8.6221 8.10581,-1.0217 9.31147,2.7443 10.83082,7.9982 0.61038,-5.6155 -8.04965,-16.6081 -11.84858,-8.05108 z m -1.09873,5.3716 0.48835,3.41798 4.51672,-0.8544 -3.66228,2.8076 -0.12203,2.6858 -1.22076,-1.343 c 0,0 -2.68557,4.0285 -2.68557,3.5402 0,-0.4883 0.85443,-3.7843 0.85443,-3.7843 l -3.05189,-1.7091 3.17392,-0.7324 1.70911,-4.02838 z m -13.6724,10.49828 0.48811,1.9531 3.29619,0.8547 -2.56354,0.6104 0,2.0752 -1.09873,-1.0987 -1.95317,1.8311 0.48812,-2.3195 -2.0752,-1.0985 1.95317,-0.1222 c 0.24415,-0.6104 1.46505,-2.6856 1.46505,-2.6856 z m 26.49037,0.3663 0.7324,2.1972 2.8076,1.4651 -1.83113,0.122 0.36632,1.9532 -1.58708,-1.2208 -0.97647,2.4415 -0.12202,-1.9531 -0.12226,-0.6104 -2.19723,-1.5871 2.68557,-0.122 0.2443,-2.6856 z m -26.00202,8.9114 -3.29619,2.1972 12.45188,4.761 10.13216,-0.244 10.13238,-3.4182 -2.68581,-2.0752 -9.64403,2.8076 c 0,0 -9.27754,-1.0985 -9.76584,-1.0985 -0.4883,0 -7.32455,-2.9299 -7.32455,-2.9299 z"
+         style="fill:#000000;fill-rule:evenodd;stroke:none;stroke-width:0.12084848px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    </g>
+  </g>
+</svg>
