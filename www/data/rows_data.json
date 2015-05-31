@@ -143,9 +143,9 @@
             "music_player": "",
             "puzzle_handler": "",
             "text": "",
-            "solved_text": "",
-            "facebook_message": "",
-            "image": "",
+            "solved_text": "A maraca, maracá, bapo, maracaxá ou xuatê1 é um idiofone de agitamento, constituído por uma bola, que pode ser de cartão, plástico ou cabaça, contendo sementes secas, grãos, arroz ou areia grossa, e uma pega. Dependendo dos materiais usados, podem produzir sons como o de lixar ou o de arranhar, quando tocadas.",
+            "facebook_message": "Cabra bom!!!! Ta ficando melhor...",
+            "image": "puzzle.8.maraca.jpg",
             "solved_image": ""
         },
         {
@@ -158,11 +158,11 @@
             "music_author": "",
             "music_player": "",
             "puzzle_handler": "",
-            "text": "",
-            "solved_text": "",
-            "facebook_message": "",
-            "image": "",
-            "solved_image": ""
+            "text": "01101111 01110000 01100001 01110010 01100001 00001101 00001010",
+            "solved_text": "puzzle.9.solved.rio.jpg",
+            "facebook_message": "Porreta!!! O jogo acabou.",
+            "image": "puzzle.9.rio.jpg",
+            "solved_image": "score.victory.png"
         }
     ]
 }
