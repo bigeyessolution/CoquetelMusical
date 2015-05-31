@@ -21,14 +21,26 @@
         <title>Coquetel Musical</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Para Windows Phone 
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <!-- -->
         <link rel="stylesheet" href="css/xilosa-webfont.css">
         <link rel="stylesheet" href="js/libs/jquery-mobile/jquery.mobile.css">
         <link rel="stylesheet" href="css/coquetelmusical.css">
         <link rel="stylesheet" href="css/jquery.mobile.icons.min.css">
         <link rel="stylesheet" href="js/libs/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="css/index.css">
+        <!--
+        <script type="text/javascript" src="cordova.js"></script>
+        -->
+        
         <script src="js/libs/jquery/jquery.min.js"></script>
         <script src="js/libs/jquery-mobile/jquery.mobile.js"></script>
+        <script src="js/googlemaps.js"></script>
+        <script src="js/track-functions.js"></script>
+        <script src="js/ui-functions.js"></script>
+        <script src="js/index.js"></script>
     </head>
     <body>
         <section data-role="page" id="location-page">
@@ -38,7 +50,8 @@
                 <li><a data-icon="star" data-transition="slide" href="#score-page">Cupons</a></li>
             </ul></div></footer>
                 
-            <div role="main" class="ui-content">
+            <div role="main" class="ui-content be-map-content">
+                <div id="map"></div>
                 <div id="btn-location"></div>
             </div>
         </section>
@@ -51,6 +64,129 @@
             </ul></div></footer>
                 
             <div role="main" class="ui-content">
+                <table id="track-table">
+                    <tr id="row-0">
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td><input class="col-e" maxlength="1" type="text" value="V"></td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr id="row-1">
+                        <td class="col-a"><input maxlength="1" type="text"></td>
+                        <td><input class="col-b" maxlength="1" type="text"></td>
+                        <td><input class="col-c" maxlength="1" type="text"></td>
+                        <td><input class="col-d" maxlength="1" type="text"></td>
+                        <td><input class="col-e" maxlength="1" type="text" value="E"></td>
+                        <td><input class="col-f" maxlength="1" type="text"></td>
+                        <td><input class="col-g" maxlength="1" type="text"></td>
+                        <td><input class="col-h" maxlength="1" type="text"></td>
+                        <td><input class="col-i" maxlength="1" type="text"></td>
+                        <td><input class="col-j" maxlength="1" type="text"></td>
+                    </tr>
+                    <tr id="row-2">
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td><input class="col-c" maxlength="1" type="text"></td>
+                        <td><input class="col-d" maxlength="1" type="text"></td>
+                        <td><input class="col-e" maxlength="1" type="text" value="L"></td>
+                        <td><input class="col-f" maxlength="1" type="text"></td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr id="row-3">
+                        <td><input class="col-a" maxlength="1" type="text"></td>
+                        <td><input class="col-b" maxlength="1" type="text"></td>
+                        <td><input class="col-c" maxlength="1" type="text"></td>
+                        <td><input class="col-d" maxlength="1" type="text"></td>
+                        <td><input class="col-e" maxlength="1" type="text" value="H"></td>
+                        <td><input class="col-f" maxlength="1" type="text"></td>
+                        <td><input class="col-g" maxlength="1" type="text"></td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr id="row-4">
+                        <td><input class="col-a" maxlength="1" type="text"></td>
+                        <td><input class="col-b" maxlength="1" type="text"></td>
+                        <td><input class="col-c" maxlength="1" type="text"></td>
+                        <td><input class="col-d" maxlength="1" type="text"></td>
+                        <td><input class="col-e" maxlength="1" type="text" value="O"></td>
+                        <td><input class="col-f" maxlength="1" type="text"></td>
+                        <td><input class="col-g" maxlength="1" type="text"></td>
+                        <td><input class="col-h" maxlength="1" type="text"></td>
+                        <td><input class="col-i" maxlength="1" type="text"></td>
+                        <td><input class="col-j" maxlength="1" type="text"></td>
+                    </tr>
+                    <tr id="row-5"> <!-- //TODO: Ver quantidade de letras -->
+                        <td><input class="col-a" maxlength="1" type="text"></td>
+                        <td><input class="col-b" maxlength="1" type="text"></td>
+                        <td><input class="col-c" maxlength="1" type="text"></td>
+                        <td><input class="col-d" maxlength="1" type="text"></td>
+                        <td><input class="col-e" maxlength="1" type="text" value="C"></td>
+                        <td><input class="col-f" maxlength="1" type="text"></td>
+                        <td><input class="col-g" maxlength="1" type="text"></td>
+                        <td><input class="col-h" maxlength="1" type="text"></td>
+                        <td><input class="col-i" maxlength="1" type="text"></td>
+                        <td><input class="col-j" maxlength="1" type="text"></td>
+                    </tr>
+                    <tr id="row-6">
+                        <td><input class="col-a" maxlength="1" type="text"></td>
+                        <td><input class="col-b" maxlength="1" type="text"></td>
+                        <td><input class="col-c" maxlength="1" type="text"></td>
+                        <td><input class="col-d" maxlength="1" type="text"></td>
+                        <td><input class="col-e" maxlength="1" type="text" value="H"></td>
+                        <td><input class="col-f" maxlength="1" type="text"></td>
+                        <td><input class="col-g" maxlength="1" type="text"></td>
+                        <td><input class="col-h" maxlength="1" type="text"></td>
+                        <td><input class="col-i" maxlength="1" type="text"></td>
+                        <td><input class="col-j" maxlength="1" type="text"></td>
+                    </tr>
+                    
+                    <tr id="row-7">
+                        <td><input class="col-a" maxlength="1" type="text"></td>
+                        <td><input class="col-b" maxlength="1" type="text"></td>
+                        <td><input class="col-c" maxlength="1" type="text"></td>
+                        <td><input class="col-d" maxlength="1" type="text"></td>
+                        <td><input class="col-e" maxlength="1" type="text" value="I"></td>
+                        <td><input class="col-f" maxlength="1" type="text"></td>
+                        <td><input class="col-g" maxlength="1" type="text"></td>
+                        <td><input class="col-h" maxlength="1" type="text"></td>
+                        <td><input class="col-i" maxlength="1" type="text"></td>
+                        <td><input class="col-j" maxlength="1" type="text"></td>
+                    </tr>
+                    <tr id="row-8">
+                        <td><input class="col-a" maxlength="1" type="text"></td>
+                        <td><input class="col-b" maxlength="1" type="text"></td>
+                        <td><input class="col-c" maxlength="1" type="text"></td>
+                        <td><input class="col-d" maxlength="1" type="text"></td>
+                        <td><input class="col-e" maxlength="1" type="text" value="C"></td>
+                        <td><input class="col-f" maxlength="1" type="text"></td>
+                        <td><input class="col-g" maxlength="1" type="text"></td>
+                        <td><input class="col-h" maxlength="1" type="text"></td>
+                        <td><input class="col-i" maxlength="1" type="text"></td>
+                        <td><input class="col-j" maxlength="1" type="text"></td>
+                    </tr>
+                    <tr id="row-9">
+                        <td><input class="col-a" maxlength="1" type="text"></td>
+                        <td><input class="col-b" maxlength="1" type="text"></td>
+                        <td><input class="col-c" maxlength="1" type="text"></td>
+                        <td><input class="col-d" maxlength="1" type="text"></td>
+                        <td><input class="col-e" maxlength="1" type="text" value="O"></td>
+                        <td><input class="col-f" maxlength="1" type="text"></td>
+                        <td><input class="col-g" maxlength="1" type="text"></td>
+                        <td><input class="col-h" maxlength="1" type="text"></td>
+                        <td><input class="col-i" maxlength="1" type="text"></td>
+                        <td><input class="col-j" maxlength="1" type="text"></td>
+                    </tr>
+                </table>
             </div>
         </section>
         
@@ -62,7 +198,7 @@
             </ul></div></footer>
                 
             <div role="main" class="ui-content">
-                <img id="img-score" class="be-ui-score be-ui-horizontal-center" src="images/score10.png" alt="">
+                <img id="img-score" class="be-ui-score be-ui-horizontal-center" src="images/score04.png" alt="">
                 <h1>Aêêê caba arretado da peste!</h1>
                 <div id="message-score">
                     <p>Agora que tá com o quengo duro senta o dedo no butão ai 

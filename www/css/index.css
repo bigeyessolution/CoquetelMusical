@@ -48,7 +48,8 @@ section { height: 100%; }
 .ui-nosvg .be-ui-icon-track:after {background-image: url("../images/btn-icon-track.png");}
 
 #btn-location {
-    position: static;
+    position: fixed;
+    z-index: 50 !important;
     top: 1.2rem;
     float: right;
     right: 1.2rem;
@@ -58,4 +59,55 @@ section { height: 100%; }
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
+}
+
+#track-table {
+    border: none;
+    border-spacing: 0!important;
+}
+
+#track-table tr {
+    padding: 0 !important;
+}
+
+#track-table td {
+    padding: 0 !important;
+}
+
+#track-table input {
+    font-size: 1.5rem;
+    text-align: center;
+    width: 2em !important;
+    height: 1.5em !important;
+    line-height: 0em!important;
+    padding: 0!important;
+}
+
+#track-table .ui-input-text {
+    margin: 0!important;
+}
+
+
+#track-table input.col-e:disabled {
+    color: #000000!important;
+    opacity: 1 !important;
+}
+
+#track-table .ui-state-disabled input.col-e {
+    color: #000000!important;
+    opacity: 1 !important;
+}
+
+ui-input-text ui-body-inherit ui-corner-all ui-state-disabled ui-shadow-inset {
+    opacity: 1 !important;
+}
+
+.be-map-content {
+    height: 100%;
+    padding: 0!important;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
 }
