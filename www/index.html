@@ -46,7 +46,7 @@
         <section data-role="page" id="location-page">
             <footer data-role="footer" data-toggle="false" class="ui-footer-fixed ui-footer-fullscreen"><div data-role="navbar"><ul>
                 <li><a data-icon="navigation" class="ui-btn-active ui-state-persist">Localizar</a></li>
-                <li><a data-icon="bars" data-transition="slide" href="#tracks-page">Trilhas</a></li>
+                <li><a data-icon="bars" data-transition="slide" href="#puzzle-page">Trilhas</a></li>
                 <li><a data-icon="star" data-transition="slide" href="#score-page">Cupons</a></li>
             </ul></div></footer>
                 
@@ -56,7 +56,7 @@
             </div>
         </section>
         
-        <section data-role="page" id="tracks-page">
+        <section data-role="page" id="puzzle-page">
             <footer data-role="footer" data-toggle="false" class="ui-footer-fixed ui-footer-fullscreen"><div data-role="navbar"><ul>
                 <li><a data-icon="navigation" data-transition="slide" data-direction="reverse" href="#location-page">Localizar</a></li>
                 <li><a data-icon="bars" class="ui-btn-active ui-state-persist">Trilhas</a></li>
@@ -64,127 +64,167 @@
             </ul></div></footer>
                 
             <div role="main" class="ui-content">
-                <table id="track-table">
-                    <tr id="row-0">
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td><input class="col-e" maxlength="1" type="text" value="V"></td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
+                <table id="puzzle-table" class="be-vertical-center">
+                    <tr id="row-0" class="solved">
+                        <td class="col-a empty"></td>
+                        <td class="col-b empty"></td>
+                        <td class="col-c empty"></td>
+                        <td class="col-d empty"></td>
+                        <td class="col-e">v</td>
+                        <td class="col-f">a</td>
+                        <td class="col-g">p</td>
+                        <td class="col-h">o</td>
+                        <td class="col-i">r</td>
+                        <td class="col-j">z</td>
+                        <td class="col-k">i</td>
+                        <td class="col-l">n</td>
+                        <td class="col-m">h</td>
+                        <td class="col-n">o</td>
                     </tr>
-                    <tr id="row-1">
-                        <td class="col-a"><input maxlength="1" type="text"></td>
-                        <td><input class="col-b" maxlength="1" type="text"></td>
-                        <td><input class="col-c" maxlength="1" type="text"></td>
-                        <td><input class="col-d" maxlength="1" type="text"></td>
-                        <td><input class="col-e" maxlength="1" type="text" value="E"></td>
-                        <td><input class="col-f" maxlength="1" type="text"></td>
-                        <td><input class="col-g" maxlength="1" type="text"></td>
-                        <td><input class="col-h" maxlength="1" type="text"></td>
-                        <td><input class="col-i" maxlength="1" type="text"></td>
-                        <td><input class="col-j" maxlength="1" type="text"></td>
+                    <tr id="row-1" class="solved">
+                        <td class="col-a">c</td>
+                        <td class="col-b">o</td>
+                        <td class="col-c">r</td>
+                        <td class="col-d">d</td>
+                        <td class="col-e">e</td>
+                        <td class="col-f">l</td>
+                        <td class="col-g">i</td>
+                        <td class="col-h">s</td>
+                        <td class="col-i">t</td>
+                        <td class="col-j">a</td>
+                        <td class="col-k empty"></td>
+                        <td class="col-l empty"></td>
+                        <td class="col-m empty"></td>
+                        <td class="col-n empty"></td>
                     </tr>
-                    <tr id="row-2">
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td><input class="col-c" maxlength="1" type="text"></td>
-                        <td><input class="col-d" maxlength="1" type="text"></td>
-                        <td><input class="col-e" maxlength="1" type="text" value="L"></td>
-                        <td><input class="col-f" maxlength="1" type="text"></td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
+                    <tr id="row-2" class="enabled">
+                        <td class="col-a empty"></td>
+                        <td class="col-b empty"></td>
+                        <td class="col-c">f</td>
+                        <td class="col-d">o</td>
+                        <td class="col-e">l</td>
+                        <td class="col-f">e</td>
+                        <td class="col-g empty"></td>
+                        <td class="col-h empty"></td>
+                        <td class="col-i empty"></td>
+                        <td class="col-j empty"></td>
+                        <td class="col-k empty"></td>
+                        <td class="col-l empty"></td>
+                        <td class="col-m empty"></td>
+                        <td class="col-n empty"></td>
                     </tr>
                     <tr id="row-3">
-                        <td><input class="col-a" maxlength="1" type="text"></td>
-                        <td><input class="col-b" maxlength="1" type="text"></td>
-                        <td><input class="col-c" maxlength="1" type="text"></td>
-                        <td><input class="col-d" maxlength="1" type="text"></td>
-                        <td><input class="col-e" maxlength="1" type="text" value="H"></td>
-                        <td><input class="col-f" maxlength="1" type="text"></td>
-                        <td><input class="col-g" maxlength="1" type="text"></td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
+                        <td class="col-a">a</td>
+                        <td class="col-b">c</td>
+                        <td class="col-c">o</td>
+                        <td class="col-d">c</td>
+                        <td class="col-e">h</td>
+                        <td class="col-f">a</td>
+                        <td class="col-g">r</td>
+                        <td class="col-h empty"></td>
+                        <td class="col-i empty"></td>
+                        <td class="col-j empty"></td>
+                        <td class="col-k empty"></td>
+                        <td class="col-l empty"></td>
+                        <td class="col-m empty"></td>
+                        <td class="col-n empty"></td>
                     </tr>
                     <tr id="row-4">
-                        <td><input class="col-a" maxlength="1" type="text"></td>
-                        <td><input class="col-b" maxlength="1" type="text"></td>
-                        <td><input class="col-c" maxlength="1" type="text"></td>
-                        <td><input class="col-d" maxlength="1" type="text"></td>
-                        <td><input class="col-e" maxlength="1" type="text" value="O"></td>
-                        <td><input class="col-f" maxlength="1" type="text"></td>
-                        <td><input class="col-g" maxlength="1" type="text"></td>
-                        <td><input class="col-h" maxlength="1" type="text"></td>
-                        <td><input class="col-i" maxlength="1" type="text"></td>
-                        <td><input class="col-j" maxlength="1" type="text"></td>
+                        <td class="col-a">s</td>
+                        <td class="col-b">a</td>
+                        <td class="col-c">n</td>
+                        <td class="col-d">f</td>
+                        <td class="col-e">o</td>
+                        <td class="col-f">n</td>
+                        <td class="col-g">e</td>
+                        <td class="col-h">i</td>
+                        <td class="col-i">r</td>
+                        <td class="col-j">o</td>
+                        <td class="col-k empty"></td>
+                        <td class="col-l empty"></td>
+                        <td class="col-m empty"></td>
+                        <td class="col-n empty"></td>
                     </tr>
                     <tr id="row-5"> <!-- //TODO: Ver quantidade de letras -->
-                        <td><input class="col-a" maxlength="1" type="text"></td>
-                        <td><input class="col-b" maxlength="1" type="text"></td>
-                        <td><input class="col-c" maxlength="1" type="text"></td>
-                        <td><input class="col-d" maxlength="1" type="text"></td>
-                        <td><input class="col-e" maxlength="1" type="text" value="C"></td>
-                        <td><input class="col-f" maxlength="1" type="text"></td>
-                        <td><input class="col-g" maxlength="1" type="text"></td>
-                        <td><input class="col-h" maxlength="1" type="text"></td>
-                        <td><input class="col-i" maxlength="1" type="text"></td>
-                        <td><input class="col-j" maxlength="1" type="text"></td>
+                        <td class="col-a empty"></td>
+                        <td class="col-b empty"></td>
+                        <td class="col-c empty"></td>
+                        <td class="col-d empty"></td>
+                        <td class="col-e">c</td>
+                        <td class="col-f">a</td>
+                        <td class="col-g">r</td>
+                        <td class="col-h">a</td>
+                        <td class="col-i">i</td>
+                        <td class="col-j">b</td>
+                        <td class="col-k">e</td>
+                        <td class="col-l">i</td>
+                        <td class="col-m">r</td>
+                        <td class="col-n">a</td>
                     </tr>
                     <tr id="row-6">
-                        <td><input class="col-a" maxlength="1" type="text"></td>
-                        <td><input class="col-b" maxlength="1" type="text"></td>
-                        <td><input class="col-c" maxlength="1" type="text"></td>
-                        <td><input class="col-d" maxlength="1" type="text"></td>
-                        <td><input class="col-e" maxlength="1" type="text" value="H"></td>
-                        <td><input class="col-f" maxlength="1" type="text"></td>
-                        <td><input class="col-g" maxlength="1" type="text"></td>
-                        <td><input class="col-h" maxlength="1" type="text"></td>
-                        <td><input class="col-i" maxlength="1" type="text"></td>
-                        <td><input class="col-j" maxlength="1" type="text"></td>
+                        <td class="col-a empty"></td>
+                        <td class="col-b empty"></td>
+                        <td class="col-c">i</td>
+                        <td class="col-d">l</td>
+                        <td class="col-e">h</td>
+                        <td class="col-f">a</td>
+                        <td class="col-g">d</td>
+                        <td class="col-h">o</td>
+                        <td class="col-i">f</td>
+                        <td class="col-j">o</td>
+                        <td class="col-k">g</td>
+                        <td class="col-l">o</td>
+                        <td class="col-m empty"></td>
+                        <td class="col-n empty"></td>
                     </tr>
                     
                     <tr id="row-7">
-                        <td><input class="col-a" maxlength="1" type="text"></td>
-                        <td><input class="col-b" maxlength="1" type="text"></td>
-                        <td><input class="col-c" maxlength="1" type="text"></td>
-                        <td><input class="col-d" maxlength="1" type="text"></td>
-                        <td><input class="col-e" maxlength="1" type="text" value="I"></td>
-                        <td><input class="col-f" maxlength="1" type="text"></td>
-                        <td><input class="col-g" maxlength="1" type="text"></td>
-                        <td><input class="col-h" maxlength="1" type="text"></td>
-                        <td><input class="col-i" maxlength="1" type="text"></td>
-                        <td><input class="col-j" maxlength="1" type="text"></td>
+                        <td class="col-a">c</td>
+                        <td class="col-b">a</td>
+                        <td class="col-c">a</td>
+                        <td class="col-d">t</td>
+                        <td class="col-e">i</td>
+                        <td class="col-f">n</td>
+                        <td class="col-g">g</td>
+                        <td class="col-h">a</td>
+                        <td class="col-i empty"></td>
+                        <td class="col-j empty"></td>
+                        <td class="col-k empty"></td>
+                        <td class="col-l empty"></td>
+                        <td class="col-m empty"></td>
+                        <td class="col-n empty"></td>
                     </tr>
                     <tr id="row-8">
-                        <td><input class="col-a" maxlength="1" type="text"></td>
-                        <td><input class="col-b" maxlength="1" type="text"></td>
-                        <td><input class="col-c" maxlength="1" type="text"></td>
-                        <td><input class="col-d" maxlength="1" type="text"></td>
-                        <td><input class="col-e" maxlength="1" type="text" value="C"></td>
-                        <td><input class="col-f" maxlength="1" type="text"></td>
-                        <td><input class="col-g" maxlength="1" type="text"></td>
-                        <td><input class="col-h" maxlength="1" type="text"></td>
-                        <td><input class="col-i" maxlength="1" type="text"></td>
-                        <td><input class="col-j" maxlength="1" type="text"></td>
+                        <td class="col-a">m</td>
+                        <td class="col-b">a</td>
+                        <td class="col-c">r</td>
+                        <td class="col-d">a</td>
+                        <td class="col-e">c</td>
+                        <td class="col-f">a</td>
+                        <td class="col-g empty"></td>
+                        <td class="col-h empty"></td>
+                        <td class="col-i empty"></td>
+                        <td class="col-j empty"></td>
+                        <td class="col-k empty"></td>
+                        <td class="col-l empty"></td>
+                        <td class="col-m empty"></td>
+                        <td class="col-n empty"></td>
                     </tr>
                     <tr id="row-9">
-                        <td><input class="col-a" maxlength="1" type="text"></td>
-                        <td><input class="col-b" maxlength="1" type="text"></td>
-                        <td><input class="col-c" maxlength="1" type="text"></td>
-                        <td><input class="col-d" maxlength="1" type="text"></td>
-                        <td><input class="col-e" maxlength="1" type="text" value="O"></td>
-                        <td><input class="col-f" maxlength="1" type="text"></td>
-                        <td><input class="col-g" maxlength="1" type="text"></td>
-                        <td><input class="col-h" maxlength="1" type="text"></td>
-                        <td><input class="col-i" maxlength="1" type="text"></td>
-                        <td><input class="col-j" maxlength="1" type="text"></td>
+                        <td class="col-a empty"></td>
+                        <td class="col-b empty"></td>
+                        <td class="col-c empty"></td>
+                        <td class="col-d empty"></td>
+                        <td class="col-e">o</td>
+                        <td class="col-f">p</td>
+                        <td class="col-g">a</td>
+                        <td class="col-h">r</td>
+                        <td class="col-i">a</td>
+                        <td class="col-j empty"></td>
+                        <td class="col-k empty"></td>
+                        <td class="col-l empty"></td>
+                        <td class="col-m empty"></td>
+                        <td class="col-n empty"></td>
                     </tr>
                 </table>
             </div>
@@ -193,7 +233,7 @@
         <section data-role="page" id="score-page">
             <footer data-role="footer" data-toggle="false" class="ui-footer-fixed ui-footer-fullscreen"><div data-role="navbar"><ul>
                 <li><a data-icon="navigation" data-transition="slide" data-direction="reverse" href="#location-page">Localizar</a></li>
-                <li><a data-icon="bars" data-transition="slide" data-direction="reverse" href="#tracks-page">Trilhas</a></li>
+                <li><a data-icon="bars" data-transition="slide" data-direction="reverse" href="#puzzle-page">Trilhas</a></li>
                 <li><a data-icon="star" class="ui-btn-active ui-state-persist">Cupons</a></li>
             </ul></div></footer>
                 

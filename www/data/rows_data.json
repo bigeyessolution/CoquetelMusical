@@ -1,10 +1,137 @@
-[
-    {
-        "word": ["","","","","","","","","",""],
-        "coordinates": [0,0],
-        "music": "",
-        "handler": "",
-        "images": ["","",""]
-    }
-]
+{
+    "application": "Coquetel Digital",
+    "start_position": { "lat": 0, "lng": 0 },
+    "puzzle_data": [
+        {
+            "row": 0,
+            "word": "",
+            "coordinates": [ { "lat": 0, "lng": 0 }, { "lat": 0, "lng": 0 } ],
+            "music": "",
+            "music_author": "",
+            "puzzle_handler": "",
+            "text": "",
+            "solved_text": "",
+            "facebook_message": "",
+            "image": "",
+            "solved_image": ""
+        },
+        {
+            "row": 1,
+            "word": "",
+            "coordinates": [ { "lat": 0, "lng": 0 }, { "lat": 0, "lng": 0 } ],
+            "music": "",
+            "music_author": "",
+            "puzzle_handler": "",
+            "text": "",
+            "solved_text": "",
+            "facebook_message": "",
+            "image": "",
+            "solved_image": ""
+        },
+        {
+            "row": 2,
+            "word": "",
+            "coordinates": [ { "lat": 0, "lng": 0 }, { "lat": 0, "lng": 0 } ],
+            "music": "",
+            "music_author": "",
+            "puzzle_handler": "",
+            "text": "",
+            "solved_text": "",
+            "facebook_message": "",
+            "image": "",
+            "solved_image": ""
+        },
+        {
+            "row": 3,
+            "word": "",
+            "coordinates": [ { "lat": 0, "lng": 0 }, { "lat": 0, "lng": 0 } ],
+            "music": "",
+            "music_author": "",
+            "puzzle_handler": "",
+            "text": "",
+            "solved_text": "",
+            "facebook_message": "",
+            "image": "",
+            "solved_image": ""
+        },
+        {
+            "row": 4,
+            "word": "",
+            "coordinates": [ { "lat": 0, "lng": 0 }, { "lat": 0, "lng": 0 } ],
+            "music": "",
+            "music_author": "",
+            "puzzle_handler": "",
+            "text": "",
+            "solved_text": "",
+            "facebook_message": "",
+            "image": "",
+            "solved_image": ""
+        },
+        {
+            "row": 5,
+            "word": "",
+            "coordinates": [ { "lat": 0, "lng": 0 }, { "lat": 0, "lng": 0 } ],
+            "music": "",
+            "music_author": "",
+            "puzzle_handler": "",
+            "text": "",
+            "solved_text": "",
+            "facebook_message": "",
+            "image": "",
+            "solved_image": ""
+        },
+        {
+            "row": 6,
+            "word": "",
+            "coordinates": [ { "lat": 0, "lng": 0 }, { "lat": 0, "lng": 0 } ],
+            "music": "",
+            "music_author": "",
+            "puzzle_handler": "",
+            "text": "",
+            "solved_text": "",
+            "facebook_message": "",
+            "image": "",
+            "solved_image": ""
+        },
+        {
+            "row": 7,
+            "word": "",
+            "coordinates": [ { "lat": 0, "lng": 0 }, { "lat": 0, "lng": 0 } ],
+            "music": "",
+            "music_author": "",
+            "puzzle_handler": "",
+            "text": "",
+            "solved_text": "",
+            "facebook_message": "",
+            "image": "",
+            "solved_image": ""
+        },
+        {
+            "row": 8,
+            "word": "",
+            "coordinates": [ { "lat": 0, "lng": 0 }, { "lat": 0, "lng": 0 } ],
+            "music": "",
+            "music_author": "",
+            "puzzle_handler": "",
+            "text": "",
+            "solved_text": "",
+            "facebook_message": "",
+            "image": "",
+            "solved_image": ""
+        },
+        {
+            "row": 9,
+            "word": "",
+            "coordinates": [ { "lat": 0, "lng": 0 }, { "lat": 0, "lng": 0 } ],
+            "music": "",
+            "music_author": "",
+            "puzzle_handler": "",
+            "text": "",
+            "solved_text": "",
+            "facebook_message": "",
+            "image": "",
+            "solved_image": ""
+        }
+    ]
+}
 

@@ -16,6 +16,8 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
+var map = false;
+
 function loadMapsApi () {
 //    if (navigator.connection.type === Connection.NONE || (global.google !== undefined && global.google.maps)) {
 //        return;
@@ -26,11 +28,28 @@ function loadMapsApi () {
     $.getScript('https://maps.googleapis.com/maps/api/js?key='+apimapskey+'&sensor=true&callback=onMapsApiLoaded');
 }
 
+
+function btnLocationHandler() 
+{
+    navigator.geolocation.getCurrentPosition(setCenterToUserLocation);
+}
+
+function setCenterToUserLocation (position) 
+{
+    var pos = google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    
+    map.setCenter(pos);
+}
+
 onMapsApiLoaded = function () {
     // Maps API loaded and ready to be used.
     var mapOptions = {
-        zoom:15,
-        center: new google.maps.LatLng(40.4979818,-9.4040122)
+        zoom:17,
+        disableDefaultUI: true,
+        //center: new google.maps.LatLng(-9.4040122,-40.4979818) //(-9.559722222222222,-40.74111111111111)
+        center: new google.maps.LatLng(-9.393916666666666,-40.5458) //(-9.559722222222222,-40.74111111111111)
     }
-    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+    map = new google.maps.Map(document.getElementById("map"), mapOptions);
+    
+    $("#btn-location").on("click", btnLocationHandler);
 };

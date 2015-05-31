@@ -20,7 +20,20 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     Author     : laudivan
 */
 
+body {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
 section { height: 100%; }
+
+.be-vertical-center {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
 
 .be-ui-score {
     width: 90%;
@@ -61,45 +74,46 @@ section { height: 100%; }
     background-position: center;
 }
 
-#track-table {
+#puzzle-page {
+    background: #4D4133;
+}
+
+#puzzle-table {
     border: none;
     border-spacing: 0!important;
+    width: 95%;
+    text-shadow: none !important;
 }
 
-#track-table tr {
+#puzzle-table tr {
     padding: 0 !important;
+    color: transparent !important;
 }
 
-#track-table td {
-    padding: 0 !important;
-}
-
-#track-table input {
-    font-size: 1.5rem;
+#puzzle-table td {
+    height: 2em;
+    background: #846F57;
     text-align: center;
-    width: 2em !important;
-    height: 1.5em !important;
-    line-height: 0em!important;
-    padding: 0!important;
+    font-size: 1.5rem;
+    padding: 0 !important;
+    border: solid 1px #4D4133;
 }
 
-#track-table .ui-input-text {
-    margin: 0!important;
+#puzzle-table tr.solved td:not(.empty) {
+    color: #4D4133;
 }
 
-
-#track-table input.col-e:disabled {
-    color: #000000!important;
-    opacity: 1 !important;
+#puzzle-table tr.solved td:not(.col-e):not(.empty),
+#puzzle-table tr.enabled td:not(.col-e):not(.empty) {
+    background: #ffffff;
 }
 
-#track-table .ui-state-disabled input.col-e {
-    color: #000000!important;
-    opacity: 1 !important;
+#puzzle-table td.col-e {
+    background: #aaa
 }
 
-ui-input-text ui-body-inherit ui-corner-all ui-state-disabled ui-shadow-inset {
-    opacity: 1 !important;
+#puzzle-table td.empty {
+    background:  #4D4133;
 }
 
 .be-map-content {

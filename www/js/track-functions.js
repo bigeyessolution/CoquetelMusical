@@ -25,8 +25,6 @@ function progressVerify () {
  * 
  * @param {integer} row
  */
-function enableLastRow (row) {
-    $("#track-table input").attr("disabled", true);
-    
+function enableLastRow (row) {    
     $("#track-table #row-"+(row-1)+" input:not(.col-e)").attr("disabled", false);
 }
