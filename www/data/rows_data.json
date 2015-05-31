@@ -36,7 +36,7 @@
         },
         {
             "row": 2,
-            "word": "",
+            "word": "acochar",
             "coordinates": [ { "lat": 0, "lng": 0 }, { "lat": 0, "lng": 0 } ],
             "music": "puzzle.2.aurora_e_o_sol.mp3",
             "music_solved": "puzzle.2.aurora_e_o_sol.mp3",
@@ -70,7 +70,7 @@
         },
         {
             "row": 4,
-            "word": "",
+            "word": "sanfoneiro",
             "coordinates": [ { "lat": 0, "lng": 0 }, { "lat": 0, "lng": 0 } ],
             "music": "puzzle.4.pra_se_aninhar.mp3",
             "music_solved": "puzzle.4.pra_se_aninhar.mp3",
@@ -102,7 +102,7 @@
         },
         {
             "row": 6,
-            "word": "caraibeira",
+            "word": "ilhadofogo",
             "coordinates": [ { "lat": 0, "lng": 0 }, { "lat": 0, "lng": 0 } ],
             "music": "puzzle.6.a_ilha_e_do_povo.mp3",
             "music_solved": "puzzle.6.solved.a_ilha_e_do_povo.mp3",
@@ -127,14 +127,14 @@
             "music_player": "",
             "puzzle_handler": "",
             "text": "",
-            "solved_text": "",
+            "solved_text": "Caatinga (do tupi: ka'a [mata] + tinga [branca] = mata branca) é o único bioma exclusivamente brasileiro, o que significa que grande parte do seu patrimônio biológico não pode ser encontrado em nenhum outro lugar do planeta. Este nome decorre da paisagem esbranquiçada apresentada pela vegetação durante o período seco: a maioria das plantas perde as folhas e os troncos tornam-se esbranquiçados e secos. A caatinga ocupa uma área de cerca de 850.000 km², cerca de 10% do território nacional, englobando de forma contínua parte dos estados da Paraíba, Piauí, Ceará, Rio Grande do Norte, Maranhão, Pernambuco, Alagoas, Sergipe, Bahia (região Nordeste do Brasil) e parte do norte de Minas Gerais (região Sudeste do Brasil).",
             "facebook_message": "Cabra bom!!!! Ta ficando melhor...",
             "image": "",
             "solved_image": ""
         },
         {
             "row": 8,
-            "word": "",
+            "word": "maraca",
             "coordinates": [ { "lat": 0, "lng": 0 }, { "lat": 0, "lng": 0 } ],
             "music": "",
             "music_solved": "",
