@@ -29,6 +29,10 @@ function enableLastRow (row) {
     $("#track-table #row-"+(row-1)+" input:not(.col-e)").attr("disabled", false);
 }
 
+function showPageHandler () {
+    
+}
+
 function touchRhythmHandler () {
     
 }
