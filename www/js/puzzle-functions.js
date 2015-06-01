@@ -17,16 +17,12 @@
  */
 
 
-function progressVerify () {
+function verifyProgress () {
+    var last_puzzle = getLastPuzzle();
     
-}
-
-/**
- * 
- * @param {integer} row
- */
-function enableLastRow (row) {    
-    $("#track-table #row-"+(row-1)+" input:not(.col-e)").attr("disabled", false);
+    enableLastRow(last_puzzle);
+    
+    setScorePage(last_puzzle);
 }
 
 function showPageHandler () {
@@ -43,4 +39,23 @@ function btnAcocharHandler () {
 
 function showMusicSheetHandler () {
     
+}
+
+/**
+ * 
+ * @param {integer} puzzle
+ * @returns {undefined}
+ */
+function setSolvedPuzzle (puzzle) {
+    puzzle = puzzle + 1;
+    window.localStorage.setItem('last_puzzle', puzzle);
+}
+
+/**
+ * Return last open puzzle or 0.
+ * @returns {integer}
+ */
+function getLastPuzzle () {
+    var last_puzzle = window.localStorage.getItem('last_puzzle');
+    return last_puzzle ? parseInt(last_puzzle) : 0;
 }

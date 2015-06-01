@@ -21,7 +21,8 @@
 $(onDeviceReady);
 
 function onDeviceReady () {
-    initUI();
+    verifyProgress();
+    
 //    document.addEventListener("online", onOnline, false);
 //    document.addEventListener("resume", onResume, false);
     loadMapsApi();
