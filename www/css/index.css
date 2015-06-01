@@ -121,6 +121,16 @@ section { height: 100%; }
     padding: 0!important;
 }
 
+.be-tip-content {
+    height: 100%;
+    padding: 0!important;
+}
+
+.be-image {
+    width: 80% !important;
+    height: auto;
+}
+
 #map {
     width: 100%;
     height: 100%;
