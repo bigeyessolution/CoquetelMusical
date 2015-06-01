@@ -19,17 +19,29 @@
 
 /**
  * 
- * @param {integer} last_puzzle
  * @returns {undefined}
  */
-function enableLastRow (last_puzzle) {
-    $("#puzzle-table tr").attr("class", ""); //TODO: remover quando atualizar o index.html
+function enableSovedRows () {
+    last_puzzle = getLastPuzzle();
     
-    $("#puzzle-table #row-" + last_puzzle).addClass("enabled");
+    $("#puzzles-table").click( null );
+    
+    if (isLastPuzzleEnabled()) {
+        enablePuzzleRow(last_puzzle);
+    }
     
     for (row=0; row < last_puzzle; row++ ) {
-        $("#puzzle-table #row-" + row).removeClass("enabled").addClass("solved");
+        $("#puzzles-table #row-" + row).removeClass("enabled").addClass("solved");
     }
+}
+
+function enablePuzzleRow (puzzle) {
+    $("#puzzles-table #row-" + puzzle).addClass("enabled");
+    
+    $("#puzzles-table").click(function () 
+    {
+        $( ":mobile-pagecontainer" ).pagecontainer( "change", "#puzzle-page", { } );
+    });
 }
 
 /**
@@ -45,11 +57,6 @@ function setScorePage (last_puzzle) {
 function setUiEvents () {
     //$("#btn-go-to-puzzle").hide();
     
-    $("#puzzle-table").click(function () 
-    {
-        $( ":mobile-pagecontainer" ).pagecontainer( "change", "#puzzle-page", { } );
-    });
-    
     $("#puzzle-answer").keyup(function ()
     {
         var disabled = $("#puzzle-answer").val().length != $("#puzzle-answer").attr("maxlength");
@@ -58,6 +65,30 @@ function setUiEvents () {
     });
     
     $("#btn-answer").click(answerVerifier);
+    
+    $(":mobile-pagecontainer").on("pagecontainershow", function( event, ui ) 
+    {
+        toPage = ui.toPage.attr("id");
+        prevPage = ui.prevPage.attr("id");
+        
+        switch(prevPage) {
+            case 'puzzle-page':
+            case 'puzzle-solved-page':
+                $("audio").load();
+                break;
+        }
+        
+        switch(toPage) {
+            case 'puzzle-page':
+                eval(getPuzzleData().puzzle_handler + "()");
+                break;
+            case 'puzzle-solved-page':
+                document.getElementById("puzzle-solved-audio").play();
+                break;
+            default:
+                break;
+        }
+    });
 }
 
 

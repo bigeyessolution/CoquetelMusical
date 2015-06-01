@@ -85,19 +85,19 @@ section {
     background-position: center;
 }
 
-#puzzle-table {
+#puzzles-table {
     border: none;
     border-spacing: 0!important;
     width: 95%;
     text-shadow: none !important;
 }
 
-#puzzle-table tr {
+#puzzles-table tr {
     padding: 0 !important;
     color: transparent !important;
 }
 
-#puzzle-table td {
+#puzzles-table td {
     height: 2em;
     background: #846F57;
     text-align: center;
@@ -106,20 +106,20 @@ section {
     border: solid 1px #4D4133;
 }
 
-#puzzle-table tr.solved td:not(.empty) {
+#puzzles-table tr.solved td:not(.empty) {
     color: #4D4133;
 }
 
-#puzzle-table tr.solved td:not(.col-e):not(.empty),
-#puzzle-table tr.enabled td:not(.col-e):not(.empty) {
+#puzzles-table tr.solved td:not(.col-e):not(.empty),
+#puzzles-table tr.enabled td:not(.col-e):not(.empty) {
     background: #ffffff;
 }
 
-#puzzle-table td.center {
+#puzzles-table td.center {
     background: #aaa
 }
 
-#puzzle-table td.empty {
+#puzzles-table td.empty {
     /*background:  #4D4133;*/
     background: transparent;
     border: transparent;

@@ -90,3 +90,9 @@ function clearMarkers () {
     
     map_markers = [];
 }
+
+function verifyUserAtPuzzlePosition () {
+    //Se estiver na mesma posicao do puzzle (raio de 2m)
+    //Gravar puzzle como habilitado
+    //habilitar botão e linha para ir ao puzzle
+}

@@ -70,9 +70,7 @@
                     <div class="ui-block-b" style="width: 10% !important"></div>
                     <div class="ui-block-c" style="width: 40% !important"><button id="btn-answer">Enviar</button></div>
                 </div>
-                <audio id="puzzle-audio" controls="">
-                    <source  src="" type="audio/mpeg">
-                </audio>
+                <audio id="puzzle-audio" loop></audio>
             </div>
         </section>
         
@@ -88,12 +86,11 @@
                 <h2>Desafio resolvido</h2>
                 <p class="be-puzzle-solved-text"></p>
                 <h3>Música: <span id="music-name"></span></h3>
-                <p>
-                    Autoria de <span id="music-author"></span>. 
-                    Interpretada por <span id="music-player"></span>.</p>
-                <audio id="puzzle-solved-audio" controls="">
-                    <source  src="" type="audio/mpeg">
-                </audio>
+                <ul>
+                    <li>Autoria de <span id="music-author"></span>.</li>
+                    <li>Interpretada por <span id="music-player"></span>.</li>
+                </ul>
+                <audio id="puzzle-solved-audio"></audio>
             </div>
         </section>
         
@@ -105,8 +102,8 @@
             </ul></div></footer>
                 
             <div role="main" class="ui-content">
-                <table id="puzzle-table" class="be-vertical-center">
-                    <tr id="row-0" class="solved">
+                <table id="puzzles-table" class="be-vertical-center">
+                    <tr id="row-0">
                         <td class="empty"></td>
                         <td class="empty"></td>
                         <td class="empty"></td>
@@ -122,7 +119,7 @@
                         <td>h</td>
                         <td>o</td>
                     </tr>
-                    <tr id="row-1" class="solved">
+                    <tr id="row-1">
                         <td>c</td>
                         <td>o</td>
                         <td>r</td>
@@ -138,7 +135,7 @@
                         <td class="empty"></td>
                         <td class="empty"></td>
                     </tr>
-                    <tr id="row-2" class="enabled">
+                    <tr id="row-2">
                         <td class="empty"></td>
                         <td class="empty"></td>
                         <td>f</td>
@@ -186,7 +183,7 @@
                         <td class="empty"></td>
                         <td class="empty"></td>
                     </tr>
-                    <tr id="row-5"> <!-- //TODO: Ver quantidade de letras -->
+                    <tr id="row-5">
                         <td class="empty"></td>
                         <td class="empty"></td>
                         <td class="empty"></td>
