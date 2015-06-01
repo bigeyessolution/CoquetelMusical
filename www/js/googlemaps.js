@@ -17,9 +17,10 @@
  */
 
 var map = false;
+var map_markers = [];
 
 function loadMapsApi () {
-//    if (navigator.connection.type === Connection.NONE || (global.google !== undefined && global.google.maps)) {
+//    if (navigator.connection.type === Connection.NONE || (google !== undefined && google.maps)) {
 //        return;
 //    }
 
@@ -31,14 +32,16 @@ function loadMapsApi () {
 
 function btnLocationHandler() 
 {
-    navigator.geolocation.getCurrentPosition(setCenterToUserLocation);
+    navigator.geolocation.getCurrentPosition(function (position) {
+        setCenterToLocation(position.coords.latitude, position.coords.longitude);
+    });
 }
 
-function setCenterToUserLocation (position) 
+function setCenterToLocation (lat, lng) 
 {
-    var pos = google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-    
-    map.setCenter(pos);
+    var pos = google.maps.LatLng(lat, lng);
+   
+    map.panTo(pos);
 }
 
 onMapsApiLoaded = function () {
@@ -53,4 +56,37 @@ onMapsApiLoaded = function () {
     map = new google.maps.Map(document.getElementById("map"), mapOptions);
     
     $("#btn-location").on("click", btnLocationHandler);
+    
+    verifyProgress();
 };
+
+/**
+ * 
+ * @param {array} points_list
+ * @returns {undefined}
+ */
+function setMapMarkers (points_list) {
+    clearMarkers();
+    
+    for (i=0; i < points_list.length; i++) {
+        var point = points_list[i];
+        
+        maker = new google.maps.Marker({
+            position: google.maps.LatLng(point.lat, point.lng),
+            title: point.place,
+            icon: 'images/btn-icon-map.png'
+        });
+        
+        maker.setMap(map);
+        
+        map_markers.push();
+    }
+}
+
+function clearMarkers () {
+    for (index=0; index < map_markers.length; index ++) {
+        map_markers[index].setMap(null);
+    }
+    
+    map_markers = [];
+}

@@ -16,19 +16,22 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
+$.getJSON("./data/appconf.json", function (data)
+{
+    application_conf = data;
+});
+
 //document.addEventListener("deviceready", onDeviceReady, false);
 
 $(onDeviceReady);
 
 function onDeviceReady () {
-//    document.addEventListener("online", onOnline, false);
-//    document.addEventListener("resume", onResume, false);
+    document.addEventListener("online", onOnline, false);
+    document.addEventListener("resume", onResume, false);
+
     loadMapsApi();
     
-    verifyProgress();
-    
     setUiEvents();
-    
 }
 
 function onOnline () {

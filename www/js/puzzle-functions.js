@@ -18,17 +18,18 @@
 
 var application_conf = false;
 
-$.getJSON("./data/appconf.json", function (data)
-{
-    application_conf = data;
-});
-
 function verifyProgress () {
     var last_puzzle = getLastPuzzle();
     
     enableLastRow(last_puzzle);
     
     setScorePage(last_puzzle);
+    
+    if (last_puzzle < 10 && google !== undefined && google.maps !== undefined) {
+        last_puzzle = last_puzzle < 0 ? 0 : last_puzzle;
+        coordinates = application_conf.puzzle_data[last_puzzle].coordinates
+        setMapMarkers(coordinates);
+    }
 }
 
 function showPageHandler () {
@@ -63,7 +64,7 @@ function setSolvedPuzzle (puzzle) {
  */
 function getLastPuzzle () {
     var last_puzzle = window.localStorage.getItem('last_puzzle');
-    return last_puzzle ? parseInt(last_puzzle) : -1;
+    return last_puzzle ? parseInt(last_puzzle) : 0;
 }
 
 function getPuzzleData (last_puzzle) {

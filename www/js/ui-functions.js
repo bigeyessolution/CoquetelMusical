@@ -43,6 +43,8 @@ function setScorePage (last_puzzle) {
 }
 
 function setUiEvents () {
+    $("#btn-go-to-puzzle").hide();
+    
     $("#puzzle-table").click(function () 
     {
         $( ":mobile-pagecontainer" ).pagecontainer( "change", "#puzzle-page", { } );

@@ -31,10 +31,7 @@
         <link rel="stylesheet" href="css/jquery.mobile.icons.min.css">
         <link rel="stylesheet" href="js/libs/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="css/index.css">
-        <!--
         <script type="text/javascript" src="cordova.js"></script>
-        -->
-        
         <script src="js/libs/jquery/jquery.min.js"></script>
         <script src="js/libs/jquery-mobile/jquery.mobile.js"></script>
         <script src="js/googlemaps.js"></script>
@@ -53,6 +50,9 @@
             <div role="main" class="ui-content be-map-content">
                 <div id="map"></div>
                 <div id="btn-location"></div>
+                <div id="btn-go-to-puzzle">
+                    <a href="#puzzle-page" class="ui-btn ui-btn-active ui-corner-all" data-transition="flip">Resolver o desafio.</a>
+                </div>
             </div>
         </section>
         
@@ -85,6 +85,10 @@
                 <img class="be-puzzle-image" src="data/images/puzzle.0.solved.vaporzinho.jpg" alt="">
                 <h2>Desafio resolvido</h2>
                 <p class="be-puzzle-solved-text">Texto de exemplo</p>
+                <h3>Música: <span id="music-name"></span></h3>
+                <p>
+                    Autoria de <span id="music-author"></span>. 
+                    Interpretada por <span id="music-player"></span>.</p>
                 <audio controls="">
                     <source id="puzzle-solved-audio" src="data/music/puzzle.0.marcha_do_grande_rio.mp3">
                 </audio>
