@@ -14,6 +14,7 @@
     <preference name="orientation" value="portrait"/>
     <preference name="fullscreen" value="false"/>
     <plugin name="cordova-plugin-whitelist" />
+    <plugin name="org.apache.cordova.file" />
     <plugin name="org.apache.cordova.device" />
     <plugin name="org.apache.cordova.device-motion" />
     <plugin name="org.apache.cordova.device-orientation" />

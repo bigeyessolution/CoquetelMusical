@@ -46,8 +46,9 @@ onMapsApiLoaded = function () {
     var mapOptions = {
         zoom:17,
         disableDefaultUI: true,
-        //center: new google.maps.LatLng(-9.4040122,-40.4979818) //(-9.559722222222222,-40.74111111111111)
-        center: new google.maps.LatLng(-9.393916666666666,-40.5458) //(-9.559722222222222,-40.74111111111111)
+        center: new google.maps.LatLng(
+                application_conf.start_position.lat,
+                application_conf.start_position.lng)
     }
     map = new google.maps.Map(document.getElementById("map"), mapOptions);
     

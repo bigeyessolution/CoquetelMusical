@@ -16,6 +16,12 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
+var application_conf = false;
+
+$.getJSON("./data/appconf.json", function (data)
+{
+    application_conf = data;
+});
 
 function verifyProgress () {
     var last_puzzle = getLastPuzzle();
@@ -58,4 +64,8 @@ function setSolvedPuzzle (puzzle) {
 function getLastPuzzle () {
     var last_puzzle = window.localStorage.getItem('last_puzzle');
     return last_puzzle ? parseInt(last_puzzle) : 0;
+}
+
+function getPuzzleData (last_puzzle) {
+    
 }
