@@ -38,7 +38,15 @@ function enableLastRow (last_puzzle) {
  * @returns {undefined}
  */
 function setScorePage (last_puzzle) {
+    last_puzzle = last_puzzle > -1 ? last_puzzle : 10;
     $("#img-score").attr("src", "./data/images/score." + last_puzzle + ".png");
+}
+
+function setUiEvents () {
+    $("#puzzle-table").click(function () 
+    {
+        $( ":mobile-pagecontainer" ).pagecontainer( "change", "#puzzle-page", { } );
+    });
 }
 
 

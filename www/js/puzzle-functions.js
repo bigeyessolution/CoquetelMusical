@@ -63,7 +63,7 @@ function setSolvedPuzzle (puzzle) {
  */
 function getLastPuzzle () {
     var last_puzzle = window.localStorage.getItem('last_puzzle');
-    return last_puzzle ? parseInt(last_puzzle) : 0;
+    return last_puzzle ? parseInt(last_puzzle) : -1;
 }
 
 function getPuzzleData (last_puzzle) {

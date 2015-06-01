@@ -25,7 +25,18 @@ body {
     overflow-y: hidden;
 }
 
-section { height: 100%; }
+section { 
+    height: 100%; 
+    padding: 0 !important;
+    margin: 0 !important;
+    background-size: cover !important;
+    background: url('../images/background.jpg') no-repeat; 
+}
+
+.ui-navbar a.ui-btn:not(.ui-btn-active) {
+    background: url('../images/background.jpg') no-repeat !important; 
+    background-position: top left !important;
+}
 
 .be-vertical-center {
     position: absolute;
@@ -74,10 +85,6 @@ section { height: 100%; }
     background-position: center;
 }
 
-#puzzle-page {
-    background: #4D4133;
-}
-
 #puzzle-table {
     border: none;
     border-spacing: 0!important;
@@ -108,27 +115,36 @@ section { height: 100%; }
     background: #ffffff;
 }
 
-#puzzle-table td.col-e {
+#puzzle-table td.center {
     background: #aaa
 }
 
 #puzzle-table td.empty {
-    background:  #4D4133;
+    /*background:  #4D4133;*/
+    background: transparent;
+    border: transparent;
+}
+
+#puzzle-answer {
+    text-transform: uppercase;
 }
 
 .be-map-content {
     height: 100%;
     padding: 0!important;
+    margin: 0 !important;
 }
 
-.be-tip-content {
-    height: 100%;
-    padding: 0!important;
+.be-puzzle-content {
+    margin-bottom: 2.6em;
 }
 
-.be-image {
-    width: 80% !important;
+.be-puzzle-image {
+    width: 100% !important;
     height: auto;
+    border-radius: 0.5em;
+    -webkit-box-shadow: 0 0 15px 1px #4D4133;
+    box-shadow: 0 0 15px 1px #4D4133;
 }
 
 #map {

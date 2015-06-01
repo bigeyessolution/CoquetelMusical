@@ -21,11 +21,14 @@
 $(onDeviceReady);
 
 function onDeviceReady () {
-    verifyProgress();
-    
 //    document.addEventListener("online", onOnline, false);
 //    document.addEventListener("resume", onResume, false);
     loadMapsApi();
+    
+    verifyProgress();
+    
+    setUiEvents();
+    
 }
 
 function onOnline () {
