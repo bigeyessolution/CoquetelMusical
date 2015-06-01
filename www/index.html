@@ -50,9 +50,7 @@
             <div role="main" class="ui-content be-map-content">
                 <div id="map"></div>
                 <div id="btn-location"></div>
-                <div id="btn-go-to-puzzle">
-                    <a href="#puzzle-page" class="ui-btn ui-btn-active ui-corner-all" data-transition="flip">Resolver o desafio.</a>
-                </div>
+                <a id="btn-go-to-puzzle" href="#puzzle-page" class="ui-btn ui-btn-active ui-corner-all" data-transition="flip">Resolver o desafio.</a>
             </div>
         </section>
         
@@ -64,12 +62,16 @@
             </ul></div></footer>
                 
             <div role="main" class="ui-content be-puzzle-content">
-                <img class="be-puzzle-image" src="data/images/puzzle.0.vaporzinho.jpg" alt="">
+                <img class="be-puzzle-image" src="" alt="">
                 <p class="be-puzzle-text"></p>
                 <label for="puzzle-answer">Resposta</label>
-                <input id="puzzle-answer" maxlength="10">
-                <audio controls="">
-                    <source id="puzzle-audio" src="data/music/puzzle.0.marcha_do_grande_rio.mp3">
+                <div class="ui-grid-b">
+                    <div class="ui-block-a" style="width: 50% !important"><input id="puzzle-answer" maxlength="0"></div>
+                    <div class="ui-block-b" style="width: 10% !important"></div>
+                    <div class="ui-block-c" style="width: 40% !important"><button id="btn-answer">Enviar</button></div>
+                </div>
+                <audio id="puzzle-audio" controls="">
+                    <source  src="" type="audio/mpeg">
                 </audio>
             </div>
         </section>
@@ -82,15 +84,15 @@
             </ul></div></footer>
                 
             <div role="main" class="ui-content be-puzzle-content">
-                <img class="be-puzzle-image" src="data/images/puzzle.0.solved.vaporzinho.jpg" alt="">
+                <img class="be-puzzle-image" src="" alt="">
                 <h2>Desafio resolvido</h2>
-                <p class="be-puzzle-solved-text">Texto de exemplo</p>
+                <p class="be-puzzle-solved-text"></p>
                 <h3>Música: <span id="music-name"></span></h3>
                 <p>
                     Autoria de <span id="music-author"></span>. 
                     Interpretada por <span id="music-player"></span>.</p>
-                <audio controls="">
-                    <source id="puzzle-solved-audio" src="data/music/puzzle.0.marcha_do_grande_rio.mp3">
+                <audio id="puzzle-solved-audio" controls="">
+                    <source  src="" type="audio/mpeg">
                 </audio>
             </div>
         </section>
@@ -278,11 +280,7 @@
                 
             <div role="main" class="ui-content">
                 <img id="img-score" class="be-ui-score be-ui-horizontal-center" src="./data/images/score.0.png" alt="">
-                <h1>Aêêê caba arretado da peste!</h1>
-                <div id="message-score">
-                    <p>Agora que tá com o quengo duro senta o dedo no butão ai 
-                        embaixo pra se amostrar no Facebook!</p>
-                </div>
+                <p class="facebook_message"></p>
             </div>
         </section>
     </body>

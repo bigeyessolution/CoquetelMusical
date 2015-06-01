@@ -14,8 +14,8 @@
             "puzzle_handler": "showPageHandler",
             "text": "",
             "solved_text": "O Vapor Saldanha Marinho foi o primeiro barco a navegar no Rio São Francisco, no trecho Pirapora (MG) - Juazeiro (BA), entre  1971 e 1943. Hoje, o “vaporzinho” descansa na orla de Juazeiro.",
-            "success_message": "Apois, essa foi facim facim ... quero vê é tu fazê a próxima.",
-            "facebook_message": "",
+            "success_message": "Apois, essa foi facim facim ... quero vê é tu fazê a próxima.",            
+            "facebook_message": "Tu ainda tá na rabeta. Simbora vencer esse jogo!",
             "image": "puzzle.0.vaporzinho.jpg",
             "solved_image": "puzzle.0.solved.vaporzinho.jpg"
         },
@@ -170,9 +170,26 @@
             "text": "01101111 01110000 01100001 01110010 01100001 00001101 00001010",
             "solved_text": "puzzle.9.solved.rio.jpg",
             "success_message": "Aêêê caburé!!! Terminaste tudo sem aperrêi.",
-            "facebook_message": "Porreta!!! O jogo acabou.",
+            "facebook_message": "Tamo quase lá.",
             "image": "puzzle.9.rio.jpg",
-            "solved_image": "score.victory.png"
+            "solved_image": "score.10.png"
+        },
+        {
+            "row": 10,
+            "word": "",
+            "coordinates": [  ],
+            "music": "",
+            "music_solved": "",
+            "music_name": "",
+            "music_author": "",
+            "music_player": "",
+            "puzzle_handler": "",
+            "text": "",
+            "solved_text": "",
+            "success_message": "Aêêê caburé!!! Terminaste tudo sem aperrêi.",
+            "facebook_message": "Porreta!!! O jogo acabou.",
+            "image": "",
+            "solved_image": "score.10.png"
         }
     ]
 }

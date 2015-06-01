@@ -38,17 +38,26 @@ function enableLastRow (last_puzzle) {
  * @returns {undefined}
  */
 function setScorePage (last_puzzle) {
-    last_puzzle = last_puzzle > -1 ? last_puzzle : 10;
     $("#img-score").attr("src", "./data/images/score." + last_puzzle + ".png");
+    $(".facebook_message").html(getPuzzleData().facebook_message);
 }
 
 function setUiEvents () {
-    $("#btn-go-to-puzzle").hide();
+    //$("#btn-go-to-puzzle").hide();
     
     $("#puzzle-table").click(function () 
     {
         $( ":mobile-pagecontainer" ).pagecontainer( "change", "#puzzle-page", { } );
     });
+    
+    $("#puzzle-answer").keyup(function ()
+    {
+        var disabled = $("#puzzle-answer").val().length != $("#puzzle-answer").attr("maxlength");
+        
+        $("#btn-answer").attr("disabled", disabled );
+    });
+    
+    $("#btn-answer").click(answerVerifier);
 }
 
 
