@@ -1,0 +1,7 @@
+zoom=16
+zoom=17
+zoom=18
+minx=101527
+maxx=101564
+miny=137920
+maxy=137957

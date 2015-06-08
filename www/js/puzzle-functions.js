@@ -16,8 +16,6 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-var application_conf = false;
-
 function verifyProgress () {
     var last_puzzle = getLastPuzzle();
     
@@ -25,14 +23,7 @@ function verifyProgress () {
     
     setScorePage(last_puzzle);
     
-    if (last_puzzle < 10 && google !== undefined && google.maps !== undefined) {
-        
-        last_puzzle = last_puzzle < 0 ? 0 : last_puzzle;
-        
-        preparePuzzlePage( getPuzzleData() );
-        
-        setMapMarkers( getPuzzleData(last_puzzle).coordinates );
-    }
+    preparePuzzlePage( getPuzzleData() );
 }
 
 function showPageHandler () {
@@ -85,7 +76,7 @@ function getLastPuzzle () {
 }
 
 function getPuzzleData () {
-    return application_conf.puzzle_data[getLastPuzzle()];
+    return appConf.puzzle_data[getLastPuzzle()];
 }
 
 function preparePuzzlePage (puzzle_data) {

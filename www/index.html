@@ -26,15 +26,19 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <!-- -->
         <link rel="stylesheet" href="css/xilosa-webfont.css">
+        <link rel="stylesheet" href="js/libs/leaflet/leaflet.css">
         <link rel="stylesheet" href="js/libs/jquery-mobile/jquery.mobile.css">
         <link rel="stylesheet" href="css/coquetelmusical.css">
         <link rel="stylesheet" href="css/jquery.mobile.icons.min.css">
         <link rel="stylesheet" href="js/libs/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="css/index.css">
         <script type="text/javascript" src="cordova.js"></script>
+        <script src="js/appConf.js"></script>
         <script src="js/libs/jquery/jquery.min.js"></script>
         <script src="js/libs/jquery-mobile/jquery.mobile.js"></script>
-        <script src="js/googlemaps.js"></script>
+        <script src="js/libs/leaflet/leaflet.js"></script>
+        <!--<script src="js/googlemaps.js"></script>-->
+        <script src="js/leafletmap.js"></script>
         <script src="js/puzzle-functions.js"></script>
         <script src="js/ui-functions.js"></script>
         <script src="js/index.js"></script>
@@ -43,21 +47,21 @@
         <section data-role="page" id="location-page">
             <footer data-role="footer" data-toggle="false" class="ui-footer-fixed ui-footer-fullscreen"><div data-role="navbar"><ul>
                 <li><a data-icon="navigation" class="ui-btn-active ui-state-persist">Localizar</a></li>
-                <li><a data-icon="bars" data-transition="slide" href="#puzzles-page">Trilhas</a></li>
+                <li><a data-icon="bars" data-transition="slide" href="#puzzles-page">Desafios</a></li>
                 <li><a data-icon="star" data-transition="slide" href="#score-page">Cupons</a></li>
             </ul></div></footer>
                 
             <div role="main" class="ui-content be-map-content">
                 <div id="map"></div>
                 <div id="btn-location"></div>
-                <a id="btn-go-to-puzzle" href="#puzzle-page" class="ui-btn ui-btn-active ui-corner-all" data-transition="flip">Resolver o desafio.</a>
+                <a id="btn-go-to-puzzle" href="#puzzle-page" class="ui-btn ui-btn-active ui-corner-all" data-transition="flip"></a>
             </div>
         </section>
         
         <section data-role="page" id="puzzle-page">
             <footer data-role="footer" data-toggle="false" class="ui-footer-fixed ui-footer-fullscreen"><div data-role="navbar"><ul>
-                <li><a data-icon="navigation" class="ui-btn-active ui-state-persist">Localizar</a></li>
-                <li><a data-icon="bars" data-transition="slide" href="#puzzles-page">Trilhas</a></li>
+                <li><a data-icon="navigation" href="#location-page">Localizar</a></li>
+                <li><a data-icon="bars" data-transition="slide" href="#puzzles-page" class="ui-btn-active ui-state-persist">Desafios</a></li>
                 <li><a data-icon="star" data-transition="slide" href="#score-page">Cupons</a></li>
             </ul></div></footer>
                 
@@ -70,14 +74,14 @@
                     <div class="ui-block-b" style="width: 10% !important"></div>
                     <div class="ui-block-c" style="width: 40% !important"><button id="btn-answer">Enviar</button></div>
                 </div>
-                <audio id="puzzle-audio" loop></audio>
+                <audio id="puzzle-audio" loop controls=""></audio>
             </div>
         </section>
         
         <section data-role="page" id="puzzle-solved-page">
             <footer data-role="footer" data-toggle="false" class="ui-footer-fixed ui-footer-fullscreen"><div data-role="navbar"><ul>
-                <li><a data-icon="navigation" class="ui-btn-active ui-state-persist">Localizar</a></li>
-                <li><a data-icon="bars" data-transition="slide" href="#puzzles-page">Trilhas</a></li>
+                <li><a data-icon="navigation" href="#location-page">Localizar</a></li>
+                <li><a data-icon="bars" data-transition="slide" href="#puzzles-page" class="ui-btn-active ui-state-persist">Desafios</a></li>
                 <li><a data-icon="star" data-transition="slide" href="#score-page">Cupons</a></li>
             </ul></div></footer>
                 
@@ -97,7 +101,7 @@
         <section data-role="page" id="puzzles-page">
             <footer data-role="footer" data-toggle="false" class="ui-footer-fixed ui-footer-fullscreen"><div data-role="navbar"><ul>
                 <li><a data-icon="navigation" data-transition="slide" data-direction="reverse" href="#location-page">Localizar</a></li>
-                <li><a data-icon="bars" class="ui-btn-active ui-state-persist">Trilhas</a></li>
+                <li><a data-icon="bars" class="ui-btn-active ui-state-persist">Desafios</a></li>
                 <li><a data-icon="star" data-transition="slide" href="#score-page">Cupons</a></li>
             </ul></div></footer>
                 
@@ -271,7 +275,7 @@
         <section data-role="page" id="score-page">
             <footer data-role="footer" data-toggle="false" class="ui-footer-fixed ui-footer-fullscreen"><div data-role="navbar"><ul>
                 <li><a data-icon="navigation" data-transition="slide" data-direction="reverse" href="#location-page">Localizar</a></li>
-                <li><a data-icon="bars" data-transition="slide" data-direction="reverse" href="#puzzles-page">Trilhas</a></li>
+                <li><a data-icon="bars" data-transition="slide" data-direction="reverse" href="#puzzles-page">Desafios</a></li>
                 <li><a data-icon="star" class="ui-btn-active ui-state-persist">Cupons</a></li>
             </ul></div></footer>
                 
