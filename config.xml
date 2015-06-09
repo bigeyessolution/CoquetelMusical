@@ -23,16 +23,16 @@
     <preference name="auto-hide-splash-screen" value="true"/>
     <icon src="icon.png"/>
     <splash src="splash.png"/>
-    <gap:plugin name="org.apache.cordova.file"/>
-    <gap:plugin name="org.apache.cordova.device"/>
-    <gap:plugin name="org.apache.cordova.device-motion"/>
-    <gap:plugin name="org.apache.cordova.device-orientation"/>
-    <gap:plugin name="org.apache.cordova.geolocation"/>
-    <gap:plugin name="org.apache.cordova.network-information"/>
-    <gap:plugin name="org.apache.cordova.dialogs"/>
-    <gap:plugin name="org.apache.cordova.splashscreen"/>
-    <gap:plugin name="org.apache.cordova.media"/>
-    <gap:plugin name="cordova-plugin-whitelist" version="1"/>
+    <gap:plugin name="org.apache.cordova.device" version="0.2.12" />
+    <gap:plugin name="org.apache.cordova.device-motion" version="0.2.10" />
+    <gap:plugin name="org.apache.cordova.device-orientation" version="0.3.9" />
+    <gap:plugin name="org.apache.cordova.file" version="1.3.1" />
+    <gap:plugin name="org.apache.cordova.geolocation" version="0.3.10" />
+    <gap:plugin name="org.apache.cordova.media" version="0.2.13" />
+    <gap:plugin name="org.apache.cordova.network-information" version="0.2.12" />
+    <gap:plugin name="org.apache.cordova.dialogs" version="0.2.10" />
+    <gap:plugin name="org.apache.cordova.splashscreen" version="0.3.4" />
+    <plugin name="cordova-plugin-whitelist" version="1"/>
     <access origin="*"/>
     <allow-intent href="http://*/*"/>
     <allow-intent href="https://*/*"/>
