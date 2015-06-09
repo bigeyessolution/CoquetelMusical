@@ -12,7 +12,17 @@
     </author>
     <content src="index.html"/>
     <preference name="orientation" value="portrait"/>
-    <preference name="fullscreen" value="false"/>  
+    <preference name="fullscreen" value="false"/> 
+    <preference name="target-device" value="universal"/>
+    <preference name="fullscreen" value="true"/>
+    <preference name="prerendered-icon" value="true"/>
+    <preference name="ios-statusbarstyle" value="black-opaque"/>
+    <preference name="detect-data-types" value="true"/>
+    <preference name="exit-on-suspend" value="false"/>
+    <preference name="BackgroundColor" value="0xffffffff"/>
+    <preference name="auto-hide-splash-screen" value="true"/>
+    <icon src="icon.png"/>
+    <splash src="splash.png"/>
     <plugin name="org.apache.cordova.file"/>
     <plugin name="org.apache.cordova.device"/>
     <plugin name="org.apache.cordova.device-motion"/>
