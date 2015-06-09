@@ -20,6 +20,7 @@
     <head>
         <title>Coquetel Musical</title>
         <meta charset="UTF-8">
+        <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-eval'; object-src 'self'">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Para Windows Phone 
         <meta name="msapplication-tap-highlight" content="no">
@@ -37,7 +38,6 @@
         <script src="js/libs/jquery/jquery.min.js"></script>
         <script src="js/libs/jquery-mobile/jquery.mobile.js"></script>
         <script src="js/libs/leaflet/leaflet.js"></script>
-        <!--<script src="js/googlemaps.js"></script>-->
         <script src="js/leafletmap.js"></script>
         <script src="js/puzzle-functions.js"></script>
         <script src="js/ui-functions.js"></script>
@@ -54,7 +54,7 @@
             <div role="main" class="ui-content be-map-content">
                 <div id="map"></div>
                 <div id="btn-location"></div>
-                <a id="btn-go-to-puzzle" href="#puzzle-page" class="ui-btn ui-btn-active ui-corner-all" data-transition="flip"></a>
+                <!--<a id="btn-go-to-puzzle" href="#puzzle-page" class="ui-btn ui-btn-active ui-corner-all" data-transition="flip"></a>-->
             </div>
         </section>
         

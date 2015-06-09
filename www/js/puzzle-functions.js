@@ -66,6 +66,10 @@ function isLastPuzzleEnabled () {
     return getLastPuzzle() == getLastPuzzleEnable();
 }
 
+function isPuzzleEnabled (puzzle) {
+    return false; //TODO: Verificar localização
+}
+
 /**
  * Return last open puzzle or 0.
  * @returns {integer}
@@ -80,12 +84,16 @@ function getPuzzleData () {
 }
 
 function preparePuzzlePage (puzzle_data) {
+//    var music_folder = cordova.file.applicationDirectory.replace('file://', '') + "www/data/music/";
+    var music_folder = "data/music/";
+    
     $("#puzzle-page .be-puzzle-image").attr("src", "data/images/" + puzzle_data.image);
     $("#puzzle-page .be-puzzle-text").html(puzzle_data.text);
     $("#puzzle-answer").attr("maxlength", puzzle_data.word.length);
     $("#btn-answer").attr("disabled", true);
     $("#puzzle-audio").empty();
-    $('<source  src="data/music/' + puzzle_data.music + '" type="audio/mpeg">').appendTo("#puzzle-audio");
+    $('<source  src="' + music_folder + puzzle_data.music + '" type="audio/mpeg">').appendTo("#puzzle-audio");
+    console.log(music_folder + puzzle_data.music);
     
     $("#puzzle-solved-page .be-puzzle-image").attr("src", "data/images/" + puzzle_data.solved_image);
     $("#puzzle-solved-page .be-puzzle-solved-text").html(puzzle_data.solved_text);
@@ -93,7 +101,7 @@ function preparePuzzlePage (puzzle_data) {
     $("#music-author").html(puzzle_data.music_author);
     $("#music-player").html(puzzle_data.music_player);
     $("#puzzle-solved-audio").empty();
-    $('<source  src="data/music/' + puzzle_data.music_solved + '" type="audio/mpeg">').appendTo("#puzzle-solved-audio");
+    $('<source  src="' + music_folder + puzzle_data.music_solved + '" type="audio/mpeg">').appendTo("#puzzle-solved-audio");
     
     //set new puzzle and verifyLastPuzzle
 }

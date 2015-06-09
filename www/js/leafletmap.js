@@ -73,7 +73,23 @@ function createMap () {
     
     $("#btn-location").on("click", btnLocationHandler);
     
-    setMapMarkers();
+    //setMapMarkers();
+    
+    $.each(appConf.puzzle_data, function(key, puzzle)
+    {
+        for (i=0; i < puzzle.coordinates.length; i++) {
+            var point = puzzle.coordinates[i];
+
+            marker = L.marker(L.latLng(point.lat, point.lng),{
+                icon: musicIcon,
+                title: point.place,
+                opacity: isPuzzleEnabled(puzzle) ? 1 : 0.5
+            }).addTo(map);
+            mapMarkers.addLayer(marker);
+        }
+    });
+    
+    map.addLayer(mapMarkers);
     
     verifyProgress();
 }
@@ -104,12 +120,9 @@ function updateUserMarkerPosition (lat, lng) {
     }
 }
 
-function setUserPosition () {
-    navigator.geolocation.getCurrentPosition(function (position) {
-        console.log('Lat:'+position.coords.latitude+' Long:'+ position.coords.longitude);
-        updateUserMarkerPosition(position.coords.latitude, position.coords.longitude);
-        setCenterToLocation(position.coords.latitude, position.coords.longitude);
-    });
+function setUserPosition (position) {
+    updateUserMarkerPosition(position.coords.latitude, position.coords.longitude);
+    setCenterToLocation(position.coords.latitude, position.coords.longitude);
 }
 
 function followUserPosition () {
@@ -124,7 +137,7 @@ function followUserPosition () {
 
 function geolocationSuccess (position) 
 {
-    $('#btn-go-to-puzzle').html('('+position.coords.latitude+','+ position.coords.longitude+')');
+    setUserPosition(position);
 }
 
 function geolocationError (error)
