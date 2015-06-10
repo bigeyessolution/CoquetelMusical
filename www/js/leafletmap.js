@@ -21,40 +21,32 @@ var mapMarkers = new L.FeatureGroup();
 var userMaker = false;
 var watchId = false;
 
-var locationIcon = L.icon({
-    iconUrl: 'images/btn-icon-map.png',
-    iconRetinaUrl: 'images/btn-icon-map@2x.png',
-    iconSize: [40, 54],
-    iconAnchor: [2.88, 54],
-    popupAnchor: [-3, -76],
-    shadowUrl: 'images/btn-icon-shadow-map.png',
-    shadowRetinaUrl: 'images/btn-icon-shadow-map@2x.png',
-    shadowSize: [52, 26],
-    shadowAnchor: [4.38, 26]
+var musicPointDisabled = L.icon({
+    iconUrl: 'images/map-point-disabled.png',
+    iconRetinaUrl: 'images/map-point-disabled@2x.png',
+    iconSize: [36, 48],
+    iconAnchor: [17.90, 48]
 });
 
-var musicIcon = L.icon({
-    iconUrl: 'images/btn-icon-map-music.png',
-    iconRetinaUrl: 'images/btn-icon-map-music@2x.png',
-    iconSize: [35, 36],
-    iconAnchor: [6.63, 36],
-    popupAnchor: [-3, -76]
-//    shadowUrl: 'images/btn-icon-shadow-map-music.png',
-//    shadowRetinaUrl: 'images/btn-icon-shadow-map-music@2x.png',
-//    shadowSize: [80, 27],
-//    shadowAnchor: [15.47, 24]
+var musicPointEnabled = L.icon({
+    iconUrl: 'images/map-point-enabled.png',
+    iconRetinaUrl: 'images/map-point-enabled@2x.png',
+    iconSize: [36, 48],
+    iconAnchor: [17.90, 48]
+});
+
+var musicPointSolved = L.icon({
+    iconUrl: 'images/map-point-solved.png',
+    iconRetinaUrl: 'images/map-point-solved@2x.png',
+    iconSize: [36, 48],
+    iconAnchor: [17.90, 48]
 });
 
 var userIcon = L.icon({
-    iconUrl: 'images/btn-icon-user-map.png',
-    iconRetinaUrl: 'images/btn-icon-user-map@2x.png',
-    iconSize: [48, 54],
-    iconAnchor: [26, 54]
-//    popupAnchor: [-3, -76],
-//    shadowUrl: 'images/btn-icon-shadow-map-music.png',
-//    shadowRetinaUrl: 'images/btn-icon-shadow-map-music@2x.png',
-//    shadowSize: [80, 27],
-//    shadowAnchor: [15.47, 24]
+    iconUrl: 'images/map-user.png',
+    iconRetinaUrl: 'images/map-user@2x.png',
+    iconSize: [84, 65],
+    iconAnchor: [40, 63]
 });
 
 
@@ -71,34 +63,28 @@ function createMap () {
         maxZoom: 18
     }).addTo(map);
     
-    $("#btn-location").on("click", btnLocationHandler);
+    //TODO: criar limites
     
-    //setMapMarkers();
+    setBtnLocationStatus();
     
-    $.each(appConf.puzzle_data, function(key, puzzle)
-    {
-        for (i=0; i < puzzle.coordinates.length; i++) {
-            var point = puzzle.coordinates[i];
-
-            marker = L.marker(L.latLng(point.lat, point.lng),{
-                icon: musicIcon,
-                title: point.place,
-                opacity: isPuzzleEnabled(puzzle) ? 1 : 0.5
-            }).addTo(map);
-            mapMarkers.addLayer(marker);
-        }
-    });
-    
-    map.addLayer(mapMarkers);
+    setMapMarkers();
     
     verifyProgress();
 }
 
-
+/**
+ * Handler to #btn-location
+ * @returns {undefined}
+ */
 function btnLocationHandler() 
 {
-    //setUserPosition();
-    followUserPosition();
+    if (userMaker !== false) {
+        map.removeLayer(userMaker);
+        userMaker = false;
+        setBtnLocationStatus();
+    } else {
+        followUserPosition();
+    }
 }
 
 function setCenterToLocation (lat, lng) 
@@ -120,6 +106,7 @@ function updateUserMarkerPosition (lat, lng) {
     }
 }
 
+
 function setUserPosition (position) {
     updateUserMarkerPosition(position.coords.latitude, position.coords.longitude);
     setCenterToLocation(position.coords.latitude, position.coords.longitude);
@@ -133,6 +120,14 @@ function followUserPosition () {
         timeout: 3000,
         maximumAge: 1000
     });
+}
+
+function setBtnLocationStatus () {
+    if (userMaker === false) {
+        $('#btn-location').addClass('btn-location-disabled');
+    } else {
+        $('#btn-location').removeClass('btn-location-disabled');
+    }
 }
 
 function geolocationSuccess (position) 
@@ -152,18 +147,24 @@ function geolocationError (error)
 function setMapMarkers () {
     clearMap();
     
-    for (i=0; i < getPuzzleData().coordinates.length; i++) {
-        var point = getPuzzleData().coordinates[i];
-        
-        marker = L.marker(L.latLng(point.lat, point.lng),{
-            icon: musicIcon,
-            title: point.place,
-            opacity: isLastPuzzleEnabled() ? 1 : 0.5
-        }).addTo(map);
-        mapMarkers.addLayer(marker);
-    }
+    $.each(appConf.puzzle_data, addPuzzkeMaker);
     
     map.addLayer(mapMarkers);
+}
+
+function addPuzzkeMaker (key, puzzle) {
+    var pointIcon = isPuzzleEnabled(puzzle) ? musicPointEnabled : musicPointDisabled;
+    
+    for (i=0; i < puzzle.coordinates.length; i ++) {
+        var point = puzzle.coordinates[i];
+        
+        mapMarkers.addLayer(
+            L.marker(L.latLng(point.lat, point.lng),{
+                icon: pointIcon,
+                title: point.place
+            })
+        );
+    }
 }
 
 function verifyUserAtPuzzlePosition () {

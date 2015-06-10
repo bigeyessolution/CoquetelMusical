@@ -66,6 +66,8 @@ function setUiEvents () {
     
     $("#btn-answer").click(answerVerifier);
     
+    $("#btn-location").on("click", btnLocationHandler);
+    
     $(":mobile-pagecontainer").on("pagecontainershow", function( event, ui ) 
     {
         toPage = ui.toPage.attr("id");

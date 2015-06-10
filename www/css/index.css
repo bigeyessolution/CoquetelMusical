@@ -30,13 +30,21 @@ section {
     padding: 0 !important;
     margin: 0 !important;
     background-size: cover !important;
-    background: url('../images/background.jpg') no-repeat; 
+    background: url('../images/background.jpg') no-repeat;
+}
+
+.ui-navbar a.ui-btn {
+    text-shadow: none !important;
+    font-size: 0.8em;
 }
 
 .ui-navbar a.ui-btn:not(.ui-btn-active) {
     background: url('../images/background.jpg') no-repeat !important; 
     background-position: top left !important;
+    color: #ffffff;
 }
+
+
 
 .be-vertical-center {
     position: absolute;
@@ -63,26 +71,27 @@ section {
     margin-right: auto;
 }
 
-.be-ui-icon-map:after {background-image: url("../images/btn-icon-map.svg");}
-.be-ui-icon-score:after {background-image: url("../images/btn-icon-score.svg");}
-.be-ui-icon-track:after {background-image: url("../images/btn-icon-track.svg");}
-/* Fallback */
-.ui-nosvg .ui-icon-map:after { 	background-image: url("../images/btn-icon-map.png"); }
-.ui-nosvg .be-ui-icon-score:after {background-image: url("../images/btn-icon-score.png");}
-.ui-nosvg .be-ui-icon-track:after {background-image: url("../images/btn-icon-track.png");}
-
 #btn-location {
     position: fixed;
     z-index: 50 !important;
     top: 1.2rem;
     float: right;
     right: 1.2rem;
-    width: 2rem;
-    height: 2rem;
+    width: 3em;
+    height: 3em;
+    background-color: #ffffff;
+    border-radius: 2em;
+    -webkit-border-radius: 2em;
+    -webkit-box-shadow: 0.05em 0.05em 0.3em #000000;
+    box-shadow: 0.05em 0.05em 0.3em #000000;
     background-image: url("../images/btn-my-location.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
+}
+
+.btn-location-disabled {
+    background-image: url("../images/btn-my-location-off.png") !important;
 }
 
 #puzzles-table {
@@ -138,7 +147,7 @@ section {
 }
 
 .be-puzzle-content {
-    margin-bottom: 2.6em;
+    margin-bottom: 5em;
 }
 
 .be-puzzle-image {
@@ -162,6 +171,18 @@ section {
 }
 
 .leaflet-control-attribution {
-    bottom: 6.58em;
+    bottom: 5.5em;
     border-radius: 0.5em 0 0;
+    font-family: serif;
+    font-size: 0.8em !important;
+    color: #808080;
+}
+
+.leaflet-control-attribution a, .leaflet-control-attribution a:visited {
+    color: #808080 !important;
+    text-shadow: none;
+}
+
+.leaflet-control-attribution a:hover {
+    color: #000000 !important;
 }
