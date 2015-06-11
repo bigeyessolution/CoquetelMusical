@@ -33,7 +33,7 @@ function verifyProgress () {
         setScorePage(lastSolvedPuzzle);
     }
     
-    enableSovedRows();
+    enableSolvedRows();
 }
 
 /**

@@ -21,9 +21,7 @@
  * 
  * @returns {undefined}
  */
-function enableSovedRows () {
-    $("#puzzles-table").click( null );
-    
+function enableSolvedRows () {
     for (row=0; row < 10; row++ ) {
         if (solvedPuzzles.indexOf(row) > -1) {
             $("#puzzles-table #row-" + row).removeClass("enabled").addClass("solved");
@@ -40,7 +38,9 @@ function enablePuzzleRow (puzzle) {
     $("#puzzles-table #row-" + puzzle.row).addClass("enabled");
     
     $("#puzzles-table").click(function () {
-        $( ":mobile-pagecontainer" ).pagecontainer( "change", "#puzzle-page", { } );
+        if (enabledPuzzle >  -1 && enabledPuzzle < 10) {
+            $( ":mobile-pagecontainer" ).pagecontainer( "change", "#puzzle-page", { } );
+        }
     });
 }
 
@@ -92,7 +92,11 @@ function setUiEvents () {
         
         switch(toPage) {
             case 'puzzle-page':
-                handlePuzzle();
+                if (enabledPuzzle > -1 && enabledPuzzle <  10) {
+                    handlePuzzle();
+                } else {
+                    $( ":mobile-pagecontainer" ).pagecontainer( "change", "#location-page", { } );
+                }
                 break;
             case 'puzzle-solved-page':
                 handleSolvedPuzzle();
