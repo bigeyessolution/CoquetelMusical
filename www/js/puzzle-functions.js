@@ -19,7 +19,8 @@
 var solvedPuzzles = [];
 var enabledPuzzle = -1;
 var enabledPuzzleData = false;
-var media = false;
+var mediaPuzzle = false;
+var mediaSolvedPuzzle = false;
 
 /**
  * 
@@ -40,7 +41,7 @@ function verifyProgress () {
  * @returns {undefined}
  */
 function handlePuzzle () {
-    switch (enabledPuzzleData) {
+    switch (getPuzzleData().puzzle_handler) {
         case 'showPageHandler':
             showPageHandler();
             break;
@@ -61,26 +62,25 @@ function handlePuzzle () {
  * @returns {undefined}
  */
 function handleSolvedPuzzle () {
-    media = new Media ($("#puzzle-solved-audio source").attr("src"));
-    media.play();
+    mediaSolvedPuzzle = new Media ($("#puzzle-solved-audio source").attr("src"));
+    mediaSolvedPuzzle.play();
 }
 
 function showPageHandler () {
-    puzzle = getPuzzleData();
-    media = new Media ($("#puzzle-audio source").attr("src"));
-    media.play(); //    document.getElementById("puzzle-audio").play();
+    mediaPuzzle = new Media ($("#puzzle-audio source").attr("src"));
+    mediaPuzzle.play(); //    document.getElementById("puzzle-audio").play();
 }
 
 function touchRhythmHandler () {
-    
+    navigator.notification.alert("Função de Handler não definida");
 }
 
 function btnAcocharHandler () {
-    
+    navigator.notification.alert("Função de Handler não definida");
 }
 
 function showMusicSheetHandler () {
-    
+    navigator.notification.alert("Função de Handler não definida");
 }
 
 /**
@@ -171,16 +171,16 @@ function getPuzzleData () {
 
 function answerVerifier () {
     if (getPuzzleData().word.toLowerCase().trim() === $("#puzzle-answer").val().toLowerCase().trim()) {
-        $( ":mobile-pagecontainer" ).pagecontainer( "change", "#puzzle-solved-page", { transition: "flip" } );
-        
-        verifyProgress();
-        
+        addSolvedPuzzle(getPuzzleData());
         clearMap();
         setMapMarkers();
-        
-        addSolvedPuzzle(getPuzzleData());
+        verifyProgress();
+        $( ":mobile-pagecontainer" ).pagecontainer( "change", "#puzzle-solved-page", { transition: "flip" } );
     } else {
         navigator.notification.alert("Se aveche não que num foi desta vez! Vamos tentar denovo?", 
-        function () { media.play(); }, "Não foi desta vez", "Simbora!");
+        function () {
+            mediaPuzzle.stop();
+            mediaPuzzle.play(); 
+        }, "Não foi desta vez", "Simbora!");
     }
 }

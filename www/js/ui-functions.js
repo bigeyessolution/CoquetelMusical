@@ -73,13 +73,20 @@ function setUiEvents () {
         
         switch(prevPage) {
             case 'puzzle-page':
+                if(mediaPuzzle) {
+                    mediaPuzzle.stop();
+                    mediaPuzzle.release();
+                    mediaPuzzle = false;
+                }
+                
+                break;
             case 'puzzle-solved-page':
+                if(mediaSolvedPuzzle) {
+                    mediaSolvedPuzzle.stop();
+                    mediaSolvedPuzzle.release();
+                    mediaSolvedPuzzle = false;
+                }
 //                $("audio").load();
-                    if (media) {
-                        media.stop();
-                        media.release();
-                        media = false;
-                    }
                 break;
         }
         
