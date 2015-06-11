@@ -17,17 +17,28 @@
  */
 
 var solvedPuzzles = [];
-
 var enabledPuzzle = -1;
-
 var enabledPuzzleData = false;
+var media = false;
 
-function verifyProgress () {    
-    enableSovedRows();
+/**
+ * 
+ * @returns {undefined}
+ */
+function verifyProgress () {
+    var lastSolvedPuzzle = getLastSolvedPuzzle();
     
-    setScorePage(solvedPuzzles.length);
+    if (lastSolvedPuzzle > -1) {
+        setScorePage(lastSolvedPuzzle);
+    }
+    
+    enableSovedRows();
 }
 
+/**
+ * 
+ * @returns {undefined}
+ */
 function handlePuzzle () {
     switch (enabledPuzzleData) {
         case 'showPageHandler':
@@ -45,8 +56,21 @@ function handlePuzzle () {
     }
 }
 
+/**
+ * 
+ * @returns {undefined}
+ */
+function handleSolvedPuzzle () {
+    media = new Media ($("#puzzle-solved-audio source").attr("src"));
+    media.play();
+    
+    verifyProgress();
+}
+
 function showPageHandler () {
-    document.getElementById("puzzle-audio").play();
+    puzzle = getPuzzleData();
+    media = new Media ($("#puzzle-audio source").attr("src"));
+    media.play(); //    document.getElementById("puzzle-audio").play();
 }
 
 function touchRhythmHandler () {
@@ -63,12 +87,16 @@ function showMusicSheetHandler () {
 
 /**
  * 
- * @param {integer} puzzle
+ * @param {object} puzzle
  * @returns {undefined}
  */
 function addSolvedPuzzle (puzzle) {
-    if (solvedPuzzles.indexOf(puzzle) < 0) {
-        solvedPuzzles.push(puzzle);
+    enablePuzzle(false);
+    
+    if (solvedPuzzles.indexOf(puzzle.row) < 0) {
+        window.localStorage.setItem('lastSolvedPuzzle', puzzle.row);
+        
+        solvedPuzzles.push(puzzle.row);
         solvedPuzzles.sort();
         window.localStorage.setItem('solvedPuzzles', JSON.stringify(solvedPuzzles));
     }
@@ -84,7 +112,7 @@ function getPuzzlesFromCache () {
     
     enabledPuzzle = enabled ? parseInt(enabled): -1;
     
-    solvedPuzzles = [4,6];
+    solvedPuzzles = [];
     
     if (puzzles) {
         puzzles = JSON.parse(puzzles);
@@ -105,6 +133,7 @@ function getPuzzlesFromCache () {
 function enablePuzzle (puzzle) {
     enabledPuzzleData = puzzle;
     enabledPuzzle = puzzle === false ? -1 : puzzle.row;
+    window.localStorage.setItem("enabledPuzzle", puzzle.row);
 }
 
 /**
@@ -113,7 +142,7 @@ function enablePuzzle (puzzle) {
  * @returns {Boolean}
  */
 function isPuzzleEnabled (puzzle) {
-    return enabledPuzzle == puzzle.row;
+    return (enabledPuzzle == puzzle.row) && ! isPuzzleSolved(puzzle);
 }
 
 /**
@@ -129,40 +158,30 @@ function isPuzzleSolved (puzzle) {
  * Return last open puzzle or 0.
  * @returns {integer}
  */
-function getLastPuzzle () {
-    var last_puzzle = window.localStorage.getItem('last_puzzle');
-    return last_puzzle ? parseInt(last_puzzle) : 0;
+function getLastSolvedPuzzle () {
+    var lastSolvedPuzzle = window.localStorage.getItem('lastSolvedPuzzle');
+    return lastSolvedPuzzle ? parseInt(lastSolvedPuzzle) : -1;
 }
 
+/**
+ * 
+ * @returns {object}
+ */
 function getPuzzleData () {
     return appConf.puzzle_data[enabledPuzzle];
-}
-
-function preparePuzzlePage (puzzle_data) {
-    var music_folder = cordova.file.applicationDirectory.replace('file://', '') + "www/data/music/";
-//    var music_folder = "data/music/";
-    
-    $("#puzzle-page .be-puzzle-image").attr("src", "data/images/" + puzzle_data.image);
-    $("#puzzle-page .be-puzzle-text").html(puzzle_data.text);
-    $("#puzzle-answer").attr("maxlength", puzzle_data.word.length);
-    $("#btn-answer").attr("disabled", true);
-    $("#puzzle-audio").empty();
-    $('<source  src="' + music_folder + puzzle_data.music + '" type="audio/mpeg">').appendTo("#puzzle-audio");
-    
-    $("#puzzle-solved-page .be-puzzle-image").attr("src", "data/images/" + puzzle_data.solved_image);
-    $("#puzzle-solved-page .be-puzzle-solved-text").html(puzzle_data.solved_text);
-    $("#music-name").html(puzzle_data.music_name);
-    $("#music-author").html(puzzle_data.music_author);
-    $("#music-player").html(puzzle_data.music_player);
-    $("#puzzle-solved-audio").empty();
-    $('<source  src="' + music_folder + puzzle_data.music_solved + '" type="audio/mpeg">').appendTo("#puzzle-solved-audio");
-    
-    //set new puzzle and verifyLastPuzzle
 }
 
 function answerVerifier () {
     if (getPuzzleData().word.toLowerCase().trim() === $("#puzzle-answer").val().toLowerCase().trim()) {
         $( ":mobile-pagecontainer" ).pagecontainer( "change", "#puzzle-solved-page", { transition: "flip" } );
+        addSolvedPuzzle(getPuzzleData());
+        
+        verifyProgress();
+        clearMap();
+        setMapMarkers();
+    } else {
+        navigator.notification.alert("Se aveche não que num foi desta vez! Vamos tentar denovo?", 
+        function () { media.play(); }, "Não foi desta vez", "Simbora!");
     }
     
     //Resgistrar a resposta se estiver correta

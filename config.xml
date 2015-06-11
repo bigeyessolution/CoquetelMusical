@@ -33,6 +33,7 @@
     <plugin name="org.apache.cordova.dialogs"/>
     <plugin name="org.apache.cordova.splashscreen"/>
     <plugin name="cordova-plugin-whitelist"/>
+    <access origin="http://127.0.0.1/*"/>
     <access origin="*"/>
     <allow-intent href="http://*/*"/>
     <allow-intent href="https://*/*"/>

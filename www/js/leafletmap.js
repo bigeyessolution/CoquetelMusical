@@ -23,6 +23,7 @@ var userMarker = false;
 var userCircleMarker = false;
 var userMarkerLayer = new L.FeatureGroup();
 var watchId = false;
+var showPuzzleEnabledMessage = false;
 
 var musicPointDisabled = L.icon({
     iconUrl: 'images/map-point-disabled.png',
@@ -91,6 +92,15 @@ function btnLocationHandler()
     if (watchId !== false) {
         unfollowUserPosition();
         setBtnLocationStatus(false);
+        
+        if (showPuzzleEnabledMessage) {
+            navigator.notification.alert(
+                "Clique no marcador verde ou na palavra cruzada da aba Desafios para resolvê-lo!",
+                function () {
+                    showPuzzleEnabledMessage = false;
+                }, "Desafio habilitado!", "Vamos lá!"
+            );
+        }
     } else {
         setBtnLocationStatus(true);
         followUserPosition();
@@ -211,7 +221,9 @@ function setMapMarkers ()
                 preparePuzzlePage(puzzle);
                 
                 marker.on("click", function (evt) {
-                    $( ":mobile-pagecontainer" ).pagecontainer( "change", "#puzzle-page", { transition: "flip" } );
+                    $(":mobile-pagecontainer").pagecontainer( 
+                        "change", "#puzzle-page", { transition: "flip" } 
+                    );
                 });
             }
             
@@ -251,12 +263,10 @@ function verifyUserAtPuzzlePosition (lat, lng)
         
         distance = Math.min(distance, userPoint.distanceTo(puzzleLatLng));
         
-        if(userPoint.distanceTo(puzzleLatLng) < 5.0) {
-            
+        if(userPoint.distanceTo(puzzleLatLng) < 10.0) { //@TODO change radius
             enablePuzzle(puzzlePoint);
-            
+            showPuzzleEnabledMessage = true;
             btnLocationHandler();
-                        
             return;
         } else {
             enablePuzzle(false);
