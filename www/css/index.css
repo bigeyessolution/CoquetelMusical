@@ -33,6 +33,14 @@ section {
     background: url('../images/background.jpg') no-repeat;
 }
 
+p {
+    color: #ffffff;
+    font-size: 1.5rem;
+    text-align: justify;
+}
+
+p a { color: #846F57 !important }
+
 .ui-navbar a.ui-btn {
     text-shadow: none !important;
     font-size: 0.8em;
@@ -44,7 +52,9 @@ section {
     color: #ffffff;
 }
 
-
+.ui-content {
+    margin-bottom: 5rem!important;
+}
 
 .be-vertical-center {
     position: absolute;
@@ -98,12 +108,10 @@ section {
 #puzzles-table {
     border: none;
     border-spacing: 0!important;
-    width: 95%;
+    width: 100%;
     text-shadow: none !important;
-    margin-top: 1em;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 5em;
 }
 
 #puzzles-table tr {
@@ -112,7 +120,7 @@ section {
 }
 
 #puzzles-table td {
-    height: 2em;
+    height: 1.5em;
     background: #846F57;
     text-align: center;
     font-size: 1.5rem;
@@ -124,13 +132,14 @@ section {
     color: #4D4133;
 }
 
-#puzzles-table tr.solved td:not(.col-e):not(.empty),
-#puzzles-table tr.enabled td:not(.col-e):not(.empty) {
+#puzzles-table tr.solved td:not(.col-e):not(.empty):not(.center),
+#puzzles-table tr.enabled td:not(.col-e):not(.empty):not(.center) {
     background: #ffffff;
 }
 
 #puzzles-table td.center {
-    background: #aaa
+    background: #aaa;
+    font-weight: bolder;
 }
 
 #puzzles-table td.empty {

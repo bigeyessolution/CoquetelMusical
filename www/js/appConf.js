@@ -23,7 +23,7 @@ appConf = {
         {
             row: 0,
             word: "vaporzinho",
-            coordinates: [ { place: "Unid Saúde da Família", lat: -9.3933, lng: -40.54526666666667 }, { place: "Sobradinho 1", lat: -9.47293, lng: -40.80012 }, { place: "Minha casa", lat: -9.47273, lng: -40.79992 } ],
+            coordinates: [ { place: "Unid Saúde da Família", lat: -9.3933, lng: -40.54526666666667 }, { place: "Sobradinho 1", lat: -9.47293, lng: -40.80012 } /*, { place: "Minha casa", lat: -9.47273, lng: -40.79992 }*/ ],
             music: "puzzle.0.marcha_do_grande_rio.mp3",
             music_solved: "puzzle.0.marcha_do_grande_rio.mp3",
             music_name: "Marcha do Grande Rio",
