@@ -85,7 +85,7 @@ function setUiEvents () {
         
         switch(toPage) {
             case 'puzzle-page':
-                eval(getPuzzleData().puzzle_handler + "()");
+                handlePuzzle();
                 break;
             case 'puzzle-solved-page':
                 handleSolvedPuzzle();

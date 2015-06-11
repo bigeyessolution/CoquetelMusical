@@ -63,8 +63,6 @@ function handlePuzzle () {
 function handleSolvedPuzzle () {
     media = new Media ($("#puzzle-solved-audio source").attr("src"));
     media.play();
-    
-    verifyProgress();
 }
 
 function showPageHandler () {
@@ -174,16 +172,15 @@ function getPuzzleData () {
 function answerVerifier () {
     if (getPuzzleData().word.toLowerCase().trim() === $("#puzzle-answer").val().toLowerCase().trim()) {
         $( ":mobile-pagecontainer" ).pagecontainer( "change", "#puzzle-solved-page", { transition: "flip" } );
-        addSolvedPuzzle(getPuzzleData());
         
         verifyProgress();
+        
         clearMap();
         setMapMarkers();
+        
+        addSolvedPuzzle(getPuzzleData());
     } else {
         navigator.notification.alert("Se aveche não que num foi desta vez! Vamos tentar denovo?", 
         function () { media.play(); }, "Não foi desta vez", "Simbora!");
     }
-    
-    //Resgistrar a resposta se estiver correta
-    //
 }
