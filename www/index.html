@@ -20,7 +20,6 @@
     <head>
         <title>Coquetel Musical</title>
         <meta charset="UTF-8">
-        <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-eval'; object-src 'self'">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Para Windows Phone 
         <meta name="msapplication-tap-highlight" content="no">
@@ -53,8 +52,8 @@
                 
             <div role="main" class="ui-content be-map-content">
                 <div id="map"></div>
-                <div id="btn-location"></div>
-                <!--<a id="btn-go-to-puzzle" href="#puzzle-page" class="ui-btn ui-btn-active ui-corner-all" data-transition="flip"></a>-->
+                <div id="btn-location" class="btn-location-disabled"></div>
+                <div id="console" style="position: fixed; bottom: 5em; left: 0.5em"></div>
             </div>
         </section>
         
@@ -105,8 +104,8 @@
                 <li><a data-transition="slide" href="#score-page"><i class="fa fa-2x fa-star"></i>&nbsp;Cupons</a></li>
             </ul></div></footer>
                 
-            <div role="main" class="ui-content">
-                <table id="puzzles-table" class="be-vertical-center">
+            <div role="main">
+                <table id="puzzles-table">
                     <tr id="row-0">
                         <td class="empty"></td>
                         <td class="empty"></td>

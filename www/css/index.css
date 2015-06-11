@@ -72,6 +72,7 @@ section {
 }
 
 #btn-location {
+    display: block;
     position: fixed;
     z-index: 50 !important;
     top: 1.2rem;
@@ -99,6 +100,10 @@ section {
     border-spacing: 0!important;
     width: 95%;
     text-shadow: none !important;
+    margin-top: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5em;
 }
 
 #puzzles-table tr {

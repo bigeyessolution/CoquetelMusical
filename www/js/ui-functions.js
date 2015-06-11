@@ -26,17 +26,24 @@ function enableSovedRows () {
     
     $("#puzzles-table").click( null );
     
-    if (isLastPuzzleEnabled()) {
-        enablePuzzleRow(last_puzzle);
-    }
+//    if (isLastPuzzleEnabled()) {
+//        enablePuzzleRow(last_puzzle);
+//    }
     
-    for (row=0; row < last_puzzle; row++ ) {
-        $("#puzzles-table #row-" + row).removeClass("enabled").addClass("solved");
+    for (row=0; row < 10; row++ ) {
+        if (solvedPuzzles.indexOf(row) > -1) {
+            $("#puzzles-table #row-" + row).removeClass("enabled").addClass("solved");
+        }
     }
 }
 
+/**
+ * 
+ * @param {object} puzzle
+ * @returns {undefined}
+ */
 function enablePuzzleRow (puzzle) {
-    $("#puzzles-table #row-" + puzzle).addClass("enabled");
+    $("#puzzles-table #row-" + puzzle.row).addClass("enabled");
     
     $("#puzzles-table").click(function () 
     {
@@ -66,7 +73,9 @@ function setUiEvents () {
     
     $("#btn-answer").click(answerVerifier);
     
-    $("#btn-location").on("click", btnLocationHandler);
+    $("#btn-location").click(btnLocationHandler);
+    
+    setBtnLocationStatus(false);
     
     $(":mobile-pagecontainer").on("pagecontainershow", function( event, ui ) 
     {

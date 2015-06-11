@@ -18,39 +18,43 @@
 
 var map = false;
 var mapMarkers = new L.FeatureGroup();
-var userMaker = false;
+var mapPuzzlesPoints = [];
+var userMarker = false;
+var userCircleMarker = false;
+var userMarkerLayer = new L.FeatureGroup();
 var watchId = false;
 
 var musicPointDisabled = L.icon({
     iconUrl: 'images/map-point-disabled.png',
     iconRetinaUrl: 'images/map-point-disabled@2x.png',
     iconSize: [36, 48],
-    iconAnchor: [17.90, 48]
+    iconAnchor: [18, 48]
 });
 
 var musicPointEnabled = L.icon({
     iconUrl: 'images/map-point-enabled.png',
     iconRetinaUrl: 'images/map-point-enabled@2x.png',
     iconSize: [36, 48],
-    iconAnchor: [17.90, 48]
+    iconAnchor: [18, 48]
 });
 
 var musicPointSolved = L.icon({
     iconUrl: 'images/map-point-solved.png',
     iconRetinaUrl: 'images/map-point-solved@2x.png',
     iconSize: [36, 48],
-    iconAnchor: [17.90, 48]
+    iconAnchor: [18, 48]
 });
 
 var userIcon = L.icon({
     iconUrl: 'images/map-user.png',
     iconRetinaUrl: 'images/map-user@2x.png',
     iconSize: [84, 65],
-    iconAnchor: [40, 63]
+    iconAnchor: [39.93, 62]
 });
 
 
-function createMap () {
+function createMap () 
+{
     var mapAttribution = 'Map Data &copy;<a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> and Contributors';
     
     centerPoint = appConf.start_position[1];
@@ -65,68 +69,98 @@ function createMap () {
     
     //TODO: criar limites
     
-    setBtnLocationStatus();
+    userMarker = L.marker(L.latLng(0, 0),{ icon: userIcon });
+    userCircleMarker = L.circleMarker(L.latLng(0, 0), {
+        stroke: true, color: '#b35731', weigth: 2, opacity: 0.5,
+        fill: true, fillColor: '#dbaf9c', fillOpacity: 0.5
+    });
+    userCircleMarker.setRadius(20);
+    userMarkerLayer.addLayer(userCircleMarker);
+    userMarkerLayer.addLayer(userMarker);
     
-    setMapMarkers();
-    
-    verifyProgress();
+    map.addLayer(mapMarkers);
 }
 
 /**
+ * @TODO verificar se a geolocalização está ativada
  * Handler to #btn-location
  * @returns {undefined}
  */
 function btnLocationHandler() 
 {
-    if (userMaker !== false) {
-        map.removeLayer(userMaker);
-        userMaker = false;
-        setBtnLocationStatus();
+    if (watchId !== false) {
+        unfollowUserPosition();
+        setBtnLocationStatus(false);
     } else {
+        setBtnLocationStatus(true);
         followUserPosition();
     }
+    
+    clearMap();
+    setMapMarkers();
 }
 
+/**
+ * 
+ * @param {integer} lat
+ * @param {integer} lng
+ * @returns {undefined}
+ */
 function setCenterToLocation (lat, lng) 
 {
-    var pos = L.latLng(lat, lng);
-   
-    map.panTo(pos);
+    map.panTo( L.latLng(lat, lng) );
 }
 
-function updateUserMarkerPosition (lat, lng) {
+function updateUserMarkerPosition (lat, lng) 
+{
     var pos = L.latLng(lat, lng);
-    
-    if (userMaker) {
-        userMaker.setLatLng(pos);
-    } else {
-        userMaker = L.marker(pos,{
-            icon: userIcon
-        }).addTo(map);
-    }
+    userMarker.setLatLng( pos );
+    userCircleMarker.setLatLng( pos );
 }
 
-
-function setUserPosition (position) {
+/**
+ * 
+ * @param {type} position
+ * @returns {undefined}
+ */
+function setUserPosition (position) 
+{
     updateUserMarkerPosition(position.coords.latitude, position.coords.longitude);
     setCenterToLocation(position.coords.latitude, position.coords.longitude);
+    verifyUserAtPuzzlePosition(position.coords.latitude, position.coords.longitude)
 }
 
-function followUserPosition () {
-    return navigator.geolocation.watchPosition(
-            geolocationSuccess, geolocationError,
+function followUserPosition () 
+{
+    map.addLayer(userMarkerLayer);
+    
+    watchId = navigator.geolocation.watchPosition(
+            setUserPosition, geolocationError,
     {
         enableHighAccuracy: true,
-        timeout: 3000,
-        maximumAge: 1000
+        timeout: 1000,
+        maximumAge: 5000
     });
 }
 
-function setBtnLocationStatus () {
-    if (userMaker === false) {
-        $('#btn-location').addClass('btn-location-disabled');
-    } else {
+function unfollowUserPosition ()
+{
+    var pos = L.latLng(0, 0);
+    userMarker.setLatLng( pos );
+    userCircleMarker.setLatLng( pos );
+    
+    navigator.geolocation.clearWatch(watchId);
+    watchId = false;
+    
+    map.removeLayer(userMarkerLayer);
+}
+
+function setBtnLocationStatus (status) 
+{
+    if (status) {
         $('#btn-location').removeClass('btn-location-disabled');
+    } else {
+        $('#btn-location').addClass('btn-location-disabled');
     }
 }
 
@@ -144,45 +178,110 @@ function geolocationError (error)
  * 
  * @returns {undefined}
  */
-function setMapMarkers () {
-    clearMap();
-    
-    $.each(appConf.puzzle_data, addPuzzkeMaker);
-    
-    map.addLayer(mapMarkers);
-}
-
-function addPuzzkeMaker (key, puzzle) {
-    var pointIcon = isPuzzleEnabled(puzzle) ? musicPointEnabled : musicPointDisabled;
-    
-    for (i=0; i < puzzle.coordinates.length; i ++) {
-        var point = puzzle.coordinates[i];
+function setMapMarkers () 
+{
+    $.each(appConf.puzzle_data, function (key, puzzle)
+    {
+        if (puzzle.row == 10) return true;
         
-        mapMarkers.addLayer(
-            L.marker(L.latLng(point.lat, point.lng),{
-                icon: pointIcon,
-                title: point.place
-            })
-        );
-    }
+        var markerOptions = {
+            icon: musicPointDisabled,
+            clickable: false
+        };
+        
+        if (isPuzzleSolved(puzzle)) {
+            markerOptions = {
+                icon: musicPointSolved,
+                clickable: false
+            }
+        } else if (isPuzzleEnabled(puzzle)) {
+            markerOptions = {
+                icon: musicPointEnabled,
+                clickable: true
+            }
+        }
+
+        for (j=0; j < puzzle.coordinates.length; j ++) {
+            var point = L.latLng(puzzle.coordinates[j].lat,puzzle.coordinates[j].lng);
+            var marker = L.marker(point,markerOptions);
+            
+            if (isPuzzleEnabled(puzzle)) {
+                enablePuzzleRow(puzzle);
+                
+                preparePuzzlePage(puzzle);
+                
+                marker.on("click", function (evt) {
+                    $( ":mobile-pagecontainer" ).pagecontainer( "change", "#puzzle-page", { transition: "flip" } );
+                });
+            }
+            
+            mapPuzzlesPoints.push({
+                row: puzzle.row,
+                place: puzzle.coordinates[j].place,
+                lat: puzzle.coordinates[j].lat,
+                lng: puzzle.coordinates[j].lng,
+                marker: marker
+            });
+
+            mapMarkers.addLayer(marker);
+        }
+    });
 }
 
-function verifyUserAtPuzzlePosition () {
+
+/**
+ * 
+ * @param {integer} lat
+ * @param {integer} lng
+ * @returns {undefined}
+ */
+function verifyUserAtPuzzlePosition (lat, lng) 
+{
+    var userPoint = L.latLng(lat, lng);
+    var distance = 1000000000;
+    
+    for (var i=0; i < mapPuzzlesPoints.length; i++) {
+        var puzzlePoint = mapPuzzlesPoints[i];
+        var puzzleLatLng = L.latLng(mapPuzzlesPoints[i].lat, mapPuzzlesPoints[i].lng);
+        
+        //@TODO se row já foi selecionada pular o loop.
+        if(isPuzzleSolved(puzzlePoint)) {
+            continue;
+        }
+        
+        distance = Math.min(distance, userPoint.distanceTo(puzzleLatLng));
+        
+        if(userPoint.distanceTo(puzzleLatLng) < 5.0) {
+            
+            enablePuzzle(puzzlePoint);
+            
+            btnLocationHandler();
+                        
+            return;
+        } else {
+            enablePuzzle(false);
+        }
+    }
+    
     //Se estiver na mesma posicao do puzzle (raio de 2m)
     //Gravar puzzle como habilitado
     //habilitar botão e linha para ir ao puzzle
+    
 }
 
-function clearMap () {
-    map.removeLayer(userMaker);
-    userMaker = false;
-    
-    map.removeLayer(mapMarkers);
+function clearMap () 
+{
+    mapMarkers.clearLayers();
+    mapPuzzlesPoints = [];
 }
 
-function getDistance (point1, point2) {
-    dist_lat = point1.lat - point2.lat;
-    dist_lng = point1.lng - point2.lng;
-    
-    return Math.sqrt(dist_lat * dist_lat + dist_lng * dist_lng );
+/**
+ * 
+ * @param {object} puzzle
+ * @returns {undefined}
+ */
+function changeMarkerIcon (puzzle) {
+    for (var i=0; i < mapPuzzlesPoints.length; i++) {
+        puzzlePoint = mapPuzzlesPoints[i];
+    }
 }

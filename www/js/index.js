@@ -19,9 +19,15 @@
 if (typeof cordova === 'undefined') {
     $(function ()
     {
+        getPuzzlesFromCache();
+        
         createMap();
     
         setUiEvents();
+        
+        setMapMarkers();
+        
+        verifyProgress();
     });
 } else {
     document.addEventListener("deviceready", onDeviceReady, false);
@@ -32,10 +38,16 @@ if (typeof cordova === 'undefined') {
 function onDeviceReady () {
     document.addEventListener("online", onOnline, false);
     document.addEventListener("resume", onResume, false);
+    
+    getPuzzlesFromCache();
 
     createMap();
     
     setUiEvents();
+    
+    setMapMarkers();
+    
+    verifyProgress();
 }
 
 function onOnline () {

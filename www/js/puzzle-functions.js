@@ -16,14 +16,33 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-var solved_puzzles = [];
+var solvedPuzzles = [];
+
+var enabledPuzzle = -1;
+
+var enabledPuzzleData = false;
 
 function verifyProgress () {    
     enableSovedRows();
     
-    setScorePage(solved_puzzles.length);
-    
-    preparePuzzlePage( getPuzzleData() );
+    setScorePage(solvedPuzzles.length);
+}
+
+function handlePuzzle () {
+    switch (enabledPuzzleData) {
+        case 'showPageHandler':
+            showPageHandler();
+            break;
+        case 'touchRhythmHandler':
+            touchRhythmHandler();
+            break;
+        case 'btnAcocharHandler':
+            btnAcocharHandler();
+            break;
+        case 'showMusicSheetHandler':
+            showMusicSheetHandler();
+            break;
+    }
 }
 
 function showPageHandler () {
@@ -48,39 +67,62 @@ function showMusicSheetHandler () {
  * @returns {undefined}
  */
 function addSolvedPuzzle (puzzle) {
-    if (solved_puzzles.indexOf(puzzle) < 0) {
-        solved_puzzles.push(puzzle);
-        solved_puzzles.sort();
-        window.localStorage.setItem('solved_puzzles', JSON.stringify(solved_puzzles));
+    if (solvedPuzzles.indexOf(puzzle) < 0) {
+        solvedPuzzles.push(puzzle);
+        solvedPuzzles.sort();
+        window.localStorage.setItem('solvedPuzzles', JSON.stringify(solvedPuzzles));
     }
 }
 
 /**
  * 
- * @returns {Array|solved_puzzles}
+ * @returns {Array|solvedPuzzles}
  */
-function getSolvedPuzzlesFromCache () {
-    var puzzles = window.localStorage.getItem('solved_puzzles');
-    solved_puzzles = [];
+function getPuzzlesFromCache () {
+    var puzzles = window.localStorage.getItem('solvedPuzzles');
+    var enabled = window.localStorage.getItem('enabledPuzzle');
+    
+    enabledPuzzle = enabled ? parseInt(enabled): -1;
+    
+    solvedPuzzles = [4,6];
     
     if (puzzles) {
         puzzles = JSON.parse(puzzles);
         
         for (i=0; i<puzzles.length; i++) {
-            solved_puzzles.push(parseInt(puzzles[i]));
+            solvedPuzzles.push(parseInt(puzzles[i]));
         }
     }
     
-    return solved_puzzles;
+    return solvedPuzzles;
 }
 
 /**
  * 
- * @param {integer} puzzle_row
+ * @param {object} puzzle
+ * @returns {undefined}
+ */
+function enablePuzzle (puzzle) {
+    enabledPuzzleData = puzzle;
+    enabledPuzzle = puzzle === false ? -1 : puzzle.row;
+}
+
+/**
+ * 
+ * @param {object} puzzle_row
  * @returns {Boolean}
  */
-function isPuzzleEnabled (puzzle_row) {
-    return solved_puzzles.indexOf(puzzle_row) > -1;
+function isPuzzleEnabled (puzzle) {
+    return enabledPuzzle == puzzle.row;
+}
+
+/**
+ * 
+ * @param {object} puzzle_row
+ * @returns {Boolean}
+ */
+function isPuzzleSolved (puzzle) {
+    return solvedPuzzles.indexOf(puzzle.row) > -1;
 }
 
 /**
@@ -93,7 +135,7 @@ function getLastPuzzle () {
 }
 
 function getPuzzleData () {
-    return appConf.puzzle_data[getLastPuzzle()];
+    return appConf.puzzle_data[enabledPuzzle];
 }
 
 function preparePuzzlePage (puzzle_data) {
