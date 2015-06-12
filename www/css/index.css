@@ -39,6 +39,25 @@ p {
     text-align: justify;
 }
 
+.ui-body{
+    border-radius: 5px;     
+}
+
+.ui-body p{
+    text-align: center !important;
+    color: #846F57 !important;
+}
+
+.ui-body a{
+    text-align: center !important;
+    color: #846F57 !important;
+    text-decoration: none; 
+    background-color: #ccc; 
+    padding: 10px; 
+    border-radius: 5px; 
+    margin: 5px !important;
+}
+
 p a { color: #846F57 !important }
 
 .ui-navbar a.ui-btn {
