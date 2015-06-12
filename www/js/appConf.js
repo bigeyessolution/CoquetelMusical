@@ -99,7 +99,7 @@ appConf = {
             music_name: "Pra se aninhar",
             music_author: "Targino Gondim",
             music_player: "Targino Gondim",
-            puzzle_handler: "showMusicSheetHandler",
+            puzzle_handler: "showPageHandler",
             text: "",
             solved_text: "",
             success_message: "Eita pé de valsa aprumado!!! Na próxima num tem xote nem baião, vamo vê se tu desenrola?",
@@ -155,8 +155,8 @@ appConf = {
             solved_text: "Caatinga (do tupi: ka'a [mata] + tinga [branca] = mata branca) é o único bioma exclusivamente brasileiro, o que significa que grande parte do seu patrimônio biológico não pode ser encontrado em nenhum outro lugar do planeta. Este nome decorre da paisagem esbranquiçada apresentada pela vegetação durante o período seco: a maioria das plantas perde as folhas e os troncos tornam-se esbranquiçados e secos. A caatinga ocupa uma área de cerca de 850.000 km², cerca de 10% do território nacional, englobando de forma contínua parte dos estados da Paraíba, Piauí, Ceará, Rio Grande do Norte, Maranhão, Pernambuco, Alagoas, Sergipe, Bahia (região Nordeste do Brasil) e parte do norte de Minas Gerais (região Sudeste do Brasil).",
             success_message: "Eita bicho do quengo duro! Ai se te pego na próxima!",
             facebook_message: "Cabra bom!!!! Ta ficando melhor...",
-            image: "",
-            solved_image: ""
+            image: "puzzle.7.caantinga.jpg",
+            solved_image: "puzzle.7.caantinga.jpg"
         },
         {
             row: 8,
@@ -173,7 +173,7 @@ appConf = {
             success_message: "Vôôôte!!! Num é que tu é bom mesmo. Faz a próxima pra mostrar que sabe!",
             facebook_message: "Cabra bom!!!! Ta ficando melhor...",
             image: "puzzle.8.maraca.jpg",
-            solved_image: ""
+            solved_image: "puzzle.8.maraca.jpg"
         },
         {
             row: 9,

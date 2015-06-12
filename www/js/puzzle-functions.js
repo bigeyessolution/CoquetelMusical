@@ -60,6 +60,9 @@ function handlePuzzle () {
         case 'showMusicSheetHandler':
             showMusicSheetHandler();
             break;
+        case 'shakeToPlayHandler':
+            shakeToPlayHandler();
+            break;
     }
 }
 
@@ -138,12 +141,13 @@ function btnAcocharHandler () {
     var imgSize = parseInt( $("#img-puzzle-man").css("width").replace("px","") );
     var negativeMargin = parseInt( $("#img-puzzle-man").css("margin-right").replace("px","") );
 
-    maxMargin = (divSize/2) - imgSize - negativeMargin - 10;
+    maxMargin = (divSize - imgSize - 10)/2;
     
     $("#btn-puzzle-action").on("click", function (){
-        _margin = _margin + 5;
         
         if(_margin < maxMargin) {
+            _margin = _margin + 5;
+            
             $("#img-puzzle-man").css("margin-left", _margin + "px");
             $("#img-puzzle-woman").css("margin-right", _margin + "px");
         }
@@ -175,9 +179,64 @@ function showMusicSheetHandler () {
     navigator.notification.alert("Função de Handler não definida");
 }
 
+var devMotionWatchId = false;
+var previousAcceleration = false;
 function shakeToPlayHandler () {
+    previousAcceleration = { x: null, y: null, z: null };
     
+    _mediaStatus = Media.MEDIA_PAUSED;
+    
+    mediaPuzzle = new Media ($("#puzzle-audio source").attr("src"),
+        function () {}, function () {}, function (status) {
+            if( status==Media.MEDIA_STOPPED && enabledPuzzle > -1 ) {
+                mediaPuzzle.play();
+            }
+        }
+    );
+    
+    _timer = 0;    
+    
+    devMotionWatchId = navigator.accelerometer.watchAcceleration(
+    function (acceleration) {
+        var accelerationChange = {};
+        if (previousAcceleration.x !== null) {
+            accelerationChange.x = Math.abs(previousAcceleration.x - acceleration.x);
+            accelerationChange.y = Math.abs(previousAcceleration.y - acceleration.y);
+            accelerationChange.z = Math.abs(previousAcceleration.z - acceleration.z);
+        }
+
+        previousAcceleration = {
+            x: acceleration.x,
+            y: acceleration.y,
+            z: acceleration.z
+        };
+
+        if (accelerationChange.x + accelerationChange.y + accelerationChange.z > 5) {
+            _timer = _timer < 5 ? _timer + 1: _timer;
+        } else if(_timer > 0) {
+            _timer --;
+            
+            if(_mediaStatus == Media.MEDIA_PAUSED) {
+                mediaPuzzle.play();
+                _mediaStatus = Media.MEDIA_RUNNING;
+            }
+        } else {
+            mediaPuzzle.pause();
+            _mediaStatus = Media.MEDIA_PAUSED;
+        }
+        
+        mediaPuzzle.getCurrentPosition(function(position) {
+            if( position > mediaPuzzle.getDuration()-1 ) {
+                mediaPuzzle.pause();
+                _mediaStatus = Media.MEDIA_PAUSED;
+                mediaPuzzle.seekTo(0);
+            }
+        });
+        
+    },
+    function (error) {}, { frequency: 1000 });
 }
+
 
 /**
  * 
@@ -202,7 +261,7 @@ function addSolvedPuzzle (puzzle) {
  */
 function getPuzzlesFromCache () {
     var puzzles = window.localStorage.getItem('solvedPuzzles');
-    var enabled = "3";//window.localStorage.getItem('enabledPuzzle');
+    var enabled = "8";//window.localStorage.getItem('enabledPuzzle');
     
     enabledPuzzle = enabled ? parseInt(enabled): -1;
     
@@ -269,6 +328,16 @@ function answerVerifier () {
     if (getPuzzleData().word.toLowerCase().trim() === $("#puzzle-answer").val().toLowerCase().trim()) {
         if(intervalId !== false) {
             clearInterval(intervalId);
+        }
+        
+        if(devMotionWatchId !== false) {
+            navigator.accelerometer.clearWatch(devMotionWatchId);
+            
+            devMotionWatchId = false;
+        }
+        
+        if(previousAcceleration !== false) {
+            previousAcceleration = false;
         }
         
         addSolvedPuzzle(getPuzzleData());
