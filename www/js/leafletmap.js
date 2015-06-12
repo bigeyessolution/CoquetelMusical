@@ -265,7 +265,7 @@ function verifyUserAtPuzzlePosition (lat, lng)
         
         distance = Math.min(distance, userPoint.distanceTo(puzzleLatLng));
         
-        if(userPoint.distanceTo(puzzleLatLng) < 10.0) { //@TODO change radius
+        if(userPoint.distanceTo(puzzleLatLng) < 3.0) { //@TODO change radius
             enablePuzzle(puzzlePoint);
             showPuzzleEnabledMessage = true;
             btnLocationHandler();
