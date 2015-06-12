@@ -85,10 +85,10 @@ appConf = {
             solved_text: "a.co.char/verbo.  O verbo acochar significa apertar muito forte alguma coisa ou alguém. (fonte: lexiss.uneb.br)",
             success_message: "Vôte que tu tá é disposto!! Vamos como se sai mas adiante.",
             facebook_message: "Arretado!!! Essa foi difícil, mas você se armô!",
-            image: "puzzle.3.casal.jpg",
-            image_1: "puzzle.3.mulher.jpg",
-            image_2: "puzzle.3.homem.jpg",
-            solved_image: "puzzle.3.casal.jpg"
+            image: "",
+            image_1: "puzzle.3.man.png",
+            image_2: "puzzle.3.woman.png",
+            solved_image: "puzzle.3.both.png"
         },
         {
             row: 4,
@@ -104,7 +104,8 @@ appConf = {
             solved_text: "",
             success_message: "Eita pé de valsa aprumado!!! Na próxima num tem xote nem baião, vamo vê se tu desenrola?",
             facebook_message: "Arretado!!! Essa foi difícil, mas você se armô!",
-            image: "puzzle.4.partitura.jpg",
+            image: "puzzle.4.partitura.png",
+            image_1: "puzzle.4.tablatura.png",
             solved_image: "puzzle.4.solved.sanfona.jpg"
         },
         {

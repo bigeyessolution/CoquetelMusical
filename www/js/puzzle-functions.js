@@ -132,8 +132,8 @@ function btnAcocharHandler () {
     $(".be-puzzle-image").addClass("be-invisible");
     
     $("#img-puzzle-action").removeClass("be-invisible");
-    $('<img id="img-puzzle-man" src="data/images/puzzle.2.man.png">').appendTo("#img-puzzle-action");
-    $('<img id="img-puzzle-woman" src="data/images/puzzle.2.woman.png">').appendTo("#img-puzzle-action");
+    $('<img id="img-puzzle-man" src="data/images/' + getPuzzleData().image_1 + '">').appendTo("#img-puzzle-action");
+    $('<img id="img-puzzle-woman" src="data/images/' + getPuzzleData().image_1 + '">').appendTo("#img-puzzle-action");
     
     $("#btn-puzzle-action").removeClass("be-invisible");
     
@@ -345,6 +345,9 @@ function answerVerifier () {
         setMapMarkers();
         verifyProgress();
         $( ":mobile-pagecontainer" ).pagecontainer( "change", "#puzzle-solved-page", { transition: "flip" } );
+        
+        $("#puzzle-answer").val("");
+        $("#btn-answer").attr("disabled", true );
     } else {
         navigator.notification.alert("Se aveche não que num foi desta vez! Vamos tentar denovo?", 
         function () {
