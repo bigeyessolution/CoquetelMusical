@@ -199,17 +199,19 @@ function setMapMarkers ()
             clickable: false
         };
         
-        if (isPuzzleSolved(puzzle)) {
-            markerOptions = {
-                icon: musicPointSolved,
-                clickable: false
-            }
-        } else if (isPuzzleEnabled(puzzle)) {
+        if (isPuzzleEnabled(puzzle)) {
             markerOptions = {
                 icon: musicPointEnabled,
                 clickable: true
             }
         }
+        
+        if (isPuzzleSolved(puzzle)) {
+            markerOptions = {
+                icon: musicPointSolved,
+                clickable: false
+            }
+        } 
 
         for (j=0; j < puzzle.coordinates.length; j ++) {
             var point = L.latLng(puzzle.coordinates[j].lat,puzzle.coordinates[j].lng);

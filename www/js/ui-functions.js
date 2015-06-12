@@ -38,7 +38,7 @@ function enablePuzzleRow (puzzle) {
     $("#puzzles-table #row-" + puzzle.row).addClass("enabled");
     
     $("#puzzles-table").click(function () {
-        if (enabledPuzzle >  -1 && enabledPuzzle < 10) {
+        if (enabledPuzzle >  -1) {
             $( ":mobile-pagecontainer" ).pagecontainer( "change", "#puzzle-page", { } );
         }
     });
@@ -74,7 +74,7 @@ function setUiEvents () {
         switch(prevPage) {
             case 'puzzle-page':
                 if(mediaPuzzle) {
-                    mediaPuzzle.stop();
+                    mediaPuzzle.pause();
                     mediaPuzzle.release();
                     mediaPuzzle = false;
                 }
@@ -82,7 +82,7 @@ function setUiEvents () {
                 break;
             case 'puzzle-solved-page':
                 if(mediaSolvedPuzzle) {
-                    mediaSolvedPuzzle.stop();
+                    mediaSolvedPuzzle.pause();
                     mediaSolvedPuzzle.release();
                     mediaSolvedPuzzle = false;
                 }
@@ -92,7 +92,7 @@ function setUiEvents () {
         
         switch(toPage) {
             case 'puzzle-page':
-                if (enabledPuzzle > -1 && enabledPuzzle <  10) {
+                if (enabledPuzzle > -1) {
                     handlePuzzle();
                 } else {
                     $( ":mobile-pagecontainer" ).pagecontainer( "change", "#location-page", { } );

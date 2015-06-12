@@ -21,6 +21,7 @@ var enabledPuzzle = -1;
 var enabledPuzzleData = false;
 var mediaPuzzle = false;
 var mediaSolvedPuzzle = false;
+var intervalId = false;
 
 /**
  * 
@@ -41,6 +42,11 @@ function verifyProgress () {
  * @returns {undefined}
  */
 function handlePuzzle () {
+    $("#btn-puzzle-action").addClass("be-invisible");
+    $("#img-puzzle-action").addClass("be-invisible");
+    
+    $(".be-puzzle-image").removeClass("be-invisible");
+    
     switch (getPuzzleData().puzzle_handler) {
         case 'showPageHandler':
             showPageHandler();
@@ -67,20 +73,110 @@ function handleSolvedPuzzle () {
 }
 
 function showPageHandler () {
-    mediaPuzzle = new Media ($("#puzzle-audio source").attr("src"));
+    mediaPuzzle = new Media ($("#puzzle-audio source").attr("src"),
+        function () {}, function () {}, function (status) {
+            if( status==Media.MEDIA_STOPPED && enabledPuzzle > -1 ) {
+                mediaPuzzle.play();
+            }
+        }
+    );
+    
     mediaPuzzle.play(); //    document.getElementById("puzzle-audio").play();
 }
 
+var _timer = 0;
+var _mediaStatus = 0;
+
 function touchRhythmHandler () {
-    navigator.notification.alert("Função de Handler não definida");
+    $("#btn-puzzle-action").removeClass("be-invisible");
+    $("#btn-puzzle-action").on("click", function () {
+        _timer = _timer < 3 ? _timer + 1 : _timer;
+    });
+    
+    mediaPuzzle = new Media ($("#puzzle-audio source").attr("src"));
+    //mediaPuzzle.play(); //    document.getElementById("puzzle-audio").play();
+    
+    _timer = 0;
+    
+    intervalId = setInterval(
+    function () {
+        if (_timer > 0) {
+            _timer --;
+            
+            if(_mediaStatus == Media.MEDIA_PAUSED) {
+                mediaPuzzle.play();
+                _mediaStatus = Media.MEDIA_RUNNING;
+            }
+        } else {
+            mediaPuzzle.pause();
+            _mediaStatus = Media.MEDIA_PAUSED;
+        }
+        
+        mediaPuzzle.getCurrentPosition(function(position) {
+            if( position > mediaPuzzle.getDuration()-1 ) {
+                mediaPuzzle.pause();
+                _mediaStatus = Media.MEDIA_PAUSED;
+                mediaPuzzle.seekTo(0);
+            }
+        }); 
+    }, 1000);
 }
 
+var _margin = 0;
+var _maxMargin = 0;
+
 function btnAcocharHandler () {
-    navigator.notification.alert("Função de Handler não definida");
+    $(".be-puzzle-image").addClass("be-invisible");
+    
+    $("#img-puzzle-action").removeClass("be-invisible");
+    $('<img id="img-puzzle-man" src="data/images/puzzle.2.man.png">').appendTo("#img-puzzle-action");
+    $('<img id="img-puzzle-woman" src="data/images/puzzle.2.woman.png">').appendTo("#img-puzzle-action");
+    
+    $("#btn-puzzle-action").removeClass("be-invisible");
+    
+    var divSize = parseInt( $("#img-puzzle-action").css("width").replace("px","") );
+    var imgSize = parseInt( $("#img-puzzle-man").css("width").replace("px","") );
+    var negativeMargin = parseInt( $("#img-puzzle-man").css("margin-right").replace("px","") );
+
+    maxMargin = (divSize/2) - imgSize - negativeMargin - 10;
+    
+    $("#btn-puzzle-action").on("click", function (){
+        _margin = _margin + 5;
+        
+        if(_margin < maxMargin) {
+            $("#img-puzzle-man").css("margin-left", _margin + "px");
+            $("#img-puzzle-woman").css("margin-right", _margin + "px");
+        }
+        
+    });
+    
+    intervalId = setInterval(
+    function () {
+        _margin = _margin - 5;
+        
+        if (_margin > 0) {
+            $("#img-puzzle-man").css("margin-left", _margin + "px");
+            $("#img-puzzle-woman").css("margin-right", _margin + "px");
+        }
+    }, 2000);
+    
+    mediaPuzzle = new Media ($("#puzzle-audio source").attr("src"),
+        function () {}, function () {}, function (status) {
+            if( status==Media.MEDIA_STOPPED && enabledPuzzle > -1 ) {
+                mediaPuzzle.play();
+            }
+        }
+    );
+    
+    mediaPuzzle.play();
 }
 
 function showMusicSheetHandler () {
     navigator.notification.alert("Função de Handler não definida");
+}
+
+function shakeToPlayHandler () {
+    
 }
 
 /**
@@ -106,7 +202,7 @@ function addSolvedPuzzle (puzzle) {
  */
 function getPuzzlesFromCache () {
     var puzzles = window.localStorage.getItem('solvedPuzzles');
-    var enabled = window.localStorage.getItem('enabledPuzzle');
+    var enabled = "3";//window.localStorage.getItem('enabledPuzzle');
     
     enabledPuzzle = enabled ? parseInt(enabled): -1;
     
@@ -140,7 +236,7 @@ function enablePuzzle (puzzle) {
  * @returns {Boolean}
  */
 function isPuzzleEnabled (puzzle) {
-    return (enabledPuzzle == puzzle.row) && ! isPuzzleSolved(puzzle);
+    return (enabledPuzzle == puzzle.row);
 }
 
 /**
@@ -171,6 +267,10 @@ function getPuzzleData () {
 
 function answerVerifier () {
     if (getPuzzleData().word.toLowerCase().trim() === $("#puzzle-answer").val().toLowerCase().trim()) {
+        if(intervalId !== false) {
+            clearInterval(intervalId);
+        }
+        
         addSolvedPuzzle(getPuzzleData());
         clearMap();
         setMapMarkers();
@@ -179,8 +279,8 @@ function answerVerifier () {
     } else {
         navigator.notification.alert("Se aveche não que num foi desta vez! Vamos tentar denovo?", 
         function () {
-            mediaPuzzle.stop();
-            mediaPuzzle.play(); 
+//            mediaPuzzle.stop();
+//            mediaPuzzle.play(); 
         }, "Não foi desta vez", "Simbora!");
     }
 }

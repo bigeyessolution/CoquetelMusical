@@ -56,6 +56,8 @@ p a { color: #846F57 !important }
     margin-bottom: 5rem!important;
 }
 
+.be-invisible { visibility: hidden; width: 0 !important; height: 0 !important; }
+
 .be-vertical-center {
     position: absolute;
     top: 50%;
@@ -104,6 +106,39 @@ p a { color: #846F57 !important }
 .btn-location-disabled {
     background-image: url("../images/btn-my-location-off.png") !important;
 }
+
+#btn-puzzle-action {
+    width: 5em;
+    height: 3.3em;
+    padding-top: 1.7em;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    background-color: #dbaf9c;
+    border: #b35731 0.5em solid;
+    
+    box-shadow: 0.05em 0.05em 0.3em #000000;
+    
+    border-radius: 3em;
+}
+
+#btn-puzzle-action:active {
+    box-shadow: none;
+}
+
+#img-puzzle-action {
+    width: 100%;
+    height: 9em;
+}
+
+#img-puzzle-man, #img-puzzle-woman {
+    width: auto;
+    height: 100%;
+    break-after: avoid;
+}
+
+#img-puzzle-man { z-index: 2; float: left; margin-right: -2em; }
+#img-puzzle-woman { z-index: 1; float: right; margin-left: -2em; }
 
 #puzzles-table {
     border: none;
