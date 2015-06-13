@@ -282,7 +282,7 @@ function addSolvedPuzzle (puzzle) {
  */
 function getPuzzlesFromCache () {
     var puzzles = window.localStorage.getItem('solvedPuzzles');
-    var enabled = window.localStorage.getItem('enabledPuzzle');
+    var enabled = "0";//window.localStorage.getItem('enabledPuzzle');
     
     enabledPuzzle = enabled ? parseInt(enabled): -1;
     
@@ -347,20 +347,6 @@ function getPuzzleData () {
 
 function answerVerifier () {
     if (getPuzzleData().word.toLowerCase().trim() === $("#puzzle-answer").val().toLowerCase().trim()) {
-        if(intervalId !== false) {
-            clearInterval(intervalId);
-        }
-        
-        if(devMotionWatchId !== false) {
-            navigator.accelerometer.clearWatch(devMotionWatchId);
-            
-            devMotionWatchId = false;
-        }
-        
-        if(previousAcceleration !== false) {
-            previousAcceleration = false;
-        }
-        
         addSolvedPuzzle(getPuzzleData());
         clearMap();
         setMapMarkers();
@@ -372,8 +358,6 @@ function answerVerifier () {
     } else {
         navigator.notification.alert("Se aveche não que num foi desta vez! Vamos tentar denovo?", 
         function () {
-//            mediaPuzzle.stop();
-//            mediaPuzzle.play(); 
         }, "Não foi desta vez", "Simbora!");
     }
 }

@@ -74,7 +74,7 @@ appConf = {
         {
             row: 3,
             word: "acochar",
-            coordinates: [ { place: "Praça de Eventos", lat: -9.393916666666666, lng: 40.5458 }, { place: "Sobradinho 4", lat: -9.47186, lng: -40.80118 } ],
+            coordinates: [ { place: "Praça de Eventos", lat: -9.393916666666666, lng: -40.5458 }, { place: "Sobradinho 4", lat: -9.47186, lng: -40.80118 } ],
             music: "puzzle.3.todo_mundo_quer_dancar_baiao.mp3",
             music_solved: "puzzle.3.todo_mundo_quer_dancar_baiao.mp3",
             music_name: "Todo mundo quer dançar baião",

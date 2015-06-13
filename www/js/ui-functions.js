@@ -51,7 +51,7 @@ function enablePuzzleRow (puzzle) {
  */
 function setScorePage (puzzle) {
     $("#img-score").attr("src", "./data/images/score." + solvedPuzzles.length + ".png");
-    $(".facebook_message").html(puzzle.facebook_message);
+    $("#facebook_message").html(appConf.puzzle_data[puzzle].facebook_message);
 }
 
 function setUiEvents () {
@@ -80,18 +80,21 @@ function setUiEvents () {
             devMotionWatchId = false;
         }
         
-        if(mediaPuzzle) {
-            mediaPuzzle.pause();
-            mediaPuzzle.release();
-            mediaPuzzle = false;
+        switch (prevPage) {
+            case 'puzzle-solved-page':
+                if(mediaSolvedPuzzle) {
+                    mediaSolvedPuzzle.pause();
+                    mediaSolvedPuzzle.release();
+                    mediaSolvedPuzzle = false;
+                }
+            case 'puzzle-page':
+                if(mediaPuzzle) {
+                    mediaPuzzle.pause();
+                    mediaPuzzle.release();
+                    mediaPuzzle = false;
+                }
+                break;
         }
-        
-        if(mediaSolvedPuzzle) {
-            mediaSolvedPuzzle.pause();
-            mediaSolvedPuzzle.release();
-            mediaSolvedPuzzle = false;
-        }
-        
     });
     
     $(":mobile-pagecontainer").on("pagecontainershow", function( event, ui ) {
