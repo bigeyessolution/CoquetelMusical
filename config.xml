@@ -16,10 +16,9 @@
     <preference name="ios-statusbarstyle" value="black-opaque"/>
     <preference name="detect-data-types" value="true"/>
     <preference name="exit-on-suspend" value="false"/>
-    <preference name="BackgroundColor" value="0x846F57ff"/>
+    <preference name="BackgroundColor" value="0x00000000"/>
     <preference name="auto-hide-splash-screen" value="true"/>
     <preference name="android-minSdkVersion" value="15"/>
-    <preference name="android-installLocation" value="auto"/>
     <icon gap:platform="android" gap:qualifier="ldpi" src="res/icon/android/icon-36-ldpi.png"/>
     <icon gap:platform="android" gap:qualifier="mdpi" src="res/icon/android/icon-48-mdpi.png"/>
     <icon gap:platform="android" gap:qualifier="hdpi" src="res/icon/android/icon-72-hdpi.png"/>
@@ -44,29 +43,11 @@
     <gap:splash gap:platform="ios" height="1024" src="res/screen/ios/screen-ipad-portrait.png" width="768"/>
     <gap:splash gap:platform="winphone" src="res/screen/windows-phone/screen.jpg"/>
     <gap:splash src="splash.png"/>
-    <plugin name="org.apache.cordova.device"/>
     <plugin name="org.apache.cordova.device-motion"/>
-    <plugin name="org.apache.cordova.device-orientation"/>
     <plugin name="org.apache.cordova.file"/>
     <plugin name="org.apache.cordova.geolocation"/>
     <plugin name="org.apache.cordova.media"/>
-    <plugin name="org.apache.cordova.network-information"/>
     <plugin name="org.apache.cordova.dialogs"/>
     <plugin name="org.apache.cordova.splashscreen"/>
-    <plugin name="cordova-plugin-whitelist"/>
-    <access origin="http://127.0.0.1/*"/>
     <access origin="*"/>
-    <allow-intent href="http://*/*"/>
-    <allow-intent href="https://*/*"/>
-    <allow-intent href="tel:*"/>
-    <allow-intent href="sms:*"/>
-    <allow-intent href="mailto:*"/>
-    <allow-intent href="geo:*"/>
-    <platform name="android">
-        <allow-intent href="market:*"/>
-    </platform>
-    <platform name="ios">
-        <allow-intent href="itms:*"/>
-        <allow-intent href="itms-apps:*"/>
-    </platform>
 </widget>

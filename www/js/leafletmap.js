@@ -24,6 +24,7 @@ var userCircleMarker = false;
 var userMarkerLayer = new L.FeatureGroup();
 var watchId = false;
 var showPuzzleEnabledMessage = false;
+var map_folder = false;
 
 var musicPointDisabled = L.icon({
     iconUrl: 'images/map-point-disabled.png',
@@ -62,7 +63,7 @@ function createMap ()
     
     map = L.map('map', {zoomControl: false}).setView([centerPoint.lat, centerPoint.lng], 18);
 
-    L.tileLayer('data/map/{z}/{x}/{y}.jpg', {
+    L.tileLayer(map_folder + 'data/map/{z}/{x}/{y}.jpg', {
         attribution: mapAttribution,
         minZoom: 16,
         maxZoom: 18
