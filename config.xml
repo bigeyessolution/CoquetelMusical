@@ -2,7 +2,7 @@
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" id="com.bigeyessolution.CoquetelMudical" version="0.9.0">
     <name>Coquetel Musical</name>
     <description>
-        
+        Este é um jogo locativo que visa explorar espaços da cidade de Petrolina/PE de forma lúdica e imersiva onde jogadores irão responder um jogo de palavras-cruzadas com auxílio de pistas musicais e georreferenciadas.
     </description>
     <author email="laudivan@bigeyessolution.com" href="http://www.bigeyessolution.com">
         Laudivan Freire de Almeida
