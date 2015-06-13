@@ -8,6 +8,7 @@
         Big Eyes Solution Team
     </author>
     <content src="index.html"/>
+    <preference name="permissions" value="none"/>
     <preference name="orientation" value="portrait"/>
     <preference name="fullscreen" value="true"/> 
     <preference name="target-device" value="universal"/>
@@ -15,10 +16,9 @@
     <preference name="prerendered-icon" value="true"/>
     <preference name="ios-statusbarstyle" value="black-opaque"/>
     <preference name="detect-data-types" value="true"/>
-    <preference name="exit-on-suspend" value="false"/>
+    <preference name="exit-on-suspend" value="true"/>
     <preference name="BackgroundColor" value="0x00000000"/>
     <preference name="auto-hide-splash-screen" value="true"/>
-    <preference name="android-minSdkVersion" value="15"/>
     <icon gap:platform="android" gap:qualifier="ldpi" src="res/icon/android/icon-36-ldpi.png"/>
     <icon gap:platform="android" gap:qualifier="mdpi" src="res/icon/android/icon-48-mdpi.png"/>
     <icon gap:platform="android" gap:qualifier="hdpi" src="res/icon/android/icon-72-hdpi.png"/>
@@ -47,7 +47,13 @@
     <plugin name="org.apache.cordova.file"/>
     <plugin name="org.apache.cordova.geolocation"/>
     <plugin name="org.apache.cordova.media"/>
+    <gap:plugin name="org.apache.cordova.network-information" />
     <plugin name="org.apache.cordova.dialogs"/>
     <plugin name="org.apache.cordova.splashscreen"/>
+    <feature name="http://api.phonegap.com/1.0/file"/>
+    <feature name="http://api.phonegap.com/1.0/geolocation"/>
+    <feature name="http://api.phonegap.com/1.0/media"/>
+    <feature name="http://api.phonegap.com/1.0/network"/>
+    <feature name="http://api.phonegap.com/1.0/notification"/>
     <access origin="*"/>
 </widget>
