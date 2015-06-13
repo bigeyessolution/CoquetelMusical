@@ -57,7 +57,7 @@ appConf = {
         {
             row: 2,
             word: "fole",
-            coordinates: [ { place: "CRAS do Céu", lat: 9.394166666666667, lng: -40.54878333333333 }, { place: "Sobradinho 3", lat: 9.47281, lng: -40.80112 } ],
+            coordinates: [ { place: "CRAS do Céu", lat: -9.394166666666667, lng: -40.54878333333333 }, { place: "Sobradinho 3", lat: 9.47281, lng: -40.80112 } ],
             music: "puzzle.2.aurora_e_o_sol.mp3",
             music_solved: "puzzle.2.aurora_e_o_sol.mp3",
             music_name: "Aurora e o Sol",
