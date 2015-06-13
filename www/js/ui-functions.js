@@ -68,27 +68,34 @@ function setUiEvents () {
     setBtnLocationStatus(false);
     
     $(":mobile-pagecontainer").on("pagecontainershow", function( event, ui ) {
-        toPage = ui.toPage.attr("id");
         prevPage = ui.prevPage.attr("id");
         
-        switch(prevPage) {
-            case 'puzzle-page':
-                if(mediaPuzzle) {
-                    mediaPuzzle.pause();
-                    mediaPuzzle.release();
-                    mediaPuzzle = false;
-                }
-                
-                break;
-            case 'puzzle-solved-page':
-                if(mediaSolvedPuzzle) {
-                    mediaSolvedPuzzle.pause();
-                    mediaSolvedPuzzle.release();
-                    mediaSolvedPuzzle = false;
-                }
-//                $("audio").load();
-                break;
+        if ( intervalId !== false ) {
+            clearInterval(intervalId);
+            intervalId = false;
         }
+        
+        if ( devMotionWatchId !== false ) {
+            navigator.accelerometer.clearWatch(devMotionWatchId);
+            devMotionWatchId = false;
+        }
+        
+        if(mediaPuzzle) {
+            mediaPuzzle.pause();
+            mediaPuzzle.release();
+            mediaPuzzle = false;
+        }
+        
+        if(mediaSolvedPuzzle) {
+            mediaSolvedPuzzle.pause();
+            mediaSolvedPuzzle.release();
+            mediaSolvedPuzzle = false;
+        }
+        
+    });
+    
+    $(":mobile-pagecontainer").on("pagecontainershow", function( event, ui ) {
+        toPage = ui.toPage.attr("id");
         
         switch(toPage) {
             case 'puzzle-page':
@@ -120,7 +127,6 @@ function preparePuzzlePage (puzzle) {
     $("#puzzle-answer").attr("maxlength", puzzle.word.length);
     $("#btn-answer").attr("disabled", true);
     $("#puzzle-audio").empty();
-    $('<source src="' + music_folder + puzzle.music + '" type="audio/mpeg">').appendTo("#puzzle-audio");
     
     $("#puzzle-solved-page .be-puzzle-image").attr("src", "data/images/" + puzzle.solved_image);
     $("#puzzle-solved-page .be-puzzle-solved-text").html(puzzle.solved_text);
@@ -128,5 +134,4 @@ function preparePuzzlePage (puzzle) {
     $("#music-author").html(puzzle.music_author);
     $("#music-player").html(puzzle.music_player);
     $("#puzzle-solved-audio").empty();
-    $('<source src="' + music_folder + puzzle.music_solved + '" type="audio/mpeg">').appendTo("#puzzle-solved-audio");
 }

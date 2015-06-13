@@ -254,3 +254,19 @@ p a { color: #846F57 !important }
 .leaflet-control-attribution a:hover {
     color: #000000 !important;
 }
+
+.tablatura {
+    display: block;
+    padding: 0.7em;
+    background: #000000;
+    font-family: monospace;
+    font-size: 0.8rem;
+    line-height: 1rem;
+    border-radius: 1em;
+    box-shadow: 0em 0em 0.8em #000000;
+    margin-bottom: -5em;
+}
+
+.tablatura b {
+    color: #b35731;
+}

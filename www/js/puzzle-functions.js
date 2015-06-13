@@ -23,6 +23,8 @@ var mediaPuzzle = false;
 var mediaSolvedPuzzle = false;
 var intervalId = false;
 
+var music_folder = false;
+
 /**
  * 
  * @returns {undefined}
@@ -46,6 +48,8 @@ function handlePuzzle () {
     $("#img-puzzle-action").addClass("be-invisible");
     
     $(".be-puzzle-image").removeClass("be-invisible");
+    
+    mediaSolvedPuzzle = new Media (music_folder + getPuzzleData().music_solved);
     
     switch (getPuzzleData().puzzle_handler) {
         case 'showPageHandler':
@@ -71,18 +75,27 @@ function handlePuzzle () {
  * @returns {undefined}
  */
 function handleSolvedPuzzle () {
-    mediaSolvedPuzzle = new Media ($("#puzzle-solved-audio source").attr("src"));
     mediaSolvedPuzzle.play();
 }
 
 function showPageHandler () {
-    mediaPuzzle = new Media ($("#puzzle-audio source").attr("src"),
-        function () {}, function () {}, function (status) {
-            if( status==Media.MEDIA_STOPPED && enabledPuzzle > -1 ) {
-                mediaPuzzle.play();
-            }
+    mediaPuzzle = new Media (music_folder + getPuzzleData().music);
+    
+    intervalId = setInterval(
+    function () {
+        if(_mediaStatus == Media.MEDIA_PAUSED) {
+            mediaPuzzle.play();
+            _mediaStatus = Media.MEDIA_RUNNING;
         }
-    );
+        
+        mediaPuzzle.getCurrentPosition(function(position) {
+            if( position > mediaPuzzle.getDuration() - 1 ) {
+                mediaPuzzle.pause();
+                _mediaStatus = Media.MEDIA_PAUSED;
+                mediaPuzzle.seekTo(0);
+            }
+        }); 
+    }, 100);
     
     mediaPuzzle.play(); //    document.getElementById("puzzle-audio").play();
 }
@@ -96,7 +109,7 @@ function touchRhythmHandler () {
         _timer = _timer < 3 ? _timer + 1 : _timer;
     });
     
-    mediaPuzzle = new Media ($("#puzzle-audio source").attr("src"));
+    mediaPuzzle = new Media (music_folder + getPuzzleData().music);
     //mediaPuzzle.play(); //    document.getElementById("puzzle-audio").play();
     
     _timer = 0;
@@ -116,7 +129,7 @@ function touchRhythmHandler () {
         }
         
         mediaPuzzle.getCurrentPosition(function(position) {
-            if( position > mediaPuzzle.getDuration()-1 ) {
+            if( position > mediaPuzzle.getDuration() - 1 ) {
                 mediaPuzzle.pause();
                 _mediaStatus = Media.MEDIA_PAUSED;
                 mediaPuzzle.seekTo(0);
@@ -154,6 +167,8 @@ function btnAcocharHandler () {
         
     });
     
+    mediaPuzzle = new Media (music_folder + getPuzzleData().music);
+    
     intervalId = setInterval(
     function () {
         _margin = _margin - 5;
@@ -162,15 +177,20 @@ function btnAcocharHandler () {
             $("#img-puzzle-man").css("margin-left", _margin + "px");
             $("#img-puzzle-woman").css("margin-right", _margin + "px");
         }
-    }, 2000);
-    
-    mediaPuzzle = new Media ($("#puzzle-audio source").attr("src"),
-        function () {}, function () {}, function (status) {
-            if( status==Media.MEDIA_STOPPED && enabledPuzzle > -1 ) {
-                mediaPuzzle.play();
-            }
+        
+        if(_mediaStatus == Media.MEDIA_PAUSED) {
+            mediaPuzzle.play();
+            _mediaStatus = Media.MEDIA_RUNNING;
         }
-    );
+        
+        mediaPuzzle.getCurrentPosition(function(position) {
+            if( position > mediaPuzzle.getDuration() - 1 ) {
+                mediaPuzzle.pause();
+                _mediaStatus = Media.MEDIA_PAUSED;
+                mediaPuzzle.seekTo(0);
+            }
+        });
+    }, 2000);
     
     mediaPuzzle.play();
 }
@@ -180,63 +200,64 @@ function showMusicSheetHandler () {
 }
 
 var devMotionWatchId = false;
-var previousAcceleration = false;
 function shakeToPlayHandler () {
-    previousAcceleration = { x: null, y: null, z: null };
     
     _mediaStatus = Media.MEDIA_PAUSED;
     
-    mediaPuzzle = new Media ($("#puzzle-audio source").attr("src"),
-        function () {}, function () {}, function (status) {
-            if( status==Media.MEDIA_STOPPED && enabledPuzzle > -1 ) {
-                mediaPuzzle.play();
-            }
-        }
-    );
+    mediaPuzzle = new Media (music_folder + getPuzzleData().music);
     
     _timer = 0;    
     
+    var previous = false;
     devMotionWatchId = navigator.accelerometer.watchAcceleration(
     function (acceleration) {
-        var accelerationChange = {};
-        if (previousAcceleration.x !== null) {
-            accelerationChange.x = Math.abs(previousAcceleration.x - acceleration.x);
-            accelerationChange.y = Math.abs(previousAcceleration.y - acceleration.y);
-            accelerationChange.z = Math.abs(previousAcceleration.z - acceleration.z);
-        }
-
-        previousAcceleration = {
-            x: acceleration.x,
-            y: acceleration.y,
-            z: acceleration.z
-        };
-
-        if (accelerationChange.x + accelerationChange.y + accelerationChange.z > 5) {
-            _timer = _timer < 5 ? _timer + 1: _timer;
-        } else if(_timer > 0) {
-            _timer --;
-            
-            if(_mediaStatus == Media.MEDIA_PAUSED) {
-                mediaPuzzle.play();
-                _mediaStatus = Media.MEDIA_RUNNING;
-            }
-        } else {
-            mediaPuzzle.pause();
-            _mediaStatus = Media.MEDIA_PAUSED;
-        }
+        var x = acceleration.x;
+        var y = acceleration.y;
+        var z = acceleration.z;
+        var t = false;
         
-        mediaPuzzle.getCurrentPosition(function(position) {
-            if( position > mediaPuzzle.getDuration()-1 ) {
+        if (previous){
+            if (isShaking(previous, acceleration, 5)){
+                _timer = _timer < 2 ? _timer + 1 : _timer;
+            } else {
+                _timer = _timer > 0 ? _timer - 1 : _timer;
+            }
+            
+            if (_timer > 0) {
+                mediaPuzzle.play();
+                
+                if(_mediaStatus == Media.MEDIA_PAUSED) {
+                    
+                    _mediaStatus = Media.MEDIA_RUNNING;
+                }
+            } else {
                 mediaPuzzle.pause();
                 _mediaStatus = Media.MEDIA_PAUSED;
-                mediaPuzzle.seekTo(0);
             }
-        });
-        
+            
+            mediaPuzzle.getCurrentPosition(function(position) {
+                if( position > mediaPuzzle.getDuration()-1 ) {
+                    mediaPuzzle.pause();
+                    _mediaStatus = Media.MEDIA_PAUSED;
+                    mediaPuzzle.seekTo(0);
+                }
+            });
+        }
+
+        previous = acceleration;
     },
     function (error) {}, { frequency: 1000 });
 }
 
+function isShaking(last, current, threshold) {
+    var deltaX = Math.abs(last.x - current.x),
+        deltaY = Math.abs(last.y - current.y),
+        deltaZ = Math.abs(last.z - current.z);
+
+    return ((deltaX > threshold && deltaY > threshold) ||
+        (deltaX > threshold && deltaZ > threshold) ||
+        (deltaY > threshold && deltaZ > threshold) || deltaX > threshold);   
+}
 
 /**
  * 
@@ -261,7 +282,7 @@ function addSolvedPuzzle (puzzle) {
  */
 function getPuzzlesFromCache () {
     var puzzles = window.localStorage.getItem('solvedPuzzles');
-    var enabled = "8";//window.localStorage.getItem('enabledPuzzle');
+    var enabled = window.localStorage.getItem('enabledPuzzle');
     
     enabledPuzzle = enabled ? parseInt(enabled): -1;
     

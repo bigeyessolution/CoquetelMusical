@@ -15,29 +15,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-
-if (typeof cordova === 'undefined') {
-    $(function ()
-    {
-        getPuzzlesFromCache();
-        
-        createMap();
-    
-        setUiEvents();
-        
-        setMapMarkers();
-        
-        verifyProgress();
-    });
-} else {
-    document.addEventListener("deviceready", onDeviceReady, false);
-}
-
-
+document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady () {
     document.addEventListener("online", onOnline, false);
     document.addEventListener("resume", onResume, false);
+    
+    music_folder = cordova.file.applicationDirectory.replace('file://', '') + "www/data/music/";
     
     getPuzzlesFromCache();
 
