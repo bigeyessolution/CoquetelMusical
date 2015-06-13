@@ -63,7 +63,7 @@ function createMap ()
     
     map = L.map('map', {zoomControl: false}).setView([centerPoint.lat, centerPoint.lng], 18);
 
-    L.tileLayer(map_folder + 'data/map/{z}/{x}/{y}.jpg', {
+    L.tileLayer('data/map/{z}/{x}/{y}.jpg', {
         attribution: mapAttribution,
         minZoom: 16,
         maxZoom: 18

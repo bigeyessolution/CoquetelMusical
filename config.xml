@@ -8,7 +8,6 @@
         Big Eyes Solution Team
     </author>
     <content src="index.html"/>
-    <preference name="permissions" value="none"/>
     <preference name="orientation" value="portrait"/>
     <preference name="fullscreen" value="true"/> 
     <preference name="target-device" value="universal"/>
@@ -43,17 +42,26 @@
     <gap:splash gap:platform="ios" height="1024" src="res/screen/ios/screen-ipad-portrait.png" width="768"/>
     <gap:splash gap:platform="winphone" src="res/screen/windows-phone/screen.jpg"/>
     <gap:splash src="splash.png"/>
-    <plugin name="org.apache.cordova.device-motion"/>
-    <plugin name="org.apache.cordova.file"/>
-    <plugin name="org.apache.cordova.geolocation"/>
-    <plugin name="org.apache.cordova.media"/>
-    <gap:plugin name="org.apache.cordova.network-information" />
-    <plugin name="org.apache.cordova.dialogs"/>
-    <plugin name="org.apache.cordova.splashscreen"/>
-    <feature name="http://api.phonegap.com/1.0/file"/>
-    <feature name="http://api.phonegap.com/1.0/geolocation"/>
-    <feature name="http://api.phonegap.com/1.0/media"/>
-    <feature name="http://api.phonegap.com/1.0/network"/>
-    <feature name="http://api.phonegap.com/1.0/notification"/>
+    <gap:plugin name="org.apache.cordova.file"/>
+    <gap:plugin name="org.apache.cordova.device"/>
+    <gap:plugin name="org.apache.cordova.device-motion"/>
+    <gap:plugin name="org.apache.cordova.device-orientation"/>
+    <gap:plugin name="org.apache.cordova.geolocation"/>
+    <gap:plugin name="org.apache.cordova.dialogs"/>
+    <gap:plugin name="org.apache.cordova.splashscreen"/>
+    <gap:plugin name="org.apache.cordova.media"/>
     <access origin="*"/>
+    <allow-intent href="http://*/*"/>
+    <allow-intent href="https://*/*"/>
+    <allow-intent href="tel:*"/>
+    <allow-intent href="sms:*"/>
+    <allow-intent href="mailto:*"/>
+    <allow-intent href="geo:*"/>
+    <platform name="android">
+        <allow-intent href="market:*"/>
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*"/>
+        <allow-intent href="itms-apps:*"/>
+    </platform>
 </widget>
