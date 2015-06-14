@@ -48,6 +48,12 @@ p {
     color: #846F57 !important;
 }
 
+.ui-content span{
+    text-align: center !important;
+    color: #231d04 !important;
+    text-shadow: none !important;
+}
+
 .ui-body a{
     text-align: center !important;
     color: #846F57 !important;
