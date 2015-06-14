@@ -31,7 +31,7 @@ appConf = {
             music_player: "Paulo Soares e A Tecereira Cidade",
             puzzle_handler: "showPageHandler",
             text: "",
-            solved_text: "O Vapor Saldanha Marinho foi o primeiro barco a navegar no Rio São Francisco, no trecho Pirapora (MG) - Juazeiro (BA), entre  1971 e 1943. Hoje, o “vaporzinho” descansa na orla de Juazeiro.",
+            solved_text: "O Vapor Saldanha Marinho foi o primeiro barco a navegar no Rio São Francisco, no trecho Pirapora (MG) - Juazeiro (BA), entre 1943 e 1971. Hoje, o “vaporzinho” descansa na orla de Juazeiro.",
             success_message: "Apois, essa foi facim facim ... quero vê é tu fazê a próxima.",            
             facebook_message: "Tu ainda tá na rabeta. Simbora vencer esse jogo!",
             image: "puzzle.0.vaporzinho.jpg",
