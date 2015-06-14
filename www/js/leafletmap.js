@@ -47,7 +47,7 @@ var musicPointSolved = L.icon({
     iconAnchor: [18, 48]
 });
 
-var userIcon = L.icon({
+var userIcon = L.icon({ //@TODO diminuir
     iconUrl: 'images/map-user.png',
     iconRetinaUrl: 'images/map-user@2x.png',
     iconSize: [84, 65],
@@ -266,7 +266,7 @@ function verifyUserAtPuzzlePosition (lat, lng)
         
         distance = Math.min(distance, userPoint.distanceTo(puzzleLatLng));
         
-        if(userPoint.distanceTo(puzzleLatLng) < 3.0) { //@TODO change radius
+        if(userPoint.distanceTo(puzzleLatLng) < 5.0) { //@TODO change radius
             enablePuzzle(puzzlePoint);
             showPuzzleEnabledMessage = true;
             btnLocationHandler();

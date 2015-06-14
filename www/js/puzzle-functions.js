@@ -146,7 +146,7 @@ function btnAcocharHandler () {
     
     $("#img-puzzle-action").removeClass("be-invisible");
     $('<img id="img-puzzle-man" src="data/images/' + getPuzzleData().image_1 + '">').appendTo("#img-puzzle-action");
-    $('<img id="img-puzzle-woman" src="data/images/' + getPuzzleData().image_1 + '">').appendTo("#img-puzzle-action");
+    $('<img id="img-puzzle-woman" src="data/images/' + getPuzzleData().image_2 + '">').appendTo("#img-puzzle-action");
     
     $("#btn-puzzle-action").removeClass("be-invisible");
     
@@ -154,7 +154,7 @@ function btnAcocharHandler () {
     var imgSize = parseInt( $("#img-puzzle-man").css("width").replace("px","") );
     var negativeMargin = parseInt( $("#img-puzzle-man").css("margin-right").replace("px","") );
 
-    maxMargin = (divSize - imgSize - 10)/2;
+    maxMargin = Math.floor((divSize - imgSize)/2);
     
     $("#btn-puzzle-action").on("click", function (){
         
@@ -282,7 +282,7 @@ function addSolvedPuzzle (puzzle) {
  */
 function getPuzzlesFromCache () {
     var puzzles = window.localStorage.getItem('solvedPuzzles');
-    var enabled = window.localStorage.getItem('enabledPuzzle');
+    var enabled = "3";//window.localStorage.getItem('enabledPuzzle');
     
     enabledPuzzle = enabled ? parseInt(enabled): -1;
     

@@ -178,7 +178,7 @@ appConf = {
         {
             row: 9,
             word: "opara",
-            coordinates: [ { place: "Caixa D'Água", lat: -9.394, lng: -40.5463 }, { place: "Sobradinho 10", lat: -9.47238, lng: -40.80122 } ],
+            coordinates: [ { place: "Caixa D'Água", lat: -9.489722222222222, lng: -40.68 }, { place: "Sobradinho 10", lat: -9.47238, lng: -40.80122 } ],
             music: "puzzle.9.azul_por_do_sol.mp3",
             music_solved: "puzzle.9.solved.azul_por_do_sol.mp3",
             music_name: "",
