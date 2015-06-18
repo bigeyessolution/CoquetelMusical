@@ -63,6 +63,7 @@ function createMap ()
     
     map = L.map('map', {zoomControl: false}).setView([centerPoint.lat, centerPoint.lng], 18);
 
+    //@TODO: verificar se vai usar offline ou não.
     L.tileLayer('data/map/{z}/{x}/{y}.jpg', {
         attribution: mapAttribution,
         minZoom: 16,
