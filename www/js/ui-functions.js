@@ -55,8 +55,6 @@ function setScorePage (puzzle) {
 }
 
 function setUiEvents () {
-    //$("#btn-go-to-puzzle").hide();
-    
     $("#puzzle-answer").keyup(function () {
         var disabled = $("#puzzle-answer").val().length != $("#puzzle-answer").attr("maxlength");
         $("#btn-answer").attr("disabled", disabled );
@@ -82,13 +80,16 @@ function setUiEvents () {
         
         switch (prevPage) {
             case 'puzzle-solved-page':
-                if(mediaSolvedPuzzle) {
+                if(mediaSolvedPuzzle !== false) {
                     mediaSolvedPuzzle.pause();
                     mediaSolvedPuzzle.release();
                     mediaSolvedPuzzle = false;
                 }
             case 'puzzle-page':
-                if(mediaPuzzle) {
+                $("#puzzle-answer").val("");
+                $("#btn-answer").attr("disabled", true );
+                
+                if(mediaPuzzle !== false ) {
                     mediaPuzzle.pause();
                     mediaPuzzle.release();
                     mediaPuzzle = false;

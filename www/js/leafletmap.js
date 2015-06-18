@@ -59,7 +59,7 @@ function createMap ()
 {
     var mapAttribution = 'Map Data &copy;<a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> and Contributors';
     
-    centerPoint = appConf.start_position[0];
+    centerPoint = appConf.start_position[2];
     
     map = L.map('map', {zoomControl: false}).setView([centerPoint.lat, centerPoint.lng], 18);
 

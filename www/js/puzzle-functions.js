@@ -49,8 +49,6 @@ function handlePuzzle () {
     
     $(".be-puzzle-image").removeClass("be-invisible");
     
-    mediaSolvedPuzzle = new Media (music_folder + getPuzzleData().music_solved);
-    
     switch (getPuzzleData().puzzle_handler) {
         case 'showPageHandler':
             showPageHandler();
@@ -75,7 +73,12 @@ function handlePuzzle () {
  * @returns {undefined}
  */
 function handleSolvedPuzzle () {
-    mediaSolvedPuzzle.play();
+    if (getLastSolvedPuzzle() > -1) {
+        var lastSolvedPuzzle = appConf.puzzle_data[getLastSolvedPuzzle()];
+        
+        mediaSolvedPuzzle = new Media (music_folder + lastSolvedPuzzle.music_solved);
+        mediaSolvedPuzzle.play();
+    }
 }
 
 function showPageHandler () {
@@ -196,7 +199,7 @@ function btnAcocharHandler () {
 }
 
 function showMusicSheetHandler () {
-    navigator.notification.alert("Função de Handler não definida");
+    console.log("Showing music sheet");
 }
 
 var devMotionWatchId = false;
@@ -282,7 +285,7 @@ function addSolvedPuzzle (puzzle) {
  */
 function getPuzzlesFromCache () {
     var puzzles = window.localStorage.getItem('solvedPuzzles');
-    var enabled = "3";//window.localStorage.getItem('enabledPuzzle');
+    var enabled = "4";//window.localStorage.getItem('enabledPuzzle');
     
     enabledPuzzle = enabled ? parseInt(enabled): -1;
     
@@ -352,9 +355,6 @@ function answerVerifier () {
         setMapMarkers();
         verifyProgress();
         $( ":mobile-pagecontainer" ).pagecontainer( "change", "#puzzle-solved-page", { transition: "flip" } );
-        
-        $("#puzzle-answer").val("");
-        $("#btn-answer").attr("disabled", true );
     } else {
         navigator.notification.alert("Se aveche não que num foi desta vez! Vamos tentar denovo?", 
         function () {
