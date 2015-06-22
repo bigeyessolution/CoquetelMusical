@@ -9,9 +9,8 @@
     </author>
     <content src="index.html"/>
     <preference name="orientation" value="portrait"/>
-    <preference name="fullscreen" value="true"/> 
     <preference name="target-device" value="universal"/>
-    <preference name="fullscreen" value="true"/>
+    <preference name="fullscreen" value="false"/>
     <preference name="prerendered-icon" value="true"/>
     <preference name="ios-statusbarstyle" value="black-opaque"/>
     <preference name="detect-data-types" value="true"/>
@@ -51,6 +50,7 @@
     <gap:plugin name="org.apache.cordova.dialogs"/>
     <gap:plugin name="org.apache.cordova.splashscreen"/>
     <gap:plugin name="org.apache.cordova.media"/>
+    <gap:plugin name="org.apache.cordova.vibration"/>
     <access origin="*"/>
     <allow-intent href="http://*/*"/>
     <allow-intent href="https://*/*"/>

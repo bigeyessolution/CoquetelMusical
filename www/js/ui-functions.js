@@ -36,28 +36,45 @@ function enableSolvedRows () {
  */
 function enablePuzzleRow (puzzle) {
     $("#puzzles-table #row-" + puzzle.row).addClass("enabled");
-    
-    $("#puzzles-table").click(function () {
-        if (enabledPuzzle >  -1) {
-            $( ":mobile-pagecontainer" ).pagecontainer( "change", "#puzzle-page", { } );
-        }
-    });
 }
 
 /**
  * 
- * @param {object} puzzle
+ * @param {integer} puzzle
  * @returns {undefined}
  */
 function setScorePage (puzzle) {
-    $("#img-score").attr("src", "./data/images/score." + solvedPuzzles.length + ".png");
-    $("#facebook_message").html(appConf.puzzle_data[puzzle].facebook_message);
+    if (puzzle > -1 ) {
+        $("#img-score").attr("src", "data/images/score." + solvedPuzzles.length + ".png");
+        $("#facebook_message").html(appConf.puzzle_data[puzzle].facebook_message);
+        $("#facebook_message_content").removeClass("be-invisible");
+    } else {
+        $('#facebook_message_content').addClass("be-invisible");
+        $("#img-score").attr("src", "data/images/score.0.png");
+    }
 }
 
 function setUiEvents () {
     $("#puzzle-answer").keyup(function () {
         var disabled = $("#puzzle-answer").val().length != $("#puzzle-answer").attr("maxlength");
         $("#btn-answer").attr("disabled", disabled );
+    });
+    
+    $("#puzzle-answer").focusin(function (e) {
+        $("#puzzle-content").slideUp(500);
+    });
+    
+    $("#puzzle-answer").focusout(function (e) {
+        $("#puzzle-content").slideDown(500);
+    });
+    
+    $("#puzzles-table").click(function () {
+        if (enabledPuzzle >  -1) {
+            clearPuzzlePage();
+            preparePuzzlePage(getPuzzleData());
+            
+            $( ":mobile-pagecontainer" ).pagecontainer( "change", "#puzzle-page", { } );
+        }
     });
     
     $("#btn-answer").click(answerVerifier);
@@ -99,6 +116,11 @@ function setUiEvents () {
     });
     
     $(":mobile-pagecontainer").on("pagecontainershow", function( event, ui ) {
+        if(watchId !== false) { //unfollow user
+            unfollowUserPosition();
+            setBtnLocationStatus(false);
+        }
+        
         toPage = ui.toPage.attr("id");
         
         switch(toPage) {
@@ -126,16 +148,59 @@ function setUiEvents () {
 function preparePuzzlePage (puzzle) {
     var music_folder = cordova.file.applicationDirectory.replace('file://', '') + "www/data/music/";
     
-    $("#puzzle-page .be-puzzle-image").attr("src", "data/images/" + puzzle.image);
+    $("#puzzle-page .be-puzzle-image").attr("src", "./data/images/" + puzzle.image);
     $("#puzzle-page .be-puzzle-text").html(puzzle.text);
     $("#puzzle-answer").attr("maxlength", puzzle.word.length);
     $("#btn-answer").attr("disabled", true);
-    $("#puzzle-audio").empty();
-    
-    $("#puzzle-solved-page .be-puzzle-image").attr("src", "data/images/" + puzzle.solved_image);
+}
+
+/**
+ * 
+ * @param {object} puzzle
+ * @returns {undefined}
+ */
+function preparePuzzleSolvedPage (puzzle) {
+    mediaSolvedPuzzle = new Media (music_folder + puzzle.music_solved);
+    console.log(puzzle.solved_image);
+    $("#puzzle-solved-page .be-puzzle-image").attr("src", "./data/images/" + puzzle.solved_image);
     $("#puzzle-solved-page .be-puzzle-solved-text").html(puzzle.solved_text);
     $("#music-name").html(puzzle.music_name);
     $("#music-author").html(puzzle.music_author);
     $("#music-player").html(puzzle.music_player);
-    $("#puzzle-solved-audio").empty();
+}
+
+/**
+ * 
+ * @returns {undefined}
+ */
+function clearPuzzlePage () {
+    $("#btn-puzzle-action").addClass("be-invisible");
+    $("#img-puzzle-action").addClass("be-invisible");
+    $(".be-puzzle-image").removeClass("be-invisible");
+    
+    $("#puzzle-page .be-puzzle-image").attr("src", "");
+    $("#puzzle-page .be-puzzle-text").html("");
+    
+    $("#img-puzzle-action").empty();
+    $("#img-puzzle-action").addClass("be-invisible");
+    
+    $("#btn-answer").attr("disabled", true);
+}
+
+function populateListOfSolvedPuzzles () {
+    $('#list-of-solved-puzzles').empty();
+    
+    $.each(solvedPuzzles, function (key, puzzle_row) {
+        puzzle = appConf.puzzle_data[puzzle_row];
+        
+        $('<li data-icon="false"><a onclick="showPuzzleSolvedPage('+ puzzle_row +')"><img src=""><h2>' + puzzle.music_name + '</h2><p>' + puzzle.music_player + '</p></a></li>').appendTo("#list-of-solved-puzzles");
+    });
+    
+    $("#list-of-solved-puzzles").listview( "refresh" );
+}
+
+function shareOnFacebook () {
+    var message = $("#facebook_message").html();
+    
+    window.plugins.socialsharing.share('Oi, estou jogando o Coquetel Digital. Veja só a mensagem que consegui: ' + message);
 }

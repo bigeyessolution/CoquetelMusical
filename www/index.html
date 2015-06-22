@@ -37,6 +37,7 @@
         <script src="js/libs/jquery/jquery.min.js"></script>
         <script src="js/libs/jquery-mobile/jquery.mobile.js"></script>
         <script src="js/libs/leaflet/leaflet.js"></script>
+        <script src="js/libs/jquery.scrollTo/jquery.scrollTo.min.js"></script>
         <script src="js/leafletmap.js"></script>
         <script src="js/puzzle-functions.js"></script>
         <script src="js/ui-functions.js"></script>
@@ -65,15 +66,17 @@
             </ul></div></footer>
                 
             <div role="main" class="ui-content be-puzzle-content">
-                <img class="be-puzzle-image" src="" alt="">
+                <div id="puzzle-content">
+                    <img class="be-puzzle-image" src="" alt="">
+
+                    <div id="img-puzzle-action" class="be-invisible"></div>
+
+                    <p class="be-puzzle-text"></p>
+
+                    <div id="btn-puzzle-action" class="be-invisible">aperte!</div>
+                </div>
                 
-                <div id="img-puzzle-action" class="be-invisible"></div>
-                
-                <p class="be-puzzle-text"></p>
-                
-                <div id="btn-puzzle-action" class="be-invisible">aperte!</div>
-                
-                <label for="puzzle-answer">Resposta</label>
+                <label id="label-puzzle-answer" for="puzzle-answer">Resposta</label>
                 <div class="ui-grid-b">
                     <div class="ui-block-a" style="width: 50% !important"><input id="puzzle-answer" maxlength="0"></div>
                     <div class="ui-block-b" style="width: 10% !important"></div>
@@ -284,17 +287,21 @@
                 
             <div role="main" class="ui-content">
                 <img id="img-score" class="be-ui-score be-ui-horizontal-center" src="./data/images/score.0.png" alt="">
-                <p id="facebook_message" class="ui-body ui-body-a"></p>
+                <div id="facebook_message_content">
+                    <p id="facebook_message" class="ui-body ui-body-a be-invisible"></p>
+                    <img src="images/btn-share-on-facebook.png" onclick="shareOnFacebook ()" alt="">
+                </div>
                 <hr>
                 <div class="ui-body ui-body-a">
                     <p style="">
                         Uma parceria da mulestia para esse jogo acontecer!                    
-                    </p><center>
-                        <a href="#about-page" data-transition="flip">Clique aqui pra ver.</a>
-                    </center>
-                                            
+                    </p>
+                    <p>
+                        <a id="btn-about" href="#about-page" data-transition="flip">Clique aqui pra ver.</a>
+                    </p>
                 </div>
-                
+                <ul id="list-of-solved-puzzles" data-role="listview" data-inset="true">
+                </ul>
             </div>
         </section>
         

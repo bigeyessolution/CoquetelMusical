@@ -162,8 +162,8 @@ p a { color: #846F57 !important }
     break-after: avoid;
 }
 
-#img-puzzle-man { z-index: 2; float: left; margin-right: -2em; }
-#img-puzzle-woman { z-index: 1; float: right; margin-left: -2em; }
+#img-puzzle-man { z-index: 2; float: left; margin-right: -10000px; }
+#img-puzzle-woman { z-index: 1; float: right; margin-left: -10000px; }
 
 #puzzles-table {
     border: none;
@@ -275,4 +275,17 @@ p a { color: #846F57 !important }
 
 .tablatura b {
     color: #b35731;
+}
+
+#list-of-solved-puzzles h2 {
+    font-size: 1rem;
+}
+
+#list-of-solved-puzzles p {
+    font-style: italic;
+    color: #4D4133;
+}
+
+#btn-about {
+    
 }
