@@ -274,7 +274,7 @@ function addSolvedPuzzle (puzzle) {
  */
 function getPuzzlesFromCache () {
     var puzzles = window.localStorage.getItem('solvedPuzzles');
-    var enabled = "3";//window.localStorage.getItem('enabledPuzzle');
+    var enabled = window.localStorage.getItem('enabledPuzzle');
     
     enabledPuzzle = enabled ? parseInt(enabled): -1;
     
