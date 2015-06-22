@@ -23,7 +23,7 @@ appConf = {
         {
             row: 0,
             word: "vaporzinho",
-            coordinates: [ { place: "Praça Dom Malan", lat: 0, lng: 0}, { place: "Unid Saúde da Família", lat: -9.3933, lng: -40.54526666666667 }, { place: "Sobradinho 1", lat: -9.47293, lng: -40.80012 } /*, { place: "Minha casa", lat: -9.47273, lng: -40.79992 }*/ ],
+            coordinates: [ { place: "Praça Dom Malan", lat: -9.538888888888888, lng: -40.50138888888889}, { place: "Unid Saúde da Família", lat: -9.3933, lng: -40.54526666666667 }, { place: "Sobradinho 1", lat: -9.47293, lng: -40.80012 } /*, { place: "Minha casa", lat: -9.47273, lng: -40.79992 }*/ ],
             music: "puzzle.0.marcha_do_grande_rio.mp3",
             music_solved: "puzzle.0.marcha_do_grande_rio.mp3",
             music_name: "Marcha do Grande Rio",
@@ -40,7 +40,7 @@ appConf = {
         {
             row: 1,
             word: "cordelista",
-            coordinates: [ { place: "Anfiteatro", lat: 0, lng: 0}, { place: "Creche", lat: -9.393233333333333, lng: -40.54868333333334 }, { place: "Sobradinho 2", lat: -9.47286, lng: -40.8005 } ],
+            coordinates: [ { place: "Anfiteatro", lat: -9.538055555555555, lng: -40.50055555555556}, { place: "Creche", lat: -9.393233333333333, lng: -40.54868333333334 }, { place: "Sobradinho 2", lat: -9.47286, lng: -40.8005 } ],
             music: "puzzle.1.viagem_de_lotacao.mp3",
             music_solved: "puzzle.1.viagem_de_lotacao.mp3",
             music_name: "Viagem de Lotação",
@@ -57,7 +57,7 @@ appConf = {
         {
             row: 2,
             word: "fole",
-            coordinates: [ { place: "Catedral", lat: 0, lng: 0}, { place: "CRAS do Céu", lat: -9.394166666666667, lng: -40.54878333333333 }, { place: "Sobradinho 3", lat: 9.47281, lng: -40.80112 } ],
+            coordinates: [ { place: "Catedral", lat: -9.542777777777777, lng: -40.50083333333333}, { place: "CRAS do Céu", lat: -9.394166666666667, lng: -40.54878333333333 }, { place: "Sobradinho 3", lat: 9.47281, lng: -40.80112 } ],
             music: "puzzle.2.aurora_e_o_sol.mp3",
             music_solved: "puzzle.2.aurora_e_o_sol.mp3",
             music_name: "Aurora e o Sol",
@@ -74,7 +74,7 @@ appConf = {
         {
             row: 3,
             word: "acochar",
-            coordinates: [ { place: "Praça do Bambuzinho", lat: 0, lng: 0}, { place: "Praça de Eventos", lat: -9.393916666666666, lng: -40.5458 }, { place: "Sobradinho 4", lat: -9.47186, lng: -40.80118 } ],
+            coordinates: [ { place: "Praça do Bambuzinho", lat: -9.543333333333333, lng: -40.52361111111111}, { place: "Praça de Eventos", lat: -9.393916666666666, lng: -40.5458 }, { place: "Sobradinho 4", lat: -9.47186, lng: -40.80118 } ],
             music: "puzzle.3.todo_mundo_quer_dancar_baiao.mp3",
             music_solved: "puzzle.3.todo_mundo_quer_dancar_baiao.mp3",
             music_name: "Todo mundo quer dançar baião",
@@ -93,14 +93,14 @@ appConf = {
         {
             row: 4,
             word: "sanfoneiro",
-            coordinates: [ { place: "SESC Petrolina", lat: 0, lng: 0}, { place: "Quadra do Céu", lat: -9.3942, lng: -40.54911666666667 }, { place: "Sobradinho 5", lat: -9.4713, lng: -40.80106 } ],
+            coordinates: [ { place: "SESC Petrolina", lat: -9.395277777777777, lng: -40.5}, { place: "Quadra do Céu", lat: -9.3942, lng: -40.54911666666667 }, { place: "Sobradinho 5", lat: -9.4713, lng: -40.80106 } ],
             music: "puzzle.4.pra_se_aninhar.mp3",
             music_solved: "puzzle.4.pra_se_aninhar.mp3",
             music_name: "Pra se aninhar",
             music_author: "Targino Gondim",
             music_player: "Targino Gondim",
             puzzle_handler: "showMusicSheetHandler",
-            text: "<span class='tablatura'><b>&nbsp;&nbsp;&nbsp;A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;F#m&nbsp;&nbsp;D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;F#m&nbsp;&nbsp;D&nbsp;&nbsp;&nbsp;A</b><br>E|---9-7-5-----9-7-5--9--9-7-5----9-7-5-5--|</br>B|---------7-------------------7-----------|</br>G|-----------------------------------------|</br>D|-----------------------------------------|</br>A|-----------------------------------------|</br>E|-----------------------------------------|</br></span>",
+            text: "",
             solved_text: "",
             success_message: "Eita pé de valsa aprumado!!! Na próxima num tem xote nem baião, vamo vê se tu desenrola?",
             facebook_message: "Arretado!!! Essa foi difícil, mas você se armô!",
@@ -110,7 +110,7 @@ appConf = {
         {
             row: 5,
             word: "caraibeira",
-            coordinates: [ { place: "Praça 21 de Setembro", lat: 0, lng: 0}, { place: "Assoc. dos Moradores", lat: -9.394566666666666, lng: -40.54938333333333 }, { place: "Sobradinho 6", lat: -9.47121, lng: -40.79979 } ],
+            coordinates: [ { place: "Praça 21 de Setembro", lat: -9.406944444444445, lng: -40.50138888888889}, { place: "Assoc. dos Moradores", lat: -9.394566666666666, lng: -40.54938333333333 }, { place: "Sobradinho 6", lat: -9.47121, lng: -40.79979 } ],
             music: "puzzle.5.o_velho_arvoredo.mp3",
             music_solved: "puzzle.5.o_velho_arvoredo.mp3",
             music_name: "O velho arvoredo",
@@ -127,7 +127,7 @@ appConf = {
         {
             row: 6,
             word: "ilhadofogo",
-            coordinates: [ { place: "Prefeitura", lat: 0, lng: 0}, { place: "Escola Ana Leopoldina", lat: -9.393666666666666, lng: -40.54541666666667 }, { place: "Sobradinho 7", lat: -9.47147, lng: -40.80002 } ],
+            coordinates: [ { place: "Prefeitura", lat: -9.548055555555555, lng: -40.5}, { place: "Escola Ana Leopoldina", lat: -9.393666666666666, lng: -40.54541666666667 }, { place: "Sobradinho 7", lat: -9.47147, lng: -40.80002 } ],
             music: "puzzle.6.a_ilha_e_do_povo.mp3",
             music_solved: "puzzle.6.solved.a_ilha_e_do_povo.mp3",
             music_name: "A ilha é do povo",
@@ -144,7 +144,7 @@ appConf = {
         {
             row: 7,
             word: "caatinga",
-            coordinates: [ { place: "Praça Centenária", lat: 0, lng: 0}, { place: "Escola Simão Dourado", lat: -9.393, lng: -40.5463 }, { place: "Sobradinho 8", lat: -9.47188, lng: -40.80005 } ],
+            coordinates: [ { place: "Praça Centenária", lat: -9.414722222222222, lng: -40.50083333333333}, { place: "Escola Simão Dourado", lat: -9.393, lng: -40.5463 }, { place: "Sobradinho 8", lat: -9.47188, lng: -40.80005 } ],
             music: "puzzle.7.caatinga.mp3",
             music_solved: "puzzle.7.caatinga.mp3",
             music_name: "Caatinga",
@@ -161,7 +161,7 @@ appConf = {
         {
             row: 8,
             word: "maraca",
-            coordinates: [ { place: "Estação das Barcas", lat: 0, lng: 0}, { place: "Entrada do Céu", lat: -9.394416666666666, lng: -40.54893333333333 }, { place: "Sobradinho 9", lat: -9.47226, lng: -40.80009 } ],
+            coordinates: [ { place: "Estação das Barcas", lat: -9.439444444444446, lng: -40.50611111111111}, { place: "Entrada do Céu", lat: -9.394416666666666, lng: -40.54893333333333 }, { place: "Sobradinho 9", lat: -9.47226, lng: -40.80009 } ],
             music: "puzzle.8.brincadeira_de_araras.mp3",
             music_solved: "puzzle.8.brincadeira_de_araras.mp3",
             music_name: "",
@@ -178,7 +178,7 @@ appConf = {
         {
             row: 9,
             word: "opara",
-            coordinates: [ { place: "Globo de Ferro", lat: 0, lng: 0}, { place: "Caixa D'Água", lat: -9.489722222222222, lng: -40.68 }, { place: "Sobradinho 10", lat: -9.47238, lng: -40.80122 } ],
+            coordinates: [ { place: "Globo de Ferro", lat: -9.403611111111111, lng: -40.62833333333334}, { place: "Caixa D'Água", lat: -9.489722222222222, lng: -40.68 }, { place: "Sobradinho 10", lat: -9.47238, lng: -40.80122 } ],
             music: "puzzle.9.azul_por_do_sol.mp3",
             music_solved: "puzzle.9.solved.azul_por_do_sol.mp3",
             music_name: "",
