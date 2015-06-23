@@ -262,7 +262,7 @@ function verifyUserAtPuzzlePosition (lat, lng)
         
         distance = Math.min(distance, userPoint.distanceTo(puzzleLatLng));
         
-        if( userPoint.distanceTo(puzzleLatLng) < 50.0 ) {
+        if( userPoint.distanceTo(puzzleLatLng) < 10.0 ) {
             enablePuzzle(puzzlePoint);
             unfollowUserPosition();
             setBtnLocationStatus(false);
