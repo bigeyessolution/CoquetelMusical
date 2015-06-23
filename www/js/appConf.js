@@ -52,12 +52,12 @@ appConf = {
             success_message: "Oxe, tá pessando que é moleza?! Apois segue os prumo das venta que tem mais desafio vindo!",
             facebook_message: "Apois, essa foi fácil...agora tente uma mais difícil!",
             image: "puzzle.1.poeta.jpg",
-            solved_image: "puzzle.1.repentista.jpg"
+            solved_image: "puzzle.1.solved.repentista.jpg"
         },
         {
             row: 2,
             word: "fole",
-            coordinates: [ { place: "Catedral", lat: -9.542777777777777, lng: -40.50083333333333}, { place: "CRAS do Céu", lat: -9.394166666666667, lng: -40.54878333333333 }, { place: "Sobradinho 3", lat: 9.47281, lng: -40.80112 } ],
+            coordinates: [ { place: "Catedral", lat: -9.542777777777777, lng: -40.50083333333333}, { place: "CRAS do Céu", lat: -9.394166666666667, lng: -40.54878333333333 }, { place: "Sobradinho 3", lat: -9.47281, lng: -40.80112 } ],
             music: "puzzle.2.aurora_e_o_sol.mp3",
             music_solved: "puzzle.2.aurora_e_o_sol.mp3",
             music_name: "Aurora e o Sol",

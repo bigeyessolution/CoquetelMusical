@@ -193,7 +193,7 @@ function populateListOfSolvedPuzzles () {
     $.each(solvedPuzzles, function (key, puzzle_row) {
         puzzle = appConf.puzzle_data[puzzle_row];
         
-        $('<li data-icon="false"><a onclick="showPuzzleSolvedPage('+ puzzle_row +')"><img src="data/images/'+ puzzle.solved_image + '"><h2>' + puzzle.music_name + '</h2><p>' + puzzle.music_player + '</p></a></li>').appendTo("#list-of-solved-puzzles");
+        $('<li data-icon="false"><a onclick="showPuzzleSolvedPage('+ puzzle_row +')"><h2>' + puzzle.music_name + '</h2><p>' + puzzle.music_player + '</p></a></li>').appendTo("#list-of-solved-puzzles");
     });
     
     $("#list-of-solved-puzzles").listview( "refresh" );

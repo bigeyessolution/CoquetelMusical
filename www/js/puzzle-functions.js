@@ -341,8 +341,8 @@ function answerVerifier () {
     
     if (puzzle.word.toLowerCase().trim() === $("#puzzle-answer").val().toLowerCase().trim()) {
         //navigator.notification.vibrate([0, 100, 100, 200, 100, 400, 100, 800]);
-        preparePuzzleSolvedPage(puzzle);
         addSolvedPuzzle(puzzle);
+        preparePuzzleSolvedPage(puzzle);
         clearMap();
         setMapMarkers();
         verifyProgress();
