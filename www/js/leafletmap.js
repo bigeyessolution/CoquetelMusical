@@ -268,7 +268,9 @@ function verifyUserAtPuzzlePosition (lat, lng)
             setBtnLocationStatus(false);
             clearMap();
             setMapMarkers();
-            //navigator.notification.vibrate([0, 100, 100, 300]);
+            
+            navigator.notification.vibrate([0, 100, 100, 300]);
+            
             navigator.notification.alert(
                 "Clique no marcador verde ou na palavra cruzada da aba Desafios para resolvê-lo!",
                 function () {

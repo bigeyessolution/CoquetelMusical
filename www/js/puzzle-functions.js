@@ -340,16 +340,19 @@ function answerVerifier () {
     puzzle = getPuzzleData();
     
     if (puzzle.word.toLowerCase().trim() === $("#puzzle-answer").val().toLowerCase().trim()) {
-        //navigator.notification.vibrate([0, 100, 100, 200, 100, 400, 100, 800]);
+        navigator.notification.vibrate([0, 100, 100, 200, 100, 400, 100, 800]);
+        
         addSolvedPuzzle(puzzle);
         preparePuzzleSolvedPage(puzzle);
         clearMap();
         setMapMarkers();
         verifyProgress();
+        
         $( ":mobile-pagecontainer" ).pagecontainer( "change", "#puzzle-solved-page", { transition: "flip" } );
     } else {
         mediaPuzzle.stop();
-        //navigator.notification.beep(1);
+        
+        navigator.notification.beep(1);
         
         navigator.notification.alert("Se aveche não que num foi desta vez! Vamos tentar denovo?", 
         function () {
