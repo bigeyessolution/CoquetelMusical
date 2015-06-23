@@ -18,7 +18,7 @@
 
 appConf = {
     application: "Coquetel Digital",
-    start_position: [ { lat: 0, lng: 0}, { lat: -9.393916666666666, lng: -40.5458 }, { lat: -9.47087, lng: -40.80034 } ],
+    start_position: [ { lat: -9.539, lng: -40.50134 }, { lat: -9.393916666666666, lng: -40.5458 }, { lat: -9.47087, lng: -40.80034 } ],
     puzzle_data: [
         {
             row: 0,
@@ -164,7 +164,7 @@ appConf = {
             coordinates: [ { place: "Estação das Barcas", lat: -9.439444444444446, lng: -40.50611111111111}, { place: "Entrada do Céu", lat: -9.394416666666666, lng: -40.54893333333333 }, { place: "Sobradinho 9", lat: -9.47226, lng: -40.80009 } ],
             music: "puzzle.8.brincadeira_de_araras.mp3",
             music_solved: "puzzle.8.brincadeira_de_araras.mp3",
-            music_name: "",
+            music_name: "Brincadeira de Araras",
             music_author: "",
             music_player: "",
             puzzle_handler: "shakeToPlayHandler",
@@ -181,10 +181,10 @@ appConf = {
             coordinates: [ { place: "Globo de Ferro", lat: -9.403611111111111, lng: -40.62833333333334}, { place: "Caixa D'Água", lat: -9.489722222222222, lng: -40.68 }, { place: "Sobradinho 10", lat: -9.47238, lng: -40.80122 } ],
             music: "puzzle.9.azul_por_do_sol.mp3",
             music_solved: "puzzle.9.solved.azul_por_do_sol.mp3",
-            music_name: "",
+            music_name: "Azul por do Sol",
             music_author: "",
             music_player: "",
-            puzzle_handler: "",
+            puzzle_handler: "showPageHandler",
             text: "01101111 01110000 01100001 01110010 01100001 00001101 00001010",
             solved_text: "Opara ou Opará (significa “Rio-Mar”) e ra como os índios que habitavam a região chamavam o Rio São Francisco, na ocasião de sua descoberta, em 04/10/1501.",
             success_message: "Aêêê caburé!!! Terminaste tudo sem aperrêi.",

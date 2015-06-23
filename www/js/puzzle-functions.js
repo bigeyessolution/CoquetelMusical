@@ -89,7 +89,7 @@ function showPageHandler () {
         }); 
     }, 100);
     
-    mediaPuzzle.play(); //    document.getElementById("puzzle-audio").play();
+    mediaPuzzle.play();
 }
 
 var _timer = 0;
@@ -102,8 +102,6 @@ function touchRhythmHandler () {
     });
     
     mediaPuzzle = new Media (music_folder + getPuzzleData().music);
-    //mediaPuzzle.play(); //    document.getElementById("puzzle-audio").play();
-    
     _timer = 0;
     
     intervalId = setInterval(
@@ -304,7 +302,7 @@ function enablePuzzle (puzzle) {
 
 /**
  * 
- * @param {object} puzzle_row
+ * @param {object} puzzle
  * @returns {Boolean}
  */
 function isPuzzleEnabled (puzzle) {
@@ -313,7 +311,7 @@ function isPuzzleEnabled (puzzle) {
 
 /**
  * 
- * @param {object} puzzle_row
+ * @param {object} puzzle
  * @returns {Boolean}
  */
 function isPuzzleSolved (puzzle) {
@@ -334,6 +332,7 @@ function getLastSolvedPuzzle () {
  * @returns {object}
  */
 function getPuzzleData () {
+    console.log("enabledPuzzle: " + enabledPuzzle);
     return appConf.puzzle_data[enabledPuzzle];
 }
 
@@ -341,7 +340,7 @@ function answerVerifier () {
     puzzle = getPuzzleData();
     
     if (puzzle.word.toLowerCase().trim() === $("#puzzle-answer").val().toLowerCase().trim()) {
-        navigator.notification.vibrate([0, 100, 100, 200, 100, 400, 100, 800]);
+        //navigator.notification.vibrate([0, 100, 100, 200, 100, 400, 100, 800]);
         preparePuzzleSolvedPage(puzzle);
         addSolvedPuzzle(puzzle);
         clearMap();
@@ -350,7 +349,7 @@ function answerVerifier () {
         $( ":mobile-pagecontainer" ).pagecontainer( "change", "#puzzle-solved-page", { transition: "flip" } );
     } else {
         mediaPuzzle.stop();
-        navigator.notification.beep(1);
+        //navigator.notification.beep(1);
         
         navigator.notification.alert("Se aveche não que num foi desta vez! Vamos tentar denovo?", 
         function () {

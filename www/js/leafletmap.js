@@ -59,7 +59,7 @@ function createMap ()
 {
     var mapAttribution = 'Map Data &copy;<a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> and Contributors';
     
-    centerPoint = appConf.start_position[2];
+    centerPoint = appConf.start_position[0];
     
     map = L.map('map', {zoomControl: false}).setView([centerPoint.lat, centerPoint.lng], 18);
 
@@ -187,37 +187,36 @@ function setMapMarkers ()
     {
         if (puzzle.row == 10) return true;
         
-        var markerOptions = {
-            icon: musicPointDisabled,
-            clickable: false
-        };
+        var flag_puzzle_enabled = isPuzzleEnabled(puzzle);
+        var markerOptions = false;
         
-        if (isPuzzleEnabled(puzzle)) {
+        if (flag_puzzle_enabled) {            
+            enablePuzzleRow(puzzle);
+            
             markerOptions = {
                 icon: musicPointEnabled,
                 clickable: true
             }
-        }
-        
-        if (isPuzzleSolved(puzzle)) {
+        } else if (isPuzzleSolved(puzzle)) {
             markerOptions = {
                 icon: musicPointSolved,
                 clickable: false
             }
-        } 
+        } else {
+            markerOptions = {
+                icon: musicPointDisabled,
+                clickable: false
+            };
+        }
 
         for (j=0; j < puzzle.coordinates.length; j ++) {
             var point = L.latLng(puzzle.coordinates[j].lat,puzzle.coordinates[j].lng);
             var marker = L.marker(point,markerOptions);
             
-            if (isPuzzleEnabled(puzzle)) {
-                enablePuzzleRow(puzzle);
-                
+            if (flag_puzzle_enabled) {
                 marker.on("click", function (evt) {
-                    puzzle = getPuzzleData();
-                    
                     clearPuzzlePage();
-                    preparePuzzlePage(puzzle);
+                    preparePuzzlePage(getPuzzleData());
                     
                     $(":mobile-pagecontainer").pagecontainer( 
                         "change", "#puzzle-page", { transition: "flip" } 
@@ -250,8 +249,10 @@ function verifyUserAtPuzzlePosition (lat, lng)
     var userPoint = L.latLng(lat, lng);
     var distance = 1000000000;
     
-    for (var i=0; i < mapPuzzlesPoints.length; i++) {
-        var puzzlePoint = mapPuzzlesPoints[i];
+    var puzzlePoint = mapPuzzlesPoints[0];
+    
+    for (var i=0; !isPuzzleEnabled(puzzlePoint) && i < mapPuzzlesPoints.length; i++) {
+        puzzlePoint = mapPuzzlesPoints[i];
         var puzzleLatLng = L.latLng(mapPuzzlesPoints[i].lat, mapPuzzlesPoints[i].lng);
         
         //@TODO se row já foi selecionada pular o loop.
@@ -261,19 +262,21 @@ function verifyUserAtPuzzlePosition (lat, lng)
         
         distance = Math.min(distance, userPoint.distanceTo(puzzleLatLng));
         
-        if(userPoint.distanceTo(puzzleLatLng) < 10.0) { //@TODO change radius
+        if( userPoint.distanceTo(puzzleLatLng) < 50.0 ) {
             enablePuzzle(puzzlePoint);
             unfollowUserPosition();
             setBtnLocationStatus(false);
+            clearMap();
+            setMapMarkers();
+            //navigator.notification.vibrate([0, 100, 100, 300]);
             navigator.notification.alert(
                 "Clique no marcador verde ou na palavra cruzada da aba Desafios para resolvê-lo!",
                 function () {
-                    clearMap();
-                    setMapMarkers();
+                    $(":mobile-pagecontainer").pagecontainer( 
+                        "change", "#puzzles-page", { transition: "flip" } 
+                    );
                 }, "Desafio habilitado!", "Vamos lá!"
             );
-        } else {
-            enablePuzzle(false);
         }
     }
     

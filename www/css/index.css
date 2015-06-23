@@ -289,3 +289,8 @@ p a { color: #846F57 !important }
 #btn-about {
     
 }
+
+
+.ui-footer a {
+    border: 0.5px solid #231d04 !important;
+}
