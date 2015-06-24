@@ -188,15 +188,22 @@ function clearPuzzlePage () {
 }
 
 function populateListOfSolvedPuzzles () {
-    $('#list-of-solved-puzzles').empty();
-    
-    $.each(solvedPuzzles, function (key, puzzle_row) {
-        puzzle = appConf.puzzle_data[puzzle_row];
+    $('#list-of-solved-puzzles-wrapper').empty();
+
+    var list_out = '<ul id="list-of-solved-puzzles" data-role="listview" data-inset="true">';
+    for (var i = 0; i < solvedPuzzles.length; i++) {
+        var puzzle_row = solvedPuzzles[i];
+        var puzzle = appConf.puzzle_data[puzzle_row];
         
-        $('<li data-icon="false"><a onclick="showPuzzleSolvedPage('+ puzzle_row +')"><h2>' + puzzle.music_name + '</h2><p>' + puzzle.music_player + '</p></a></li>').appendTo("#list-of-solved-puzzles");
-    });
+        list_out += '<li data-icon="false"><a onclick="showPuzzleSolvedPage(' + 
+                puzzle_row +')"><h2>' + puzzle.music_name + '</h2><p>' + 
+                puzzle.music_player + '</p></a></li>'
+        ;
+    }
     
-    $("#list-of-solved-puzzles").listview( "refresh" );
+    list_out += '</ul>';
+    
+    $(list_out).appendTo('#list-of-solved-puzzles-wrapper');
 }
 
 function shareOnFacebook () {
