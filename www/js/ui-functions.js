@@ -83,7 +83,6 @@ function setUiEvents () {
     setBtnLocationStatus(false);
     
     $(":mobile-pagecontainer").on("pagecontainershow", function( event, ui ) {
-        var prevPage = ui.prevPage.attr("id");
         var toPage = ui.toPage.attr("id");
         
         if ( intervalId !== false ) {
@@ -96,9 +95,26 @@ function setUiEvents () {
             devMotionWatchId = false;
         }
         
-        if (toPage === 'score-page') {
-            setScorePage(lastSolvedPuzzle);
-            populateListOfSolvedPuzzles ();
+        switch(toPage) {
+            case 'puzzle-page':
+                if (enabledPuzzle > -1) {
+                    handlePuzzle();
+                } else {
+                    $( ":mobile-pagecontainer" ).pagecontainer( "change", "#location-page", { } );
+                }
+                break;
+            case 'puzzle-solved-page':
+                handleSolvedPuzzle();
+                break;
+            case 'score-page':
+                if (lastSolvedPuzzle !== -1) {
+                    setScorePage(lastSolvedPuzzle);
+                }
+                
+                populateListOfSolvedPuzzles ();
+                break;
+            default:
+                break;
         }
         
         if (gaPlugin) {
@@ -108,7 +124,6 @@ function setUiEvents () {
     
     $(":mobile-pagecontainer").on("pagecontainerbeforechange", function( event, ui ) {
         var prevPage = ui.prevPage.attr("id");
-        var toPage = ui.toPage.attr("id");
         
         switch (prevPage) {
             case 'puzzle-solved-page':
@@ -132,21 +147,6 @@ function setUiEvents () {
         if(watchId !== false) { //unfollow user
             unfollowUserPosition();
             setBtnLocationStatus(false);
-        }
-        
-        switch(toPage) {
-            case 'puzzle-page':
-                if (enabledPuzzle > -1) {
-                    handlePuzzle();
-                } else {
-                    $( ":mobile-pagecontainer" ).pagecontainer( "change", "#location-page", { } );
-                }
-                break;
-            case 'puzzle-solved-page':
-                handleSolvedPuzzle();
-                break;
-            default:
-                break;
         }
     });
 }

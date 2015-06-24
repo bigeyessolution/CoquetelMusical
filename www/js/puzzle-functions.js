@@ -17,6 +17,7 @@
  */
 
 var solvedPuzzles = [];
+var lastSolvedPuzzle = -1
 var enabledPuzzle = -1;
 var enabledPuzzleData = false;
 var mediaPuzzle = false;
