@@ -20,6 +20,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady () {
     document.addEventListener("online", onOnline, false);
     document.addEventListener("resume", onResume, false);
+    document.addEventListener("pause", onPause, false);
     
     app_folder = cordova.file.applicationDirectory.replace('file://', '');
     music_folder = app_folder + "www/data/music/";
@@ -42,3 +43,11 @@ function onOnline () {
 function onResume () {
 }
 
+function onPause () {
+    $( ":mobile-pagecontainer" ).pagecontainer( "change", "#location-page", { } );
+    
+    if(watchId !== false) { //unfollow user
+        unfollowUserPosition();
+        setBtnLocationStatus(false);
+    }
+}
