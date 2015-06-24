@@ -52,7 +52,7 @@ appConf = {
             success_message: "Oxe, tá pessando que é moleza?! Apois segue os prumo das venta que tem mais desafio vindo!",
             facebook_message: "Apois, essa foi fácil...agora tente uma mais difícil!",
             image: "puzzle.1.poeta.jpg",
-            solved_image: "puzzle.1.solved.repentista.jpg"
+            solved_image: "puzzle.1.poeta.jpg"
         },
         {
             row: 2,

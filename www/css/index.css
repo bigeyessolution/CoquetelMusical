@@ -294,3 +294,16 @@ p a { color: #846F57 !important }
 .ui-footer a {
     border: 0.5px solid #231d04 !important;
 }
+
+#list-of-solved-puzzles {
+    text-align: center;
+    margin-top: 1em;
+    padding: 1em 0;
+}
+
+#list-of-solved-puzzles a {
+    background: #ccc;
+    font-size: 1rem !important;
+    line-height: 3em;
+    color: #231d04 !important;
+}

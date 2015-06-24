@@ -39,6 +39,9 @@ function onDeviceReady () {
     
     verifyProgress();
     
+    $("#list-of-solved-puzzles a").hide();
+    $("#list-of-solved-puzzles br").hide();
+    
     gaPlugin = window.plugins.gaPlugin;
     
     gaPlugin.init(gaPluginSucessHandler, gaPluginErrorHandler, "UA-59363254-2", 10);

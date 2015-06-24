@@ -205,15 +205,19 @@ function populateListOfSolvedPuzzles () {
 
     for (var i = 0; i < solvedPuzzles.length; i++) {
         var puzzle_row = solvedPuzzles[i];
-        var puzzle = appConf.puzzle_data[puzzle_row];
         
-        $('<li data-icon="false"><a onclick="showPuzzleSolvedPage(' + 
-                puzzle_row +')"><h2>' + puzzle.music_name + '</h2><p>' + 
-                puzzle.music_player + '</p></a></li>')
-        .appendTo('#list-of-solved-puzzles');
+        $("#list-of-solved-puzzles a").show();
+        $("#list-of-solved-puzzles br").show();
+        
+//        var puzzle = appConf.puzzle_data[puzzle_row];
+//        
+//        $('<li data-icon="false"><a onclick="showPuzzleSolvedPage(' + 
+//                puzzle_row +')"><h2>' + puzzle.music_name + '</h2><p>' + 
+//                puzzle.music_player + '</p></a></li>')
+//        .appendTo('#list-of-solved-puzzles');
     }
     
-    $('#list-of-solved-puzzles').listview('refresh');
+//    $('#list-of-solved-puzzles').listview('refresh');
 }
 
 function shareOnFacebook () {
