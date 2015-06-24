@@ -32,9 +32,6 @@ var music_folder = false;
 function verifyProgress () {
     var lastSolvedPuzzle = getLastSolvedPuzzle();
     
-    setScorePage(lastSolvedPuzzle);
-    populateListOfSolvedPuzzles ();
-    
     enableSolvedRows();
 }
 
@@ -349,6 +346,9 @@ function answerVerifier () {
         verifyProgress();
         
         $( ":mobile-pagecontainer" ).pagecontainer( "change", "#puzzle-solved-page", { transition: "flip" } );
+        
+        gaPlugin.trackEvent( gaPluginSucessHandler, gaPluginErrorHandler, 
+        puzzle.word, "solved", "", 1);
     } else {
         mediaPuzzle.stop();
         
@@ -358,6 +358,9 @@ function answerVerifier () {
         function () {
             mediaPuzzle.play();
         }, "Não foi desta vez", "Simbora!");
+        
+        gaPlugin.trackEvent( gaPluginSucessHandler, gaPluginErrorHandler, 
+        puzzle.word, "fail", "", 1);
     }
 }
 

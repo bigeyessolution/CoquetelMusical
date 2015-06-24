@@ -35,12 +35,15 @@ function onDeviceReady () {
     setMapMarkers();
     
     verifyProgress();
+    
+    gaPlugin.init(gaPluginSucessHandler, gaPluginErrorHandler, "UA-59363254-2", 10);
 }
 
 function onOnline () {
 }
 
 function onResume () {
+    gaPlugin.init(gaPluginSucessHandler, gaPluginErrorHandler, "UA-59363254-2", 10);
 }
 
 function onPause () {
@@ -50,4 +53,14 @@ function onPause () {
         unfollowUserPosition();
         setBtnLocationStatus(false);
     }
+    
+    gaPlugin.exit(gaPluginSucessHandler, gaPluginErrorHandler);
+}
+
+function gaPluginSucessHandler () {
+    
+}
+
+function gaPluginErrorHandler () {
+    
 }

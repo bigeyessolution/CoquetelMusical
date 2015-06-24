@@ -52,6 +52,7 @@
     <gap:plugin name="org.apache.cordova.splashscreen"/>
     <gap:plugin name="org.apache.cordova.media"/>
     <gap:plugin name="org.apache.cordova.vibration"/>
+    <gap:plugin name="com.adobe.plugins.gaplugin" />
     <access origin="*"/>
     <allow-intent href="http://*/*"/>
     <allow-intent href="https://*/*"/>
