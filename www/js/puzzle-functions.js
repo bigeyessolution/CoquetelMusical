@@ -347,8 +347,10 @@ function answerVerifier () {
         
         $( ":mobile-pagecontainer" ).pagecontainer( "change", "#puzzle-solved-page", { transition: "flip" } );
         
-        gaPlugin.trackEvent( gaPluginSucessHandler, gaPluginErrorHandler, 
-        puzzle.word, "solved", "", 1);
+        if (gaPlugin) {
+            gaPlugin.trackEvent( gaPluginSucessHandler, gaPluginErrorHandler, 
+            puzzle.word, "solved", "", 1);
+        }
     } else {
         mediaPuzzle.stop();
         

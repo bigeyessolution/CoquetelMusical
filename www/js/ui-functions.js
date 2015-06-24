@@ -101,7 +101,9 @@ function setUiEvents () {
             populateListOfSolvedPuzzles ();
         }
         
-        gaPlugin.trackPage( gaPluginSucessHandler, gaPluginErrorHandler, toPage);
+        if (gaPlugin) {
+            gaPlugin.trackPage( gaPluginSucessHandler, gaPluginErrorHandler, toPage);
+        }
     });
     
     $(":mobile-pagecontainer").on("pagecontainerbeforechange", function( event, ui ) {

@@ -15,6 +15,9 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
+
+var gaPlugin = false;
+
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady () {
@@ -36,6 +39,8 @@ function onDeviceReady () {
     
     verifyProgress();
     
+    gaPlugin = window.plugins.gaPlugin;
+    
     gaPlugin.init(gaPluginSucessHandler, gaPluginErrorHandler, "UA-59363254-2", 10);
 }
 
@@ -43,7 +48,11 @@ function onOnline () {
 }
 
 function onResume () {
-    gaPlugin.init(gaPluginSucessHandler, gaPluginErrorHandler, "UA-59363254-2", 10);
+    if (gaPlugin === false) {
+        gaPlugin = window.plugins.gaPlugin;
+        
+        gaPlugin.init(gaPluginSucessHandler, gaPluginErrorHandler, "UA-59363254-2", 10);
+    }
 }
 
 function onPause () {
@@ -54,7 +63,11 @@ function onPause () {
         setBtnLocationStatus(false);
     }
     
-    gaPlugin.exit(gaPluginSucessHandler, gaPluginErrorHandler);
+    if (gaPlugin !== false) {
+        gaPlugin.exit(gaPluginSucessHandler, gaPluginErrorHandler);
+        
+        gaPlugin = false;
+    }
 }
 
 function gaPluginSucessHandler () {
