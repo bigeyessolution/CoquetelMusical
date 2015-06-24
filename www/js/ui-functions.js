@@ -96,6 +96,18 @@ function setUiEvents () {
             devMotionWatchId = false;
         }
         
+        if (toPage === 'score-page') {
+            setScorePage(lastSolvedPuzzle);
+            populateListOfSolvedPuzzles ();
+        }
+        
+        gaPlugin.trackPage( gaPluginSucessHandler, gaPluginErrorHandler, toPage);
+    });
+    
+    $(":mobile-pagecontainer").on("pagecontainerbeforechange", function( event, ui ) {
+        var prevPage = ui.prevPage.attr("id");
+        var toPage = ui.toPage.attr("id");
+        
         switch (prevPage) {
             case 'puzzle-solved-page':
                 if(mediaSolvedPuzzle !== false) {
@@ -131,15 +143,9 @@ function setUiEvents () {
             case 'puzzle-solved-page':
                 handleSolvedPuzzle();
                 break;
-            case 'score-page':
-                setScorePage(lastSolvedPuzzle);
-                populateListOfSolvedPuzzles ();
-                break;
             default:
                 break;
         }
-        
-        gaPlugin.trackPage( gaPluginSucessHandler, gaPluginErrorHandler, toPage);
     });
 }
 
