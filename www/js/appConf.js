@@ -23,7 +23,7 @@ appConf = {
         {
             row: 0,
             word: "vaporzinho",
-            coordinates: [ { place: "Praça Dom Malan", lat: -9.398788, lng: -40.501179 }, { place: "Unid Saúde da Família", lat: -9.3933, lng: -40.54526666666667 }, { place: "Praça Geraldo Silva", lat: -9.472789, lng: -40.804886 } /*, { place: "Minha casa", lat: -9.47273, lng: -40.79992 }*/ ],
+            coordinates: [ { place: "Praça Dom Malan", lat: -9.398788, lng: -40.501179 }, { place: "Unid Saúde da Família", lat: -9.3933, lng: -40.54526666666667 }, { place: "Praça Geraldo Silva", lat: -9.472789, lng: -40.804886 } ],
             music: "puzzle.0.marcha_do_grande_rio.mp3",
             music_solved: "puzzle.0.marcha_do_grande_rio.mp3",
             music_name: "Marcha do Grande Rio",

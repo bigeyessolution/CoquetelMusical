@@ -96,6 +96,10 @@ function setUiEvents () {
         }
         
         switch(toPage) {
+            case 'location-page':
+                clearMap();
+                setMapMarkers();
+                break;
             case 'puzzle-page':
                 if (enabledPuzzle > -1) {
                     handlePuzzle();
@@ -107,9 +111,9 @@ function setUiEvents () {
                 handleSolvedPuzzle();
                 break;
             case 'score-page':
-                if (lastSolvedPuzzle !== -1) {
-                    setScorePage(lastSolvedPuzzle);
-                }
+                verifyProgress();
+                
+                setScorePage(lastSolvedPuzzle);
                 
                 populateListOfSolvedPuzzles ();
                 break;
@@ -126,9 +130,11 @@ function setUiEvents () {
         var prevPage = ui.prevPage.attr("id");
         
         switch (prevPage) {
+            case 'location-page':
+                break;
             case 'puzzle-solved-page':
                 if(mediaSolvedPuzzle !== false) {
-                    mediaSolvedPuzzle.pause();
+                    mediaSolvedPuzzle.stop();
                     mediaSolvedPuzzle.release();
                     mediaSolvedPuzzle = false;
                 }
@@ -136,11 +142,11 @@ function setUiEvents () {
                 $("#puzzle-answer").val("");
                 $("#btn-answer").attr("disabled", true );
                 
-                if(mediaPuzzle !== false ) {
-                    mediaPuzzle.pause();
-                    mediaPuzzle.release();
-                    mediaPuzzle = false;
-                }
+//                if(mediaPuzzle !== false ) {
+//                    mediaPuzzle.stop();
+//                    mediaPuzzle.release();
+//                    mediaPuzzle = false;
+//                }
                 break;
         }
         
@@ -172,7 +178,7 @@ function preparePuzzlePage (puzzle) {
  */
 function preparePuzzleSolvedPage (puzzle) {
     mediaSolvedPuzzle = new Media (music_folder + puzzle.music_solved);
-    console.log(puzzle.solved_image);
+    
     $("#puzzle-solved-page .be-puzzle-image").attr("src", "./data/images/" + puzzle.solved_image);
     $("#puzzle-solved-page .be-puzzle-solved-text").html(puzzle.solved_text);
     $("#music-name").html(puzzle.music_name);
@@ -202,23 +208,12 @@ function populateListOfSolvedPuzzles () {
     if (solvedPuzzles.length === 0) return;
     
     $('#list-of-solved-puzzles').show();
-    $('#list-of-solved-puzzles').empty();
 
     for (var i = 0; i < solvedPuzzles.length; i++) {
         var puzzle_row = solvedPuzzles[i];
         
-        $("#list-of-solved-puzzles a").show();
-        $("#list-of-solved-puzzles br").show();
-        
-//        var puzzle = appConf.puzzle_data[puzzle_row];
-//        
-//        $('<li data-icon="false"><a onclick="showPuzzleSolvedPage(' + 
-//                puzzle_row +')"><h2>' + puzzle.music_name + '</h2><p>' + 
-//                puzzle.music_player + '</p></a></li>')
-//        .appendTo('#list-of-solved-puzzles');
+        $("#puzzle-" + puzzle_row).show();
     }
-    
-//    $('#list-of-solved-puzzles').listview('refresh');
 }
 
 function shareOnFacebook () {

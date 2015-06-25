@@ -28,7 +28,7 @@ function onDeviceReady () {
     app_folder = cordova.file.applicationDirectory.replace('file://', '');
     music_folder = app_folder + "www/data/music/";
     map_folder = app_folder + "www/data/music/";
-    console.log (app_folder);
+    
     getPuzzlesFromCache();
 
     createMap();
@@ -40,8 +40,7 @@ function onDeviceReady () {
     verifyProgress();
     
     $("#list-of-solved-puzzles").hide();
-    $("#list-of-solved-puzzles a").hide();
-    $("#list-of-solved-puzzles br").hide();
+    $("#list-of-solved-puzzles span").hide();
     
     gaPlugin = window.plugins.gaPlugin;
     

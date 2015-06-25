@@ -78,13 +78,13 @@ function showPageHandler () {
             _mediaStatus = Media.MEDIA_RUNNING;
         }
         
-        mediaPuzzle.getCurrentPosition(function(position) {
-            if( position > mediaPuzzle.getDuration() - 1 ) {
-                mediaPuzzle.pause();
-                _mediaStatus = Media.MEDIA_PAUSED;
-                mediaPuzzle.seekTo(0);
-            }
-        }); 
+//        mediaPuzzle.getCurrentPosition(function(position) {
+//            if( position > mediaPuzzle.getDuration() - 1 ) {
+//                mediaPuzzle.pause();
+//                _mediaStatus = Media.MEDIA_PAUSED;
+//                mediaPuzzle.seekTo(0);
+//            }
+//        }); 
     }, 100);
     
     mediaPuzzle.play();
@@ -112,17 +112,17 @@ function touchRhythmHandler () {
                 _mediaStatus = Media.MEDIA_RUNNING;
             }
         } else {
-            mediaPuzzle.pause();
-            _mediaStatus = Media.MEDIA_PAUSED;
+//            mediaPuzzle.pause();
+//            _mediaStatus = Media.MEDIA_PAUSED;
         }
         
-        mediaPuzzle.getCurrentPosition(function(position) {
-            if( position > mediaPuzzle.getDuration() - 1 ) {
-                mediaPuzzle.pause();
-                _mediaStatus = Media.MEDIA_PAUSED;
-                mediaPuzzle.seekTo(0);
-            }
-        }); 
+//        mediaPuzzle.getCurrentPosition(function(position) {
+//            if( position > mediaPuzzle.getDuration() - 1 ) {
+//                mediaPuzzle.pause();
+//                _mediaStatus = Media.MEDIA_PAUSED;
+//                mediaPuzzle.seekTo(0);
+//            }
+//        }); 
     }, 1000);
 }
 
@@ -171,13 +171,13 @@ function btnAcocharHandler () {
             _mediaStatus = Media.MEDIA_RUNNING;
         }
         
-        mediaPuzzle.getCurrentPosition(function(position) {
-            if( position > mediaPuzzle.getDuration() - 1 ) {
-                mediaPuzzle.pause();
-                _mediaStatus = Media.MEDIA_PAUSED;
-                mediaPuzzle.seekTo(0);
-            }
-        });
+//        mediaPuzzle.getCurrentPosition(function(position) {
+//            if( position > mediaPuzzle.getDuration() - 1 ) {
+//                mediaPuzzle.pause();
+//                _mediaStatus = Media.MEDIA_PAUSED;
+//                mediaPuzzle.seekTo(0);
+//            }
+//        });
     }, 2000);
     
     mediaPuzzle.play();
@@ -223,13 +223,13 @@ function shakeToPlayHandler () {
                 _mediaStatus = Media.MEDIA_PAUSED;
             }
             
-            mediaPuzzle.getCurrentPosition(function(position) {
-                if( position > mediaPuzzle.getDuration()-1 ) {
-                    mediaPuzzle.pause();
-                    _mediaStatus = Media.MEDIA_PAUSED;
-                    mediaPuzzle.seekTo(0);
-                }
-            });
+//            mediaPuzzle.getCurrentPosition(function(position) {
+//                if( position > mediaPuzzle.getDuration()-1 ) {
+//                    mediaPuzzle.pause();
+//                    _mediaStatus = Media.MEDIA_PAUSED;
+//                    mediaPuzzle.seekTo(0);
+//                }
+//            });
         }
 
         previous = acceleration;
@@ -330,7 +330,6 @@ function getLastSolvedPuzzle () {
  * @returns {object}
  */
 function getPuzzleData () {
-    console.log("enabledPuzzle: " + enabledPuzzle);
     return appConf.puzzle_data[enabledPuzzle];
 }
 
@@ -338,12 +337,17 @@ function answerVerifier () {
     puzzle = getPuzzleData();
     
     if (puzzle.word.toLowerCase().trim() === $("#puzzle-answer").val().toLowerCase().trim()) {
+        if(mediaPuzzle !== false ) {
+            mediaPuzzle.stop();
+            mediaPuzzle.release();
+            mediaPuzzle = false;
+        }
+        
         navigator.notification.vibrate([0, 100, 100, 200, 100, 400, 100, 800]);
         
         addSolvedPuzzle(puzzle);
         preparePuzzleSolvedPage(puzzle);
-        clearMap();
-        setMapMarkers();
+        
         verifyProgress();
         
         $( ":mobile-pagecontainer" ).pagecontainer( "change", "#puzzle-solved-page", { transition: "flip" } );

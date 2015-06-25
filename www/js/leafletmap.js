@@ -82,6 +82,27 @@ function createMap ()
     userMarkerLayer.addLayer(userMarker);
     
     map.addLayer(mapMarkers);
+    
+    navigator.geolocation.getCurrentPosition(function (position) {
+        var userPosition = L.LatLng(position.coords.latitude, position.coords.longitude);
+        
+        var center = L.latLng(appConf.start_position[0].lat, appConf.start_position[0].lng);
+        
+        var distance_to_center = center.distanceTo(userPosition);
+                
+        for (var i=1; i < appConf.start_position.length; i++) {
+            var point = L.latLng(appConf.start_position[i].lat, appConf.start_position[i].lng);
+            
+            var distance = point.distanceTo(userPosition);
+            
+            if (distance < distance_to_center) {
+                distance_to_center = distance;
+                center = point;
+            }
+        }
+        
+        map.panTo(center);
+    }, function (error) {});
 }
 
 /**
