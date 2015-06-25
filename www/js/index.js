@@ -39,6 +39,7 @@ function onDeviceReady () {
     
     verifyProgress();
     
+    $("#list-of-solved-puzzles").hide();
     $("#list-of-solved-puzzles a").hide();
     $("#list-of-solved-puzzles br").hide();
     

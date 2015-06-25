@@ -201,6 +201,7 @@ function clearPuzzlePage () {
 function populateListOfSolvedPuzzles () {
     if (solvedPuzzles.length === 0) return;
     
+    $('#list-of-solved-puzzles').show();
     $('#list-of-solved-puzzles').empty();
 
     for (var i = 0; i < solvedPuzzles.length; i++) {
