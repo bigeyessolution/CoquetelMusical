@@ -31,6 +31,22 @@ function enableSolvedRows () {
 
 /**
  * 
+ * @returns {undefined}
+ */
+function enableEnabledPuzzleRow () {
+    for (row=0; row < appConf.puzzle_data.length; row++ ) {
+        var puzzle = appConf.puzzle_data[row];
+        
+        if ( isPuzzleEnabled(puzzle) ) {
+            enablePuzzleRow(puzzle);
+            
+            return;
+        }
+    }
+}
+
+/**
+ * 
  * @param {object} puzzle
  * @returns {undefined}
  */
@@ -40,17 +56,16 @@ function enablePuzzleRow (puzzle) {
 
 /**
  * 
- * @param {integer} puzzle
  * @returns {undefined}
  */
-function setScorePage (puzzle) {
-    if (puzzle > -1 ) {
-        $("#img-score").attr("src", "data/images/score." + solvedPuzzles.length + ".png");
-        $("#facebook_message").html(appConf.puzzle_data[puzzle].facebook_message);
+function setScorePage () {
+    $("#img-score").attr("src", "data/images/score." + solvedPuzzles.length + ".png");
+    
+    if (lastSolvedPuzzle > -1 ) {
+        $("#facebook_message").html(appConf.puzzle_data[lastSolvedPuzzle].facebook_message);
         $("#facebook_message_content").removeClass("be-invisible");
     } else {
         $('#facebook_message_content').addClass("be-invisible");
-        $("#img-score").attr("src", "data/images/score.0.png");
     }
 }
 
@@ -79,6 +94,16 @@ function setUiEvents () {
     
     $("#btn-answer").click(answerVerifier);
     $("#btn-location").click(btnLocationHandler);
+    $("#btn-puzzle-help").click(function () {
+        navigator.notification.alert("GPS Coquetel Musical mistura game, " +
+            "palavras-cruzadas, georeferenciamento, cultura e música " + 
+            "regional. Para jogar, você precisa estar fisicamente próximo " + 
+            "dos pontos indicados no mapa e conectado ao app instalado no " + 
+            "seu celular. Quando o ícone mudar de cor, você pode acessar " + 
+            "pistas para tentar resolver o diagrama acima.",
+            function () {}, "Ajuda do puzzle"
+        );
+    });
     
     setBtnLocationStatus(false);
     
@@ -95,10 +120,22 @@ function setUiEvents () {
             devMotionWatchId = false;
         }
         
+        if(watchId !== false) { //unfollow user
+            unfollowUserPosition();
+            setBtnLocationStatus(false);
+        }
+        
         switch(toPage) {
             case 'location-page':
                 clearMap();
                 setMapMarkers();
+                
+                map.invalidateSize();
+                break;
+            case 'puzzles-page':
+                clearPuzzlePage();
+                enableSolvedRows();
+                enableEnabledPuzzleRow();
                 break;
             case 'puzzle-page':
                 if (enabledPuzzle > -1) {
@@ -112,10 +149,11 @@ function setUiEvents () {
                 break;
             case 'score-page':
                 verifyProgress();
-                
-                setScorePage(lastSolvedPuzzle);
-                
+                setScorePage();
                 populateListOfSolvedPuzzles ();
+                
+                setTimeout(function(){ window.scrollTo(0,0); }, 1000)
+                
                 break;
             default:
                 break;
@@ -130,7 +168,15 @@ function setUiEvents () {
         var prevPage = ui.prevPage.attr("id");
         
         switch (prevPage) {
-            case 'location-page':
+            case 'puzzle-page':
+                $("#puzzle-answer").val("");
+                $("#btn-answer").attr("disabled", true );
+                
+                if(mediaPuzzle !== false ) {
+                    mediaPuzzle.stop();
+                    mediaPuzzle.release();
+                    mediaPuzzle = false;
+                }
                 break;
             case 'puzzle-solved-page':
                 if(mediaSolvedPuzzle !== false) {
@@ -138,21 +184,7 @@ function setUiEvents () {
                     mediaSolvedPuzzle.release();
                     mediaSolvedPuzzle = false;
                 }
-            case 'puzzle-page':
-                $("#puzzle-answer").val("");
-                $("#btn-answer").attr("disabled", true );
-                
-//                if(mediaPuzzle !== false ) {
-//                    mediaPuzzle.stop();
-//                    mediaPuzzle.release();
-//                    mediaPuzzle = false;
-//                }
                 break;
-        }
-        
-        if(watchId !== false) { //unfollow user
-            unfollowUserPosition();
-            setBtnLocationStatus(false);
         }
     });
 }

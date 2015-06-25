@@ -20,12 +20,12 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     Author     : laudivan
 */
 
-body {
-    overflow-x: hidden;
-    overflow-y: hidden;
+html, body {
+    width: 100% !important;
 }
 
-section { 
+section {
+    width: 100% !important;
     height: 100%; 
     padding: 0 !important;
     margin: 0 !important;
@@ -149,6 +149,25 @@ p a { color: #846F57 !important }
 
 #btn-puzzle-action:active {
     box-shadow: none;
+}
+
+#btn-puzzle-help, #btn-puzzle-help:visited {
+    text-align: center;
+    font-size: 2rem;
+    width: 1.2em !important;
+    color: #231d04 !important;
+    position: fixed;
+    background: #ffffff !important;
+    box-shadow: 0.05em 0.05em 0.3em #000000;
+    bottom: 2.2em;
+    right: 0.5em;
+    padding: 0.2em;
+    border-radius: 50%;
+}
+
+#btn-puzzle-help:active {
+    color: #b35731 !important;
+    box-shadow: none !important;
 }
 
 #img-puzzle-action {

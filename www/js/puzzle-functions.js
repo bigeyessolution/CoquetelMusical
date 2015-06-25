@@ -34,6 +34,10 @@ function verifyProgress () {
     var lastSolvedPuzzle = getLastSolvedPuzzle();
     
     enableSolvedRows();
+    
+//    setScorePage();
+//    
+//    populateListOfSolvedPuzzles ();
 }
 
 /**
@@ -64,20 +68,20 @@ function handlePuzzle () {
  * 
  * @returns {undefined}
  */
-function handleSolvedPuzzle () {    
-    mediaSolvedPuzzle.play();
+function handleSolvedPuzzle () {
+    if (mediaSolvedPuzzle !== false) mediaSolvedPuzzle.play();
 }
 
 function showPageHandler () {
     mediaPuzzle = new Media (music_folder + getPuzzleData().music);
     
-    intervalId = setInterval(
-    function () {
-        if(_mediaStatus == Media.MEDIA_PAUSED) {
-            mediaPuzzle.play();
-            _mediaStatus = Media.MEDIA_RUNNING;
-        }
-        
+//    intervalId = setInterval(
+//    function () {
+//        if(_mediaStatus == Media.MEDIA_PAUSED) {
+//            mediaPuzzle.play();
+//            _mediaStatus = Media.MEDIA_RUNNING;
+//        }
+//        
 //        mediaPuzzle.getCurrentPosition(function(position) {
 //            if( position > mediaPuzzle.getDuration() - 1 ) {
 //                mediaPuzzle.pause();
@@ -85,7 +89,7 @@ function showPageHandler () {
 //                mediaPuzzle.seekTo(0);
 //            }
 //        }); 
-    }, 100);
+//    }, 100);
     
     mediaPuzzle.play();
 }
@@ -100,6 +104,7 @@ function touchRhythmHandler () {
     });
     
     mediaPuzzle = new Media (music_folder + getPuzzleData().music);
+    
     _timer = 0;
     
     intervalId = setInterval(
@@ -107,22 +112,10 @@ function touchRhythmHandler () {
         if (_timer > 0) {
             _timer --;
             
-            if(_mediaStatus == Media.MEDIA_PAUSED) {
-                mediaPuzzle.play();
-                _mediaStatus = Media.MEDIA_RUNNING;
-            }
+            mediaPuzzle.play();
         } else {
-//            mediaPuzzle.pause();
-//            _mediaStatus = Media.MEDIA_PAUSED;
+            if (mediaPuzzle !== false) mediaPuzzle.pause();
         }
-        
-//        mediaPuzzle.getCurrentPosition(function(position) {
-//            if( position > mediaPuzzle.getDuration() - 1 ) {
-//                mediaPuzzle.pause();
-//                _mediaStatus = Media.MEDIA_PAUSED;
-//                mediaPuzzle.seekTo(0);
-//            }
-//        }); 
     }, 1000);
 }
 
@@ -130,7 +123,7 @@ var _margin = 0;
 var _maxMargin = 0;
 
 function btnAcocharHandler () {
-    $(".be-puzzle-image").addClass("be-invisible");
+    $("#puzzle-page .be-puzzle-image").addClass("be-invisible");
     
     $("#img-puzzle-action").removeClass("be-invisible");
     $('<img id="img-puzzle-man" src="data/images/' + getPuzzleData().image_1 + '">').appendTo("#img-puzzle-action");
@@ -334,7 +327,7 @@ function getPuzzleData () {
 }
 
 function answerVerifier () {
-    puzzle = getPuzzleData();
+    var puzzle = getPuzzleData();
     
     if (puzzle.word.toLowerCase().trim() === $("#puzzle-answer").val().toLowerCase().trim()) {
         if(mediaPuzzle !== false ) {
@@ -343,7 +336,7 @@ function answerVerifier () {
             mediaPuzzle = false;
         }
         
-        navigator.notification.vibrate([0, 100, 100, 200, 100, 400, 100, 800]);
+//        navigator.notification.vibrate([0, 100, 100, 200, 100, 400, 100, 800]);
         
         addSolvedPuzzle(puzzle);
         preparePuzzleSolvedPage(puzzle);

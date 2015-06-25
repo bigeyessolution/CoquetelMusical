@@ -82,27 +82,6 @@ function createMap ()
     userMarkerLayer.addLayer(userMarker);
     
     map.addLayer(mapMarkers);
-    
-    navigator.geolocation.getCurrentPosition(function (position) {
-        var userPosition = L.LatLng(position.coords.latitude, position.coords.longitude);
-        
-        var center = L.latLng(appConf.start_position[0].lat, appConf.start_position[0].lng);
-        
-        var distance_to_center = center.distanceTo(userPosition);
-                
-        for (var i=1; i < appConf.start_position.length; i++) {
-            var point = L.latLng(appConf.start_position[i].lat, appConf.start_position[i].lng);
-            
-            var distance = point.distanceTo(userPosition);
-            
-            if (distance < distance_to_center) {
-                distance_to_center = distance;
-                center = point;
-            }
-        }
-        
-        map.panTo(center);
-    }, function (error) {});
 }
 
 /**
@@ -211,9 +190,7 @@ function setMapMarkers ()
         var flag_puzzle_enabled = isPuzzleEnabled(puzzle);
         var markerOptions = false;
         
-        if (flag_puzzle_enabled) {            
-            enablePuzzleRow(puzzle);
-            
+        if (flag_puzzle_enabled) {
             markerOptions = {
                 icon: musicPointEnabled,
                 clickable: true
@@ -283,14 +260,14 @@ function verifyUserAtPuzzlePosition (lat, lng)
         
         distance = Math.min(distance, userPoint.distanceTo(puzzleLatLng));
         
-        if( userPoint.distanceTo(puzzleLatLng) < 10.0 ) {
+        if( userPoint.distanceTo(puzzleLatLng) < 20.0 ) {
             enablePuzzle(puzzlePoint);
             unfollowUserPosition();
             setBtnLocationStatus(false);
-            clearMap();
-            setMapMarkers();
+//            clearMap();
+//            setMapMarkers();
             
-            navigator.notification.vibrate([0, 100, 100, 300]);
+//            navigator.notification.vibrate([0, 100, 100, 300]);
             
             navigator.notification.alert(
                 "Clique no marcador verde ou na palavra cruzada da aba Desafios para resolvê-lo!",
@@ -311,8 +288,10 @@ function verifyUserAtPuzzlePosition (lat, lng)
 
 function clearMap () 
 {
-    mapMarkers.clearLayers();
-    mapPuzzlesPoints = [];
+    if (mapPuzzlesPoints.length > 0 ) {
+        mapMarkers.clearLayers();
+        mapPuzzlesPoints = [];
+    }
 }
 
 /**
