@@ -10,11 +10,18 @@ jogo chamada Beta, que foi testada pelos alunos do projeto, realizando um proced
 Beta Testing. Após esta atividade, chegamos à versão final do game, que foi viabilizada para jogar também na 
 orla de Petrolina. Ao final, 16 alunos participaram do projeto, sendo que destes 11 chegaram a concluir 75% das 
 atividades, totalizando 50 horas de atividade de extensão e a realização do beta testing.  O aplicativo foi 
-lançado em versão para Android, iOS e Windows Phone.
+lançado em versão para 
+[Android](https://play.google.com/store/apps/details?id=com.bigeyessolution.CoquetelMusical), iOS e Windows 
+Phone.
 
 **Telas do aplicativo**
-![smartphone01](/img/smartphone01.png)
-![smartphone02](/img/smartphone02.png)
-![smartphone03](/img/smartphone03.png)
-![smartphone04](/img/smartphone04.png)
+
+->![smartphone01](/img/smartphone01.png =200x355)<-
+
+->![smartphone02](/img/smartphone02.png =200x355)<-
+
+->![smartphone03](/img/smartphone03.png =200x355)<-
+
+->![smartphone04](/img/smartphone04.png =200x355)<-
+
 
