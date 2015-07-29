@@ -16,12 +16,9 @@ Phone.
 
 **Telas do aplicativo**
 
-->![smartphone01](/img/smartphone01.png =200x355)<-
-
-->![smartphone02](/img/smartphone02.png =200x355)<-
-
-->![smartphone03](/img/smartphone03.png =200x355)<-
-
-->![smartphone04](/img/smartphone04.png =200x355)<-
+![smartphone01](/img/smartphone01.png)
+![smartphone02](/img/smartphone02.png)
+![smartphone03](/img/smartphone03.png)
+![smartphone04](/img/smartphone04.png)
 
 
