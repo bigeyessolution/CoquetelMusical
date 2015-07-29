@@ -17,8 +17,11 @@ Phone.
 **Telas do aplicativo**
 
 ![smartphone01](/img/smartphone01.png)
+
 ![smartphone02](/img/smartphone02.png)
+
 ![smartphone03](/img/smartphone03.png)
+
 ![smartphone04](/img/smartphone04.png)
 
 
