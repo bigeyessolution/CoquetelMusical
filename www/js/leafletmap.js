@@ -190,16 +190,20 @@ function setMapMarkers ()
         var flag_puzzle_enabled = isPuzzleEnabled(puzzle);
         var markerOptions = false;
         
+        var flag_puzzle_solved = false;
+        
         if (flag_puzzle_enabled) {
             markerOptions = {
                 icon: musicPointEnabled,
                 clickable: true
-            }
+            };
         } else if (isPuzzleSolved(puzzle)) {
             markerOptions = {
                 icon: musicPointSolved,
-                clickable: false
-            }
+                clickable: true
+            };
+            
+            flag_puzzle_solved = true;
         } else {
             markerOptions = {
                 icon: musicPointDisabled,
@@ -219,6 +223,12 @@ function setMapMarkers ()
                     $(":mobile-pagecontainer").pagecontainer( 
                         "change", "#puzzle-page", { transition: "flip" } 
                     );
+                });
+            }else if(flag_puzzle_solved) { /*Tentando fazer funcionar o click em solucionados*/
+                marker.puzzle_row = puzzle.row;
+                
+                marker.on("click", function (evt) {
+                    showPuzzleSolvedPage (evt.target.puzzle_row);
                 });
             }
             
@@ -260,7 +270,7 @@ function verifyUserAtPuzzlePosition (lat, lng)
         
         distance = Math.min(distance, userPoint.distanceTo(puzzleLatLng));
         
-        if( userPoint.distanceTo(puzzleLatLng) < 12.0 ) {
+        if( userPoint.distanceTo(puzzleLatLng) < 5 ) {
             enablePuzzle(puzzlePoint);
             unfollowUserPosition();
             setBtnLocationStatus(false);
