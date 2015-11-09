@@ -18,12 +18,12 @@
 
 appConf = {
     application: "Coquetel Digital",
-    start_position: [ { lat: -9.399402, lng: -40.500653 }, { lat: -9.393916666666666, lng: -40.5458 }, { lat: -9.473974, lng: -40.808104 } ],
+    start_position: [ { lat: -5.0871916666667, lng: -42.793516666667 }, { lat: -9.399402, lng: -40.500653 }, { lat: -9.393916666666666, lng: -40.5458 }, { lat: -9.473974, lng: -40.808104 } ],
     puzzle_data: [
         {
             row: 0,
             word: "vaporzinho",
-            coordinates: [ { place: "Praça Dom Malan", lat: -9.398788, lng: -40.501179 }, { place: "Unid Saúde da Família", lat: -9.3933, lng: -40.54526666666667 }, { place: "Praça Geraldo Silva", lat: -9.472789, lng: -40.804886 } ],
+            coordinates: [ { place: "Entrada principal", lat: -5.0874888888889, lng: -42.794172222222 }, { place: "Praça Dom Malan", lat: -9.398788, lng: -40.501179 }, { place: "Unid Saúde da Família", lat: -9.3933, lng: -40.54526666666667 }, { place: "Praça Geraldo Silva", lat: -9.472789, lng: -40.804886 } ],
             music: "puzzle.0.marcha_do_grande_rio.mp3",
             music_solved: "puzzle.0.marcha_do_grande_rio.mp3",
             music_name: "Marcha do Grande Rio",
@@ -40,7 +40,7 @@ appConf = {
         {
             row: 1,
             word: "cordelista",
-            coordinates: [ { place: "Anfiteatro", lat: -9.39919, lng: -40.49902}, { place: "Creche", lat: -9.393233333333333, lng: -40.54868333333334 }, { place: "Praça dos Trabalhadores", lat: -9.469868, lng: -40.7998 } ],
+            coordinates: [ { place: "Recepção", lat: -5.0874555555556, lng: -42.794083333333}, { place: "Anfiteatro", lat: -9.39919, lng: -40.49902}, { place: "Creche", lat: -9.393233333333333, lng: -40.54868333333334 }, { place: "Praça dos Trabalhadores", lat: -9.469868, lng: -40.7998 } ],
             music: "puzzle.1.viagem_de_lotacao.mp3",
             music_solved: "puzzle.1.viagem_de_lotacao.mp3",
             music_name: "Viagem de Lotação",
@@ -57,7 +57,7 @@ appConf = {
         {
             row: 2,
             word: "fole",
-            coordinates: [ { place: "Catedral", lat: -9.399275, lng: -40.50104}, { place: "CRAS do Céu", lat: -9.394166666666667, lng: -40.54878333333333 }, { place: "Praça 7 de Setembro", lat: -9.470884, lng: -40.800186 } ],
+            coordinates: [ { place: "Bandeiras no fundo", lat: -5.0869083333333, lng: -42.793788888889 }, { place: "Catedral", lat: -9.399275, lng: -40.50104}, { place: "CRAS do Céu", lat: -9.394166666666667, lng: -40.54878333333333 }, { place: "Praça 7 de Setembro", lat: -9.470884, lng: -40.800186 } ],
             music: "puzzle.2.aurora_e_o_sol.mp3",
             music_solved: "puzzle.2.aurora_e_o_sol.mp3",
             music_name: "Aurora e o Sol",
@@ -74,7 +74,7 @@ appConf = {
         {
             row: 3,
             word: "acochar",
-            coordinates: [ { place: "Praça do Bambuzinho", lat: -9.396014, lng: -40.502099 }, { place: "Praça de Eventos", lat: -9.393916666666666, lng: -40.5458 }, { place: "Praça da Vila São Francisco", lat: -9.474905, lng: -40.817975 } ],
+            coordinates: [ { place: "Entrada de serviço", lat: -5.0871083333333, lng: -42.793797222222 }, { place: "Praça do Bambuzinho", lat: -9.396014, lng: -40.502099 }, { place: "Praça de Eventos", lat: -9.393916666666666, lng: -40.5458 }, { place: "Praça da Vila São Francisco", lat: -9.474905, lng: -40.817975 } ],
             music: "puzzle.3.todo_mundo_quer_dancar_baiao.mp3",
             music_solved: "puzzle.3.todo_mundo_quer_dancar_baiao.mp3",
             music_name: "Todo mundo quer dançar baião",
@@ -93,7 +93,7 @@ appConf = {
         {
             row: 4,
             word: "sanfoneiro",
-            coordinates: [ { place: "SESC Petrolina", lat: -9.395438, lng: -40.500023}, { place: "Quadra do Céu", lat: -9.3942, lng: -40.54911666666667 }, { place: "Balneário do Chico Periquito", lat: -9.445358, lng: -40.808147 } ],
+            coordinates: [ { place: "Piscina", lat: -5.0871916666667, lng: -42.793516666667}, { place: "SESC Petrolina", lat: -9.395438, lng: -40.500023}, { place: "Quadra do Céu", lat: -9.3942, lng: -40.54911666666667 }, { place: "Balneário do Chico Periquito", lat: -9.445358, lng: -40.808147 } ],
             music: "puzzle.4.pra_se_aninhar.mp3",
             music_solved: "puzzle.4.pra_se_aninhar.mp3",
             music_name: "Pra se aninhar",
@@ -110,7 +110,7 @@ appConf = {
         {
             row: 5,
             word: "caraibeira",
-            coordinates: [ { place: "Praça 21 de Setembro", lat: -9.400661, lng: -40.500303}, { place: "Assoc. dos Moradores", lat: -9.394566666666666, lng: -40.54938333333333 }, { place: "Praça ao Lado Memorial", lat: -9.468704, lng: -40.827888 } ],
+            coordinates: [ { place: "Ao lado da piscina", lat: -5.0873, lng: -42.793238888889}, { place: "Praça 21 de Setembro", lat: -9.400661, lng: -40.500303}, { place: "Assoc. dos Moradores", lat: -9.394566666666666, lng: -40.54938333333333 }, { place: "Praça ao Lado Memorial", lat: -9.468704, lng: -40.827888 } ],
             music: "puzzle.5.o_velho_arvoredo.mp3",
             music_solved: "puzzle.5.o_velho_arvoredo.mp3",
             music_name: "O velho arvoredo",
@@ -127,7 +127,7 @@ appConf = {
         {
             row: 6,
             word: "ilhadofogo",
-            coordinates: [ { place: "Prefeitura", lat: -9.399777, lng: -40.500051}, { place: "Escola Ana Leopoldina", lat: -9.393666666666666, lng: -40.54541666666667 }, { place: "Praça do Engenheiro", lat: -9.472069, lng: -40.828446 } ],
+            coordinates: [ { place: "Parte interna direita/frente", lat: -5.0875694444444, lng: -42.794008333333}, { place: "Prefeitura", lat: -9.399777, lng: -40.500051}, { place: "Escola Ana Leopoldina", lat: -9.393666666666666, lng: -40.54541666666667 }, { place: "Praça do Engenheiro", lat: -9.472069, lng: -40.828446 } ],
             music: "puzzle.6.a_ilha_e_do_povo.mp3",
             music_solved: "puzzle.6.solved.a_ilha_e_do_povo.mp3",
             music_name: "A ilha é do povo",
@@ -144,7 +144,7 @@ appConf = {
         {
             row: 7,
             word: "caatinga",
-            coordinates: [ { place: "Praça Centenária", lat: -9.40168, lng: -40.500853}, { place: "Escola Simão Dourado", lat: -9.393, lng: -40.5463 }, { place: "Eclusa", lat: -9.438923, lng: -40.831665 } ],
+            coordinates: [ { place: "Parte interna esquerda/frente", lat: -5.0872222222222, lng: -42.794177777778}, { place: "Praça Centenária", lat: -9.40168, lng: -40.500853}, { place: "Escola Simão Dourado", lat: -9.393, lng: -40.5463 }, { place: "Eclusa", lat: -9.438923, lng: -40.831665 } ],
             music: "puzzle.7.caatinga.mp3",
             music_solved: "puzzle.7.caatinga.mp3",
             music_name: "Caatinga",
@@ -161,7 +161,7 @@ appConf = {
         {
             row: 8,
             word: "maraca",
-            coordinates: [ { place: "Estação das Barcas", lat: -9.40385, lng: -40.50059 }, { place: "Entrada do Céu", lat: -9.394416666666666, lng: -40.54893333333333 }, { place: "Morro do Cruzeiro", lat: -9.405197, lng: -40.811621 } ],
+            coordinates: [ { place: "Parte interna direita/fundo", lat: -5.087425, lng: -42.793769444444 }, { place: "Estação das Barcas", lat: -9.40385, lng: -40.50059 }, { place: "Entrada do Céu", lat: -9.394416666666666, lng: -40.54893333333333 }, { place: "Morro do Cruzeiro", lat: -9.405197, lng: -40.811621 } ],
             music: "puzzle.8.brincadeira_de_araras.mp3",
             music_solved: "puzzle.8.brincadeira_de_araras.mp3",
             music_name: "Brincadeira de Araras",
@@ -178,7 +178,7 @@ appConf = {
         {
             row: 9,
             word: "opara",
-            coordinates: [ { place: "Globo de Ferro", lat: -9.403609, lng: -40.497841 }, { place: "Caixa D'Água", lat: -9.489722222222222, lng: -40.68 }, { place: "Porto de Juacema", lat: -9.435663, lng: -40.852307 } ],
+            coordinates: [ { place: "Parte interna esquerda/fundo", lat: -5.0870972222222, lng: -42.793961111111 }, { place: "Globo de Ferro", lat: -9.403609, lng: -40.497841 }, { place: "Caixa D'Água", lat: -9.489722222222222, lng: -40.68 }, { place: "Porto de Juacema", lat: -9.435663, lng: -40.852307 } ],
             music: "puzzle.9.azul_por_do_sol.mp3",
             music_solved: "puzzle.9.solved.azul_por_do_sol.mp3",
             music_name: "Azul por do Sol",
