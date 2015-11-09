@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.bigeyessolution.CoquetelMusical" version="1">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.bigeyessolution.CoquetelMusical" version="1.0.1">
     <name>Coquetel Musical</name>
     <description>
         Este é um jogo locativo que visa explorar espaços da cidade de Petrolina/PE de forma lúdica e imersiva onde jogadores irão responder um jogo de palavras-cruzadas com auxílio de pistas musicais e georreferenciadas.
@@ -8,7 +8,6 @@
         Big Eyes Solution Team
     </author>
     <content src="index.html"/>
-    <preference name="phonegap-version" value="cli-5.1.1"/> <!-- Adding suport to cordova 5.1.1 http://phonegap.com/blog/2015/06/16/phonegap-updated-on-build/-->
     <preference name="orientation" value="portrait"/>
     <preference name="target-device" value="universal"/>
     <preference name="fullscreen" value="false"/>
